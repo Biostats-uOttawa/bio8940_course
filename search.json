@@ -1,0 +1,79 @@
+[
+  {
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "Syllabus",
+    "section": "",
+    "text": "EnglishFrançais\n\n\n\nDescription\nStatistics are a key component of rigorous science and as such there is a need to both understand advanced statistics and properly document the analysis to improve scientific communication transparency and quality. The course aims to:\n\nProvide an understanding of advanced statistical models (including generalized linear mixed models)\nDevelop good coding practices (using R and Rmarkdown)\nImprove data and code management (data manipulation and github)\nPresent the principles of open science (using OSF, Open Science Framework).\n\n\n\nContents\n\nStatistics (flexible to be define based on attendance interests)\n\nMixed models including generalized linear mixed models and multivariate models\nOptions:\n\nIntroduction to Bayesian stats\nPath analysis\nSpatial analysis\nMultivariate analysis\n…\n\n\nOpen and reproducible science\n\nR: Rmarkdown, tidyverse and workflowr\ngit: github and other alternatives\nOpen Science Framework with OSF\n\n\n\n\nClasses\n\nDuration: 1 class of 3h each week\nStyle: mix of lecture, discussion and practical\nHow: In-person .\nWhen: Tuedays from 1430 to 1720\nWhere:\n\nRoom: CRX-C326 \nCourse info and slides: https://biostats-uottawa.github.io/bio8940_course/\nLab manual: https://biostats-uottawa.github.io/bio8940_manual/\n\n\n\n\nAssessment\nBased on interactions in classes and on a data analysis project using R and documented with with Rmarkdown, workflowr and github.\n\n50% in class assessment:\n\n15 min presentation in small groups on a paper and questions (10% content, 10% delivery, 10% answers questions)\ndiscussion in class (10% questions prep, 10% discussions)\n\n50% written statistical report using analysis more complex than linear models written using Rmarkdown, published on github in 2 different formats\n\n\nPresentation\n\nContent – 10%\n\nIntroduction: Background of the general ‘big picture’ and specific problem, study system, and specific hypotheses or predictions.\nMethods: Brief outline of data collection and explanation of statistical methods used to address the hypotheses/predictions outlined in the introduction, including key assumptions.\nResults: Visualizations clearly summarizing your results, using parallel structure to methods\nDiscussion: Summary of major results, alternative explanations for the observed results, conclusions/implications, future directions\n\n\n\nStyle – 10%\n\nOrganization\nClarity\nDelivery: Timing, pace, tone, articulation \n\n\n\nAnswers and understanding – 10%\n\n\n\nWritten report\n\nContent – 70%\n\nIntroduction: (10 marks) Background of the general ‘big picture’ and specific problem, study system, and specific hypotheses or predictions.\nMethods: (20 marks) Brief outline of data collection and explanation of statistical methods used to address the hypotheses/predictions outlined in the introduction, including key assumptions.\nResults: (25 marks) Visualizations clearly summarizing your results, using parallel structure to methods\nDiscussion: (15 marks) Summary of major results, alternative explanations for the observed results, conclusions/implications, future directions\n\n\n\nStyle – 30%\n\nClarity and reproducibility of code (10 marks)\nOrganization (5 marks)\nClarity of text (10 marks)\nTypos and grammar (5 marks)  \n\n\n\n\n\nSchedule\nThis is a tentative schedule.\n\n\n\n\n\n\n\nWeek\nSubject\n\n\n\n\n1\nIntro and discussion on Stats and science\n\n\n2\nRmarkdown and importance of reproducibility\n\n\n3\nRecap on linear models\n\n\n4\nGeneralized linear models\n\n\n5\nLinear mixed models (including random slopes)\n\n\n6\nGeneralized linear mixed models (and intro to gamms)\n\n\n7\nReading week\n\n\n8\nIntro to Bayesian stats\n\n\n9\nComplex mixed models (spatial, temporal autocorrelation, non-independence random effects)\n\n\n10\nPCA and ordinance analysis\n\n\n11\nMultivariate mixed models\n\n\n12\nPath analysis and causality\n\n\n13\nWrap-up\n\n\n\n\n\nNote on bilingualism\nPlease note that the class is bilingual. This means that any questions during the class can be asked or answered in either french or english and the prof will translate the answers if needs be. The majority of the course content (slides, lab manual) are provided in english only, but explanation can be provided in either languages.\n\n\n\n\nDescription et objectifs\nLes analyses statistiques sont fondamentales à un processus scientifique rigoureux. Par conséquent, il est primordiale de comprendre les statistiques et de reporter correctement les analyses pour améliorer la transparence et la qualité de la science. Les objectifs du cours sont:\n\nAméliorer la compréhension des modèles statistique avancés (incluant les modèles mixtes généralisés)\nDévelopper de bonnes habitudes pour coder (utilisation de R et Rmarkdown)\nAméliorer la gestion des données et du code statistique (manipulation de données et github)\nPrésenter les principes de science ouverte (se basant sur OSF, Open Science Framework)\n\n\n\nContenu\n\nStatistiques (contenu flexible à définir en fonction de l’intérêt des participants)\n\nModèles linéaires généralisés\nModèles linéaires mixtes (généralisés et multivariés)\nsujets flexibles:\n\nIntroduction aux stats Bayesienne\nAnalyse de piste\nanalyse spatiale\nanalyse multivariée\nanalyse en composante principale\nGAM et GAMMs\n…\n\n\nScience ouverte répétable\n\nR: Rmarkdown, tidyverse, et workflowr\ngit: github et autre alternative\nOpen Science framework avec OSF\n\n\n\n\nCours\n\nDurée: 1 cours de 3h par semaine\nStyle: mélange de cours, discussion et labo\nComment: Session Zoom interactive avec tous les participants\nQuand: Mardis 1430 à 1720\nOù:\n\nSalle: CRX-C326 \nCourse info and slides: https://biostats-uottawa.github.io/bio8940_course/\nLab manual: https://biostats-uottawa.github.io/bio8940_manual/\n\n\n\n\nÉvaluation\nL’évaluation sera basée sur la participation et sur la réalisation d’un projet qui analysera des données en utilisant R et documentera l’analyse avec Rmarkdown, workflowr et github.\n\n50% évaluation en classe:\n\n15 min présentation en petit groupes sur un article choisi par les étudiants\ndiscussion en classe (10% questions, 10% discussions)\n\n50% travail de session présentant une analyse statistique vu en cours (ou plus complexes), rédigé avec Rmardown et publiées sur github\n\n\nPrésentation\n\nContenu – 10%\n\nIntroduction: Contexte général, hypothèses et prédictions spécifiques à l’étude.\nMéthodes: Brève description de la collecte des données. Explication des analyses statistiques à la lumière des hypothèses et ou prédictions\nResults: Représentation des clair des résultats\nDiscussion: Explications des résultats, limite de l’étude? critique des analyses par rapport aux données et aux hypothèses\n\n\n\nStyle – 10%\n\nOrganisation\nClarté\nStyle: Temps, vitesse, rhytme, ton de la voix, interactions avec audience \n\n\n\nRéponse et compréhension – 10%\n\n\n\nTravail de session\n\nContent – 60%\n\nIntroduction: (10 marks) Contexte général, hypothèses et prédictions spécifiques à l’étude.\nMethods: (20 marks) Brève description de la collecte des données. Explication des analyses statistiques à la lumière des hypothèses et ou prédictions\nResults: (20 marks) Représentation des clair (incluants graphiques) des résultats\nDiscussion: (10 marks) Explications des résultats, limite de l’étude? critique des analyses par rapport aux données et aux hypothèses\n\n\n\nStyle – 40%\n\nClarté et reproducibilité du code (20 marks)\nOrganisation (5 marks)\nClarté du texte (10 marks)\nOrthographe et grammaire (5 marks)  \n\n\n\n\n\nCalendrier\n\n\n\n\n\n\n\nSemaine\nSubject\n\n\n\n\n1\nIntro and discussion on Stats and science\n\n\n2\nRmarkdown and importance of reproducibility\n\n\n3\nIntro to Github\n\n\n4\nGeneralized linear models\n\n\n5\nLinear mixed models (including random slopes)\n\n\n6\nGeneralized linear mixed models (and intro to gamms)\n\n\n7\nReading week\n\n\n8\nIntro to Bayesian stats\n\n\n9\nComplex mixed models (spatial, temporal autocorrelation, non-independence random effects)\n\n\n10\nPCA and ordinance analysis\n\n\n11\nMultivariate mixed models\n\n\n12\nPath analysis and causality\n\n\n13\nWrap-up\n\n\n\n\n\nNote sur le bilinguisme\nLe cours est un cours bilingue. Cela signifie que l’ensemble des interactions orales peuvent avoir lieu en français ou en anglais, le prof pouvant fournir les traductions nécessaires pour que l’ensemble des étudiants comprennent la matière. Le contenu du cours (diapo et manuel de laboratoire) seront présenté de manière unilingue en anglais avec possibilité de fournir des explanations en français si besoin."
+  },
+  {
+    "objectID": "practical_extra.html",
+    "href": "practical_extra.html",
+    "title": "Extra information for praticals",
+    "section": "",
+    "text": "Here you will find links for the praticals as well as their solutions"
+  },
+  {
+    "objectID": "practical_extra.html#rmarkdown",
+    "href": "practical_extra.html#rmarkdown",
+    "title": "Extra information for praticals",
+    "section": "Introduction Rmarkdown",
+    "text": "Introduction Rmarkdown\n\nrmarkdown cheatsheet\nTroubleshoot PDF in Rmarkdown"
+  },
+  {
+    "objectID": "practical_extra.html#introduction-to-github",
+    "href": "practical_extra.html#introduction-to-github",
+    "title": "Extra information for praticals",
+    "section": "Introduction to github",
+    "text": "Introduction to github\n\nManaging git credentials\nHappy git with R great book about git and R"
+  },
+  {
+    "objectID": "lectures.html",
+    "href": "lectures.html",
+    "title": "Lectures",
+    "section": "",
+    "text": "Schedule \n\nLecture: Tuesdays 1430-1720 in CRX-C323\n\nThere are no lectures or tutorials during reading week.\n\n\n\n\n\nWeek\nTopic\nSlides\nAssessments\n\n\n\n\n1\nIntroduction\n / \n\n\n\n2\nIntroduction to Rmarkdown\n / \n\n\n\n3\nIntroduction to Github\n / \n\n\n\n4\nGeneralized linear models (and revision of linear models)\n / \n\n\n\n5\nCausal structure and model building\n\n\n\n\n6\nIntroduction to mixed-models\n\n\n\n\nReading week Break (1 week)\n\n\n7\nIntroduction to Bayesian analysis\n\n\n\n\n8\nGeneralised linear mixed models\n\n\n\n\n9\n\n\n\n\n\n10\n\n\n\n\n\n11\n\n\n\n\n\n12\n\n\nFinal report due **??**"
+  },
+  {
+    "objectID": "dataset.html",
+    "href": "dataset.html",
+    "title": "Data and code for BIO8940",
+    "section": "",
+    "text": "All data and code files in a nice zip file"
+  },
+  {
+    "objectID": "dataset.html#data-for-praticals",
+    "href": "dataset.html#data-for-praticals",
+    "title": "Data and code for BIO8940",
+    "section": "Data for praticals",
+    "text": "Data for praticals\n\nBanta_TotalFruits.csv\ndragons.csv\ngala.csv\nmouflon.csv\nunicorns_aggression.csv"
+  },
+  {
+    "objectID": "dataset.html#r-code-and-functions-used",
+    "href": "dataset.html#r-code-and-functions-used",
+    "title": "Data and code for BIO8940",
+    "section": "R code and functions used",
+    "text": "R code and functions used\n\nextra_funs.R\nlec-04_lm_glm.R"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Advanced statistics and Open science",
+    "section": "",
+    "text": "This is a graduate level class at the University of Ottawa\nWho: Julien Martin\nWhen: 1430-1720 on Tuesdays (Winter 2024)\nWhere: CRX-C323\n\nCourse info\n\nLecture slides\nPractical manual\nSyllabus\n\n\n\nRequirements\n\n\nYou will need a GitHub account, you can easily set up a free account here.\nInstall R and your favourite R IDE RStudio or VSCode\n\n\n\n\nCorrections\nIf you see mistakes or want to suggest changes, please create an issue on the source repository.\n\n\nReuse\nText and figures are licensed under Creative Commons Attribution CC BY 4.0. Any computer code (R, HTML, CSS, etc.) in slides and worksheets, including in slide and worksheet sources, is also licensed under MIT."
+  },
+  {
+    "objectID": "people.html",
+    "href": "people.html",
+    "title": "Julien Martin",
+    "section": "",
+    "text": "Julien is an Associate Professor at the University of Ottawa and has been teaching (and learning) R for the last 15 years."
+  },
+  {
+    "objectID": "reading.html",
+    "href": "reading.html",
+    "title": "Reading list",
+    "section": "",
+    "text": "Week 1\n\nnone\n\n\n\nWeek 2 Reproducible research open science\n\nSmaldino, P. E., & McElreath, R. (2016). The natural selection of bad science. Royal Society Open Science, 3(9), 160384. https://doi.org/10.1098/rsos.160384\nAlston, J. M., & Rick, J. A. (2021). A Beginner’s Guide to Conducting Reproducible Research. The Bulletin of the Ecological Society of America, 102(2), e01801. https://doi.org/10.1002/bes2.1801\n\n\n\nWeek 3: Reproducible code\n\nGuide to reproducible code from BES\nIvimey-Cook, E. R., Pick, J. L., Bairos-Novak, K. R., Culina, A., Gould, E., Grainger, M., Marshall, B. M., Moreau, D., Paquet, M., Royauté, R., Sánchez-Tójar, A., Silva, I., & Windecker, S. M. (2023). Implementing code review in the scientific workflow: Insights from ecology and evolutionary biology. Journal of Evolutionary Biology, 36(10), 1347–1356. https://doi.org/10.1111/jeb.14230\n\n\n\nWeek 4: Github\n\nNo Reading\n\n\n\nWeek 5: Revision to linear models and data exploration\n\nZuur, A. F., Ieno, E. N., & Elphick, C. S. (2010). A protocol for data exploration to avoid common statistical problems. Methods in Ecology and Evolution, 1(1), 3–14. https://doi.org/10.1111/j.2041-210X.2009.00001.x\n\n\n\nWeek 6: Causal structure and model building\n\nCinelli, C., Forney, A., & Pearl, J. (2022). A Crash Course in Good and Bad Controls. Sociological Methods & Research, 00491241221099552. https://doi.org/10.1177/00491241221099552\nWysocki, A. C., Lawson, K. M., & Rhemtulla, M. (2022). Statistical Control Requires Causal Justification. Advances in Methods and Practices in Psychological Science, 5(2), 25152459221095823. https://doi.org/10.1177/25152459221095823\n\n\n\nWeek 7: Importance of p-values?\n\nGreenland, S., Senn, S. J., Rothman, K. J., Carlin, J. B., Poole, C., Goodman, S. N., & Altman, D. G. (2016). Statistical tests, P values, confidence intervals, and power: A guide to misinterpretations. European Journal of Epidemiology, 31(4), 337–350. https://doi.org/10.1007/s10654-016-0149-3\nKuffner, T. A., & Walker, S. G. (2019). Why are p-Values Controversial? The American Statistician, 73(1), 1–3. https://doi.org/10.1080/00031305.2016.1277161\nWasserstein, R. L., & Lazar, N. A. (2016). The ASA Statement on p-Values: Context, Process, and Purpose. The American Statistician, 70(2), 129–133. https://doi.org/10.1080/00031305.2016.1154108\n\n\n\nWeek 8: Introduction to Bayesian analysis\n\nKruschke, J. K., & Liddell, T. M. (2018). Bayesian data analysis for newcomers. Psychonomic Bulletin & Review, 25(1), 155–177. https://doi.org/10.3758/s13423-017-1272-1\n\n\n\nWeek 9: Introduction to mixed models\n\nHarrison, X. A., Donaldson, L., Correa-Cano, M. E., Evans, J., Fisher, D. N., Goodwin, C. E. D., Robinson, B. S., Hodgson, D. J., & Inger, R. (2018). A brief introduction to mixed effects modelling and multi-model inference in ecology. PeerJ, 6, e4794. https://doi.org/10.7717/peerj.4794\n\n\n\nWeek 10\n\n\nWeek 11\n\n\nWeek 12\n\n\nWeek 13"
+  }
+]

@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Introduction to Git and GitHub</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Julien Martin" />
+    <script src="assets/libs/header-attrs-2.25/header-attrs.js"></script>
+    <link rel="stylesheet" href="assets/css/rutgers-img.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/rutgers-fonts_og.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Introduction to Git and GitHub
+]
+.subtitle[
+## with RStudio
+]
+.author[
+### Julien Martin
+]
+.date[
+### 19 January, 2024
+]
+
+---
+
+&lt;style type="text/css"&gt;
+.title-slide {
+  background-image: url(assets/img_l3/git.png);
+}
+&lt;/style&gt;
+
+
+
+# Learning expectations
+
+This won't even touch the surface of git... But! Hopefully, you:
+
+- Recognize the power of using version control
+
+- Know the basic tools to get started using git
+
+- Where to go for help
+
+---
+
+# Getting started
+You need:
+
+* RStudio or VS Code
+
+* R
+
+* a github account
+
+* git software
+
+* R packages:
+  * `usethis`
+  * `gitcreds`
+
+
+---
+
+# Rings a bell?
+
+.center[
+&lt;img src="http://www.phdcomics.com/comics/archive/phd101212s.gif" height="500px" /&gt;
+]
+
+---
+
+# Is your workflow...
+
+.center[
+&lt;img src="assets/img_l3/definitions.jpg" width="4677" height="500px" /&gt;
+]
+
+---
+
+# Why reproducible science?
+
+.center[
+&lt;img src="assets/img_l3/natureCapture.png" width="1535" height="600px" /&gt;
+]
+
+---
+
+# RStudio Projects
+
+#### Use RStudio projects to keep materials associated with a particular analysis together
+
+.pull-left[
+- **Self contained** and **portable**
+
+- **Working directory set to root** of project on launch
+
+- **Fresh session** everytime the project is launched
+
+See Jenny Bryan's post on [**project oriented workflows**](https://www.tidyverse.org/articles/2017/12/workflow-vs-script/) for more details
+]
+
+--
+
+.pull-right.center[
+
+**File &gt; New Project &gt; New Directory**
+
+&lt;img src="assets/img_l3/new_project.png" height=200px&gt;
+]
+
+
+---
+
+# Alternatives to RStudio Projects
+
+### So You don't like `RStudio` 💔
+
+--
+
+.pull-left[
+Essentially a **Rstudio Project**:
+
+- organise all the files within a given project folder
+
+- set project folder as *working directory*
+
+- ensure a fresh, clean session
+]
+
+--
+
+.pull-right[
+#### simply, do the same without using RStudio 🤩
+]
+
+---
+
+# Version Control
+
+### What is it? 🤔
+
+The **management of changes** to documents, computer programs, large web sites and other collections of information.
+
+--
+
+### Git &lt;img src="https://git-scm.com/images/logos/downloads/Git-Logo-2Color.png" height="25px" &gt;
+
+Open source (free to use) **Version control software.**
+
+--
+
+### GitHub &lt;img src="https://raw.githubusercontent.com/annakrystalli/rrresearch/master/docs/assets/github_logo.jpg" height="25px"&gt;
+
+A **website** (https://github.com/) that allows you to **store your Git repositories online** and makes it easy to collaborate with others.
+
+---
+
+# Getting started with Git and GitHub
+
+1. Create an account on GitHub
+
+  * You set your username, email and password here
+
+--
+
+2. install `git` on your computer
+
+  * Windows: https://gitforwindows.org/
+
+  * MacOS: need Xcode tools.
+      * In a shell/terminal: `xcode-select --install`
+
+  * Linux:
+      * debian-based: `sudo apt install git`
+      * Fedora, RedHat: `dnf install git`
+
+--
+
+3. You might need to restart you computer
+
+For more details got to https://git-scm.com/downloads
+---
+
+# Git, Github &amp; IDE
+
+#### Before: git only through the terminal 😢
+***
+--
+
+#### Now: git can be used via multiple user-friendly interfaces
+
+--
+RStudio + `usethis` 📦 + `gitcreds` 📦 ==
+❤️ `Git` &amp; `GitHub` 🤩
+
+--
+
+When using VS Code
+
+--
+
+.center[
+![](https://media.giphy.com/media/UuebWyG4pts3rboawU/giphy-downsized.gif)
+]
+
+
+---
+
+# Configure git &amp; GitHub
+
+**to be done only once**
+
+## Configure git
+
+**To check your configuration**
+
+
+```r
+usethis::git_sitrep()
+```
+
+--
+
+**Set your configuration**
+
+Use your github username and and the email you used to sign-up on GitHub
+
+
+```r
+usethis::use_git_config(
+   user.name = "JulienGAMartin",
+   user.email = "julien.martin@uottawa.ca")
+```
+
+---
+
+# Configure GitHub authentication
+
+### Get GITHUB Personal Authorisation Token
+
+
+```r
+usethis::create_github_token()
+```
+ Need scopes *repo, users, workflows* at least
+
+&lt;img src="assets/img_l3/browse_github.png" height="300px"&gt;
+
+---
+
+# Configure GitHub authentication
+### Store your git token with credentials
+
+
+```r
+gitcreds::gitcreds_set()
+```
+
+Provide your github PAT token in the window
+
+&lt;img src="assets/img_l3/credentials.png" height="200px"&gt;
+
+--
+
+Restart RStudio and R
+
+--
+
+**Git and github access should be configured now**
+
+---
+
+# New project using GitHub and Rstudio
+
+**Might be problematic the first time you do it**
+
+1. create R project
+
+2. initialise it for git
+    
+    ```r
+    usethis::use_git()
+    ```
+3. Accept the commit and restart R
+
+4. In R, to create github repo and link it
+    
+    ```r
+    usethis::use_github()
+    usethis::git_vaccinate()
+    ```
+
+5. Check on github that the repos is there
+
+--
+
+**et voila**
+
+---
+
+# New project using GitHub and NOT Rstudio
+
+### Option 1
+
+1. create new empty folder for your project(no space, no accent)
+
+2. add at least one file in it (suggest README.md)
+
+3. using terminal/shell
+    
+    ```bash
+    git init
+    git add .
+    git commit -a -m "first commit"
+    ```
+4. In R, to create github repo and link it
+    
+    ```r
+    usethis::use_github()
+    usethis::git_vaccinate()
+    ```
+5. Check on github that the repos is there
+
+--
+
+**et voila**
+
+---
+
+# New project using GitHub and NOT Rstudio
+
+### Option 2
+
+1. Create new repository on `github`
+
+2. Set R working directory where you want to save your project
+
+3. To clone (and link) github repo to your computer
+    
+    ```r
+    usethis::create_from_github(
+      "https://github.com/your_github/your_repo.git",
+      destdir=".")
+    ```
+
+4. Check that your folder has been created where you want it
+
+--
+
+**et voila**
+
+---
+
+# Git panel
+
+## Integrated graphical user interface
+
+&lt;br&gt;
+
+.center[
+&lt;img src="assets/img_l3/git_tab.png" height="300px"&gt;
+]
+
+
+---
+
+# Git terms
+
+* **repository** your project folder
+
+* **commit** a snapshot of your repo
+
+* **push** send commits to a remote
+
+* **pull** get commits from a remote
+
+
+
+--
+
+* **clone** get the repository from the remote for the first time
+
+* **branch** a movable label that points to a commit
+
+* **merge** combining two branches
+
+* **remote** a computer or server with the repository on it
+
+---
+
+# Git RStudio workflow
+
+.pull-left[
+#### 1.view file status
+&lt;img src="assets/img_l3/git_view.png" height="150px"&gt;
+
+
+#### 2.stage files
+&lt;img src="assets/img_l3/git_add.png" height="150px"&gt;
+]
+
+
+.pull-right[
+#### 3.commit changes
+&lt;img src="assets/img_l3/git_commit.png" width="600px"&gt;
+]
+
+---
+
+# Share on GitHub
+
+#### Create repo
+
+
+
+&lt;img src="assets/img_l3/my_new_repo.png" width="750px"&gt;
+
+#### Push further changes
+
+&lt;img src="assets/img_l3/push_github.png" height="50px"&gt;
+
+
+---
+
+# Anatomy of a GitHub repo
+
+- **`README`**. Explain what your project is, and how to use it.
+  - `usethis::use_readme_md()`
+  - `usethis::use_readme_rmd()`
+
+--
+
+- **`LICENSE`**. Without a licence, the contents of the repository are technically closed.
+  - Examples licence [CC-by](https://creativecommons.org/licenses/by/4.0/): `usethis::use_ccby_license(name = "Julien Martin")`
+  - `?licenses`: details of functions available to generate licenses
+  - [https://choosealicense.com/](https://choosealicense.com/) help on choosing a licence.
+
+--
+
+- **`CONTRIBUTING.md`** - guidelines for contributors.
+  - `usethis::use_tidy_contributing()` provides a realtively strict but instructive template
+
+
+--
+
+- **`CODE_OF_CONDUCT.md`** set the tone for discourse between contributors.
+  - `use_code_of_conduct()`
+
+---
+
+# GitHub issues
+
+### use GitHub issues to plan, record and discuss tasks.
+
+![](assets/img_l3/github_issues.png)
+
+---
+
+# Why using a remote like GitHub ?
+
+* A backup of your repository (**Dropbox** is **NOT** a backup)
+
+* Work with others (not covered)
+
+* Increase your visibility
+
+* Increase interactions with users
+
+* Easy distribution of R packages (without CRAN submissions)
+
+--
+
+***
+.center[
+### one more time just in case
+
+### **Dropbox** is **NOT** a backup
+]
+
+---
+# Branching and merging
+
+#### This the true Power of git
+
+.center[
+&lt;img src="assets/img_l3/git_cool_branch.png"&gt;
+]
+
+---
+# Branching and merging
+
+.pull-left[
+#### Branching in Rstudio
+&lt;img src="assets/img_l3/branching.png"&gt;
+]
+
+--
+
+.pull-right[
+#### Pull request in Github
+
+When you want to merge branches:
+
+* create a pull request on Github
+
+* check for incompatibilities
+
+* then merge
+
+]
+
+---
+
+# Resources
+
+&lt;br&gt;
+
+#### I used many slides from [Olivier Gimenez] (https://oliviergimenez.github.io)
+
+&lt;br&gt;
+
+#### Check out [Happy Git and GitHub for the useR](https://happygitwithr.com/) for more joy with `git`
+
+&lt;br&gt;
+
+#### The British Ecological Society has [A Guide to Reproducible Code in Ecology and Evolution](https://colauttilab.github.io/Readings/BES-Reproducible-Code.pdf)
+
+---
+
+# Virtuous research cycle
+
+.center[
+&lt;img src="assets/img_l3/researchcycle.jpg" height="500px"&gt;
+]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
