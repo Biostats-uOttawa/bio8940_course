@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -70,8 +90,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="css/styles.css">
@@ -120,10 +138,6 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="./syllabus.html"> 
 <span class="menu-text">Syllabus</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./reading.html"> 
-<span class="menu-text">Reading</span></a>
   </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-other-resources" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -224,100 +238,584 @@ Meetings will be in-person or online using zoom. Check brightspace for the links
 <li><strong>Lecture</strong>: Tuesdays 1430-1720 in CRX-C323</li>
 </ul>
 <p>There are no lectures or tutorials during reading week.</p>
-<table class="table table-striped" data-quarto-postprocess="true">
+<div class="cell">
+<div class="cell-output-display">
+<div id="dbwgsxirsm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dbwgsxirsm table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#dbwgsxirsm thead, #dbwgsxirsm tbody, #dbwgsxirsm tfoot, #dbwgsxirsm tr, #dbwgsxirsm td, #dbwgsxirsm th {
+  border-style: none;
+}
+
+#dbwgsxirsm p {
+  margin: 0;
+  padding: 0;
+}
+
+#dbwgsxirsm .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#dbwgsxirsm .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#dbwgsxirsm .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#dbwgsxirsm .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#dbwgsxirsm .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dbwgsxirsm .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dbwgsxirsm .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dbwgsxirsm .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#dbwgsxirsm .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#dbwgsxirsm .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#dbwgsxirsm .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#dbwgsxirsm .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#dbwgsxirsm .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#dbwgsxirsm .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#dbwgsxirsm .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#dbwgsxirsm .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#dbwgsxirsm .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#dbwgsxirsm .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#dbwgsxirsm .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dbwgsxirsm .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#dbwgsxirsm .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#dbwgsxirsm .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#dbwgsxirsm .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dbwgsxirsm .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#dbwgsxirsm .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#dbwgsxirsm .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dbwgsxirsm .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dbwgsxirsm .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#dbwgsxirsm .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dbwgsxirsm .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#dbwgsxirsm .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dbwgsxirsm .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dbwgsxirsm .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dbwgsxirsm .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dbwgsxirsm .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dbwgsxirsm .gt_left {
+  text-align: left;
+}
+
+#dbwgsxirsm .gt_center {
+  text-align: center;
+}
+
+#dbwgsxirsm .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#dbwgsxirsm .gt_font_normal {
+  font-weight: normal;
+}
+
+#dbwgsxirsm .gt_font_bold {
+  font-weight: bold;
+}
+
+#dbwgsxirsm .gt_font_italic {
+  font-style: italic;
+}
+
+#dbwgsxirsm .gt_super {
+  font-size: 65%;
+}
+
+#dbwgsxirsm .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#dbwgsxirsm .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#dbwgsxirsm .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#dbwgsxirsm .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#dbwgsxirsm .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#dbwgsxirsm .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#dbwgsxirsm .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th" style="text-align: center; position: sticky; top: 0; background-color: #FFFFFF;">Week</th>
-<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Topic</th>
-<th data-quarto-table-cell-role="th" style="text-align: center; position: sticky; top: 0; background-color: #FFFFFF;">Slides</th>
-<th data-quarto-table-cell-role="th" style="text-align: center; position: sticky; top: 0; background-color: #FFFFFF;">Assessments</th>
+<tr class="header gt_col_headings">
+<th id="Date" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Date</th>
+<th id="Topic" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Topic</th>
+<th id="Slides" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Slides</th>
+<th id="Reading" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Reading</th>
+<th id="Assessment" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Assessment</th>
 </tr>
 </thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center; width: 0.5cm; padding-left: 2em;" data-indentlevel="1">1</td>
-<td style="text-align: left;">Introduction</td>
-<td style="text-align: center;"><a href="slides//lec-01_intro.html" class="fa fa-link" target="_blank"></a> / <a href="slides//lec-01_intro.pdf" class="fa fa-file-pdf" target="_blank"></a></td>
-<td style="text-align: center;"></td>
+<tbody class="gt_table_body">
+<tr class="odd gt_group_heading_row">
+<td colspan="5" class="gt_empty_group_heading" data-quarto-table-cell-role="th" scope="colgroup"></td>
 </tr>
-<tr class="even">
-<td style="text-align: center; width: 0.5cm; padding-left: 2em;" data-indentlevel="1">2</td>
-<td style="text-align: left;">Introduction to Rmarkdown</td>
-<td style="text-align: center;"><a href="slides//lec-02_rmarkdown.html" class="fa fa-link" target="_blank"></a> / <a href="slides//lec-02_rmarkdown.pdf" class="fa fa-file-pdf" target="_blank"></a></td>
-<td style="text-align: center;"></td>
+<tr class="even gt_row_group_first">
+<td class="gt_row gt_right" headers="NA  Date">Jan 9</td>
+<td class="gt_row gt_left" headers="NA  Topic">Introduction</td>
+<td class="gt_row gt_center" headers="NA  Slides"><p><a class="fa fa-link" href="slides//lec-01_intro.html" target="_blank"></a> <a class="fa fa-file-pdf" href="slides//lec-01_intro.pdf" target="_blank"></a></p></td>
+<td class="gt_row gt_left" headers="NA  Reading"><p><span class="citation" data-cites="smaldino_natural_2016">Smaldino and McElreath (<a href="#ref-smaldino_natural_2016" role="doc-biblioref">2016</a>)</span></p></td>
+<td class="gt_row gt_left" headers="NA  Assessment"></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center; width: 0.5cm; padding-left: 2em;" data-indentlevel="1">3</td>
-<td style="text-align: left;">Introduction to Github</td>
-<td style="text-align: center;"><a href="slides//lec-03_github.html" class="fa fa-link" target="_blank"></a> / <a href="slides//lec-03_github.pdf" class="fa fa-file-pdf" target="_blank"></a></td>
-<td style="text-align: center;"></td>
+<td class="gt_row gt_right" headers="NA  Date">Jan 16</td>
+<td class="gt_row gt_left" headers="NA  Topic">Introduction to Rmarkdown</td>
+<td class="gt_row gt_center" headers="NA  Slides"><p><a class="fa fa-link" href="slides//lec-02_rmarkdown.html" target="_blank"></a> <a class="fa fa-file-pdf" href="slides//lec-02_rmarkdown.pdf" target="_blank"></a></p></td>
+<td class="gt_row gt_left" headers="NA  Reading"><p><span class="citation" data-cites="alston_beginner_2021">Alston and Rick (<a href="#ref-alston_beginner_2021" role="doc-biblioref">2021</a>)</span></p></td>
+<td class="gt_row gt_left" headers="NA  Assessment"></td>
 </tr>
 <tr class="even">
-<td style="text-align: center; width: 0.5cm; padding-left: 2em;" data-indentlevel="1">4</td>
-<td style="text-align: left;">Generalized linear models (and revision of linear models)</td>
-<td style="text-align: center;"><a href="slides//lec-04_lm_glm.html" class="fa fa-link" target="_blank"></a> / <a href="slides//lec-04_lm_glm.pdf" class="fa fa-file-pdf" target="_blank"></a></td>
-<td style="text-align: center;"></td>
+<td class="gt_row gt_right" headers="NA  Date">Jan 23</td>
+<td class="gt_row gt_left" headers="NA  Topic">Introduction to Github</td>
+<td class="gt_row gt_center" headers="NA  Slides"><p><a class="fa fa-link" href="slides//lec-03_github.html" target="_blank"></a> <a class="fa fa-file-pdf" href="slides//lec-03_github.pdf" target="_blank"></a></p></td>
+<td class="gt_row gt_left" headers="NA  Reading"><p><span class="citation" data-cites="ivimey-cook_implementing_2023">Ivimey-Cook et al. (<a href="#ref-ivimey-cook_implementing_2023" role="doc-biblioref">2023</a>)</span></p></td>
+<td class="gt_row gt_left" headers="NA  Assessment"></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center; width: 0.5cm; padding-left: 2em;" data-indentlevel="1">5</td>
-<td style="text-align: left;">Causal structure and model building</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td class="gt_row gt_right" headers="NA  Date">Jan 30</td>
+<td class="gt_row gt_left" headers="NA  Topic">Generalized linear models (and revision of linear models)</td>
+<td class="gt_row gt_center" headers="NA  Slides"><p><a class="fa fa-link" href="slides//lec-04_lm_glm.html" target="_blank"></a> <a class="fa fa-file-pdf" href="slides//lec-04_lm_glm.pdf" target="_blank"></a></p></td>
+<td class="gt_row gt_left" headers="NA  Reading"><p><span class="citation" data-cites="zuur_protocol_2010">Zuur et al. (<a href="#ref-zuur_protocol_2010" role="doc-biblioref">2010</a>)</span></p></td>
+<td class="gt_row gt_left" headers="NA  Assessment"></td>
 </tr>
 <tr class="even">
-<td style="text-align: center; width: 0.5cm; padding-left: 2em;" data-indentlevel="1">6</td>
-<td style="text-align: left;">Introduction to mixed-models</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd" data-grouplength="6">
-<td colspan="4" style="text-align: center; background-color: #d9e1e8;"><strong>Reading week Break (1 week)</strong></td>
-</tr>
-<tr class="even">
-<td style="text-align: center; width: 0.5cm; padding-left: 2em;" data-indentlevel="1">7</td>
-<td style="text-align: left;">Introduction to Bayesian analysis</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td class="gt_row gt_right" headers="NA  Date">Feb 6</td>
+<td class="gt_row gt_left" headers="NA  Topic">Causal structure and model building</td>
+<td class="gt_row gt_center" headers="NA  Slides"></td>
+<td class="gt_row gt_left" headers="NA  Reading"><p><span class="citation" data-cites="cinelli_crash_2022">Cinelli et al. (<a href="#ref-cinelli_crash_2022" role="doc-biblioref">2022</a>)</span>, <span class="citation" data-cites="wysocki_statistical_2022">Wysocki et al. (<a href="#ref-wysocki_statistical_2022" role="doc-biblioref">2022</a>)</span></p></td>
+<td class="gt_row gt_left" headers="NA  Assessment"></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center; width: 0.5cm; padding-left: 2em;" data-indentlevel="1">8</td>
-<td style="text-align: left;">Generalised linear mixed models</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td class="gt_row gt_right" headers="NA  Date">Feb 13</td>
+<td class="gt_row gt_left" headers="NA  Topic">Introduction to mixed-models</td>
+<td class="gt_row gt_center" headers="NA  Slides"></td>
+<td class="gt_row gt_left" headers="NA  Reading"><p><span class="citation" data-cites="harrison_brief_2018">Harrison et al. (<a href="#ref-harrison_brief_2018" role="doc-biblioref">2018</a>)</span></p></td>
+<td class="gt_row gt_left" headers="NA  Assessment"></td>
+</tr>
+<tr class="even gt_group_heading_row">
+<td colspan="5" id="Reading week" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">Reading week</td>
+</tr>
+<tr class="odd gt_row_group_first">
+<td class="gt_row gt_right" headers="Reading week  Date">Feb 27</td>
+<td class="gt_row gt_left" headers="Reading week  Topic">Introduction to Bayesian analysis</td>
+<td class="gt_row gt_center" headers="Reading week  Slides"></td>
+<td class="gt_row gt_left" headers="Reading week  Reading"></td>
+<td class="gt_row gt_left" headers="Reading week  Assessment"></td>
 </tr>
 <tr class="even">
-<td style="text-align: center; width: 0.5cm; padding-left: 2em;" data-indentlevel="1">9</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td class="gt_row gt_right" headers="Reading week  Date">Mar 5</td>
+<td class="gt_row gt_left" headers="Reading week  Topic">Generalised linear mixed models</td>
+<td class="gt_row gt_center" headers="Reading week  Slides"></td>
+<td class="gt_row gt_left" headers="Reading week  Reading"></td>
+<td class="gt_row gt_left" headers="Reading week  Assessment"></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center; width: 0.5cm; padding-left: 2em;" data-indentlevel="1">10</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td class="gt_row gt_right" headers="Reading week  Date">Mar 12</td>
+<td class="gt_row gt_left" headers="Reading week  Topic"></td>
+<td class="gt_row gt_center" headers="Reading week  Slides"></td>
+<td class="gt_row gt_left" headers="Reading week  Reading"></td>
+<td class="gt_row gt_left" headers="Reading week  Assessment"></td>
 </tr>
 <tr class="even">
-<td style="text-align: center; width: 0.5cm; padding-left: 2em;" data-indentlevel="1">11</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td class="gt_row gt_right" headers="Reading week  Date">Mar 19</td>
+<td class="gt_row gt_left" headers="Reading week  Topic"></td>
+<td class="gt_row gt_center" headers="Reading week  Slides"></td>
+<td class="gt_row gt_left" headers="Reading week  Reading"></td>
+<td class="gt_row gt_left" headers="Reading week  Assessment"></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center; width: 0.5cm; padding-left: 2em;" data-indentlevel="1">12</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">Final report due **??**</td>
+<td class="gt_row gt_right" headers="Reading week  Date">Mar 26</td>
+<td class="gt_row gt_left" headers="Reading week  Topic"></td>
+<td class="gt_row gt_center" headers="Reading week  Slides"></td>
+<td class="gt_row gt_left" headers="Reading week  Reading"></td>
+<td class="gt_row gt_left" headers="Reading week  Assessment"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Reading week  Date">Apr 2</td>
+<td class="gt_row gt_left" headers="Reading week  Topic"></td>
+<td class="gt_row gt_center" headers="Reading week  Slides"></td>
+<td class="gt_row gt_left" headers="Reading week  Reading"></td>
+<td class="gt_row gt_left" headers="Reading week  Assessment">Final report due **??**</td>
 </tr>
 </tbody>
 </table>
 
+</div>
+</div>
+</div>
 
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-alston_beginner_2021" class="csl-entry" role="listitem">
+Alston, J. M., and J. A. Rick. 2021. <a href="https://doi.org/10.1002/bes2.1801">A <span>Beginner</span>’s <span>Guide</span> to <span>Conducting Reproducible Research</span></a>. The Bulletin of the Ecological Society of America 102:e01801.
+</div>
+<div id="ref-cinelli_crash_2022" class="csl-entry" role="listitem">
+Cinelli, C., A. Forney, and J. Pearl. 2022. <a href="https://doi.org/10.1177/00491241221099552">A <span>Crash Course</span> in <span>Good</span> and <span>Bad Controls</span></a>. Sociological Methods &amp; Research:00491241221099552.
+</div>
+<div id="ref-harrison_brief_2018" class="csl-entry" role="listitem">
+Harrison, X. A., L. Donaldson, M. E. Correa-Cano, J. Evans, D. N. Fisher, C. E. D. Goodwin, B. S. Robinson, D. J. Hodgson, and R. Inger. 2018. <a href="https://doi.org/10.7717/peerj.4794">A brief introduction to mixed effects modelling and multi-model inference in ecology</a>. PeerJ 6:e4794.
+</div>
+<div id="ref-ivimey-cook_implementing_2023" class="csl-entry" role="listitem">
+Ivimey-Cook, E. R., J. L. Pick, K. R. Bairos-Novak, A. Culina, E. Gould, M. Grainger, B. M. Marshall, D. Moreau, M. Paquet, R. Royauté, A. Sánchez-Tójar, I. Silva, and S. M. Windecker. 2023. <a href="https://doi.org/10.1111/jeb.14230">Implementing code review in the scientific workflow: <span>Insights</span> from ecology and evolutionary biology</a>. Journal of Evolutionary Biology 36:1347–1356.
+</div>
+<div id="ref-smaldino_natural_2016" class="csl-entry" role="listitem">
+Smaldino, P. E., and R. McElreath. 2016. <a href="https://doi.org/10.1098/rsos.160384">The natural selection of bad science</a>. Royal Society Open Science 3:160384.
+</div>
+<div id="ref-wysocki_statistical_2022" class="csl-entry" role="listitem">
+Wysocki, A. C., K. M. Lawson, and M. Rhemtulla. 2022. <a href="https://doi.org/10.1177/25152459221095823">Statistical <span>Control Requires Causal Justification</span></a>. Advances in Methods and Practices in Psychological Science 5:25152459221095823.
+</div>
+<div id="ref-zuur_protocol_2010" class="csl-entry" role="listitem">
+Zuur, A. F., E. N. Ieno, and C. S. Elphick. 2010. <a href="https://doi.org/10.1111/j.2041-210X.2009.00001.x">A protocol for data exploration to avoid common statistical problems</a>. Methods in Ecology and Evolution 1:3–14.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
