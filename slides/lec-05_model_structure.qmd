@@ -12,24 +12,26 @@ format:
 #    chalkboard: true
     theme: [default]
     css: [assets/theme/whiteboard-blue.css]
-    self-contained: true 
+    self-contained: false 
 editor:
   render-on-save: true
 ---
 
 # Why to we build models?
 
-```{r setup, include=FALSE}
+```{r}
+#| label: setup
+#| include: false
 knitr::opts_chunk$set(
- fig.path = "assets/img_l5/plots/",
- fig.retina = 2,
- warning = FALSE,
- error = FALSE,
- message = FALSE,
- fig.align = "center",
- dpi = 300,
- dev.args = list(bg = "transparent"),
- cache = TRUE
+# fig.path = "assets/img_l5/plots/",
+  fig.retina = 2,
+  warning = FALSE,
+  error = FALSE,
+  message = FALSE,
+  fig.align = "center",
+  dpi = 300,
+  dev.args = list(bg = "transparent"),
+  cache = TRUE
 )
 
 library(showtext)

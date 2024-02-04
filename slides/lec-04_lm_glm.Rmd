@@ -7,7 +7,7 @@ output:
   xaringan::moon_reader:
     css: ["assets/css/rutgers-img.css", "assets/css/rutgers-fonts_og.css"]
     lib_dir: "assets/libs"
-    self_contained: true
+    self_contained: false
     ratio: '16:9'
     nature:
       highlightStyle: github
