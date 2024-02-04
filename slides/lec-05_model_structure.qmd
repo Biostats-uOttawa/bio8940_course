@@ -9,10 +9,10 @@ format:
     code-block-background: false
     width: 1600
     height: 950
-#    chalkboard: true
+    chalkboard: true
     theme: [default]
     css: [assets/theme/whiteboard-blue.css]
-    self-contained: false 
+#    output-location: column-fragment
 editor:
   render-on-save: true
 ---
