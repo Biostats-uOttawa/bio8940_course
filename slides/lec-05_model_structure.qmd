@@ -1,0 +1,490 @@
+---
+title: "How do we build a model?"
+subtitle: Variable selection and causality
+author: Julien Martin
+institute: University of Ottawa
+date: today
+format:
+  revealjs: 
+    code-block-background: false
+    width: 1600
+    height: 950
+#    chalkboard: true
+    theme: [default]
+    css: [assets/theme/whiteboard-blue.css]
+    self-contained: true 
+editor:
+  render-on-save: true
+---
+
+# Why to we build models?
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+ fig.path = "assets/img_l5/plots/",
+ fig.retina = 2,
+ warning = FALSE,
+ error = FALSE,
+ message = FALSE,
+ fig.align = "center",
+ dpi = 300,
+ dev.args = list(bg = "transparent"),
+ cache = TRUE
+)
+
+library(showtext)
+library(ggplot2)
+library(ggdag)
+library(tidyverse)
+font_add_google("Pangolin", "Pangolin")
+showtext_auto()
+
+# theme for chalkboard
+theme_chalk <- function() {
+ cowplot::theme_cowplot() %+replace%
+ theme(
+ axis.ticks = element_line(colour = "black", size = 0.25),
+ text = element_text(colour = "black"),
+ axis.text = element_text(colour = "black", family = "Pangolin", size = 16),
+ axis.title = element_text(colour = "black", family = "Pangolin", size = 24),
+ axis.line = element_line(colour = "black", size = 1),
+ # panel.background = element_rect(colour = NA, fill = "transparent"),
+ # plot.background = element_rect(colour = "white", fill = "transparent"),
+ legend.position = "bottom",
+ legend.title = element_blank(),
+ panel.grid.minor = element_blank(),
+ # panel.grid.major.x = element_line(colour = "white", size = 0.25),
+ # panel.grid.major.y = element_line(colour = "white", size = 0.25),
+ legend.text = element_text(size = 24)
+ )
+}
+theme_set(theme_dag(base_size = 16))
+```
+
+```{css, echo=FALSE, purl = FALSE}
+.desc {
+ font-weight: bold;
+ font-style: italic;
+ font-size: 1.2em;
+ color: blue;
+}
+.caus {
+ font-weight: bold;
+ font-style: italic;
+ font-size: 1.2em;
+ color: red;
+}
+.pred {
+ font-weight: bold;
+ font-style: italic;
+ font-size: 1.2em;
+ color: purple;
+}
+```
+
+## Data generating process
+
+![](assets/img_l5/black-box-general.png){fig-align="center"}
+
+
+## Interpreting relationships in data
+
+- When we say there's a relationship between two variables... how do we interpret that?
+
+- What precisely do we mean?
+
+- What do we want to do with this information?
+
+## Distinguishing goals of data analysis
+
+::: {.incremental}
+
+[Descriptive]{.desc}: Document or quantify observed relationships between inputs and outputs.
+
+  * Does not not necessarily tell us about the true DGP.
+  * Can often inspire questions for further research.
+
+[Causal]{.caus}: Learn about causal relationships.
+
+  * Try to understand how the box works (the true DGP)
+  * When you change one factor, how does it change the result?
+
+[Predictive]{.pred}: Be able to guess the value of one variable from other information
+
+  * DGP doesn't matter, create your own box..
+  * Helps us know what's likely to happen in a new situation.
+:::
+
+## Difference of Focus
+
+::: {.incremental}
+[Description]{.desc}:
+
+  * Focus on showing relationships among a few variables.
+  * **Give up goal of correctly modeling the true DGP**
+
+[Prediction]{.pred}:
+
+  * Focus on predicting given observed data by any possible means.
+  * **Give up goal of correctly modeling the true DGP**
+
+[Causal inference]{.caus}:
+
+  * Focus on determining the true direct effect of a treatment variable
+  * Give up goal of understanding causal effects of any other factors
+:::
+
+## Impact of selection bias
+
+[Description]{.desc}
+
+  * NO. Only want to infer patterns from observed data.
+
+[Prediction]{.pred}:
+
+  * NO. Only want to infer patterns from observed data. 
+
+Given how many people are wearing shorts, will an ice cream truck show up?
+
+[Causal inference]{.caus}:
+
+  * YES. Want to infer the result of active intervention. Must eliminate selection bias to estimate the treatment effect.
+
+If someone chooses to wear shorts, will it make an ice cream truck show up?
+
+## Difference Interpretation of β~n~
+
+[Description]{.desc}:
+
+* β~n~ represents an association between $X_{n_i}$ and Y~i~.
+* Only a statement about the data, not about the reasons behind the pattern.
+
+[Prediction]{.pred}: Model does not need to be interpretable.
+
+* Coefficients β~n~ are informative only of predictive power, not causal effects.
+* Model can be treated as a black box.
+
+[Causal inference]{.caus}:
+
+* β~1~ is a causal effect of x~1~ under stated assumptions (of the identification strategy).
+* Many coefficients generally lack interpretability.
+
+# Consequences
+
+## Consequences
+
+Discerning which type of goal you have is critical for:
+
+- **Interpreting results**: Mistaking one goal for another can lead your audience to make very bad decisions.
+
+- **Choosing methods**: Distinct approaches are required to achieve different goals.
+
+## Consequences for models
+
+Models for prediction and causal inference differ with respect to the following:
+
+1. The covariates that should be considered for inclusion in (and possibly exclusion from) the model.
+2. How a suitable set of covariates to include in the model is determined.
+3. Which covariates are ultimately selected, and what functional form (i.e. parameterization) they take.
+4. How the model is evaluated.
+5. How the model is interpreted.
+
+## Consequences for methods ?
+
+What methods should we use for each goal?
+
+1. [Descriptive analysis]{.desc}
+
+    - Exploratory analysis and regression.
+
+2. [Causal inference]{.caus}
+
+    - Path analysis
+    - Structural equation modelling
+    - Graph theory
+
+3. [Prediction]{.pred}
+
+    - Statistical learning / machine learning.
+    - AIC and any kind of model selection
+
+# How to figure it out?
+
+## Confounder
+
+::: panel-tabset
+### Relation
+
+```{r}
+confounder_triangle() %>%
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point() +
+  geom_dag_edges(edge_width = 2) +
+  geom_dag_text(size = 50) +
+  theme_dag()
+```
+
+### Adjusted
+
+```{r}
+confounder_triangle() %>%
+  control_for("z") %>%
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend, col = adjusted, shape = adjusted)) +
+  geom_dag_point() +
+  geom_dag_edges(aes(edge_alpha = adjusted),
+    edge_width = 2
+    # region ,
+    # start_cap = ggraph::circle(10, "mm"), end_cap = ggraph::circle(10, "mm")
+  ) +
+  geom_dag_text(size = 50, colour = "black") +
+  theme_dag() +
+  scale_adjusted() +
+  theme(legend.position = "none")
+```
+:::
+
+## Mediator
+
+::: panel-tabset
+## Relation
+
+```{r}
+#|echo: true
+mediation_triangle() %>%
+ ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+ geom_dag_point() +
+ geom_dag_edges(edge_width=2) +
+ geom_dag_text(size = 50) +
+ theme_dag()
+```
+
+## Adjusted
+
+```{r}
+#|echo: true
+mediation_triangle() |>
+  control_for("m") %>%
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend, col = adjusted, shape = adjusted)) +
+  geom_dag_point() +
+  geom_dag_edges(aes(edge_alpha = adjusted), edge_width = 2) +
+  geom_dag_collider_edges(linewidth = 2) +
+  geom_dag_point() +
+  geom_dag_text(size = 50, colour = "black") +
+  theme_dag() +
+  scale_adjusted() +
+  theme(legend.position = "none")
+```
+:::
+
+## Collider
+
+::: panel-tabset
+### Relation
+
+```{r}
+collider_triangle() %>%
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point() +
+  geom_dag_edges(edge_width = 2) +
+  geom_dag_text(size = 50) +
+  theme_dag()
+```
+
+### Adjusted
+
+```{r}
+collider_triangle() |>
+  control_for("m") %>%
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend, col = adjusted, shape = adjusted)) +
+  geom_dag_point() +
+  geom_dag_edges(aes(edge_alpha = adjusted),
+    edge_width = 2,
+    start_cap = ggraph::circle(20, "mm"), end_cap = ggraph::circle(20, "mm")
+  ) +
+  geom_dag_collider_edges(linewidth = 2) +
+  geom_dag_text(size = 50, colour = "black") +
+  theme_dag() +
+  scale_adjusted() +
+  theme(legend.position = "none")
+```
+:::
+
+## M-bias
+
+::: panel-tabset
+### Relation
+
+```{r}
+m_bias() %>%
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point() +
+  geom_dag_edges(edge_width = 2) +
+  geom_dag_text(size = 50) +
+  theme_dag()
+```
+
+### Adjusted
+
+```{r}
+m_bias() |>
+  control_for("m") %>%
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend, col = adjusted, shape = adjusted)) +
+  geom_dag_point() +
+  geom_dag_edges(aes(edge_alpha = adjusted), edge_width = 2) +
+  geom_dag_collider_edges(linewidth = 2) +
+  geom_dag_text(size = 50, colour = "black") +
+  theme_dag() +
+  scale_adjusted() +
+  theme(legend.position = "none")
+```
+
+:::
+
+## Butterfly bias
+
+::: panel-tabset
+### Relation
+
+```{r}
+butterfly_bias() %>%
+ ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+ geom_dag_point() +
+ geom_dag_edges(edge_width = 2) +
+ geom_dag_text(size = 50) +
+ theme_dag()
+```
+
+### {a, m}
+
+```{r}
+butterfly_bias() |>
+  control_for(c("m", "a")) %>%
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend, col = adjusted, shape = adjusted)) +
+  geom_dag_point() +
+  geom_dag_edges(aes(edge_alpha = adjusted), edge_width = 2) +
+  geom_dag_collider_edges(linewidth = 2) +
+  geom_dag_text(size = 50, colour = "black") +
+  theme_dag() +
+  scale_adjusted() +
+  theme(legend.position = "none")
+```
+
+### {b, m}
+
+```{r}
+butterfly_bias() |>
+  control_for(c("m", "b")) %>%
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend, col = adjusted, shape = adjusted)) +
+  geom_dag_point() +
+  geom_dag_edges(aes(edge_alpha = adjusted), edge_width = 2) +
+  geom_dag_collider_edges(linewidth = 2) +
+  geom_dag_text(size = 50, colour = "black") +
+  theme_dag() +
+  scale_adjusted() +
+  theme(legend.position = "none")
+```
+
+### {a, b, m}
+
+```{r}
+butterfly_bias() |>
+  control_for(c("m", "b", "a")) %>%
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend, col = adjusted, shape = adjusted)) +
+  geom_dag_point() +
+  geom_dag_edges(aes(edge_alpha = adjusted), edge_width = 2) +
+  geom_dag_collider_edges(linewidth = 2) +
+  geom_dag_text(size = 50, colour = "black") +
+  theme_dag() +
+  scale_adjusted() +
+  theme(legend.position = "none")
+```
+
+:::
+
+## Selection bias
+### Case
+
+```{r}
+coords <- tibble::tribble(
+ ~name, ~x, ~y,
+ "covid", 1, 2,
+ "hospitalized", 2, 3,
+ "broken_bone", 3, 2,
+ "reckless", 4, 1,
+ "drugs", 5, 2
+)
+
+hosp <- dagify(
+ hospitalized ~ broken_bone + covid,
+ broken_bone ~ reckless,
+ drugs ~ reckless,
+ labels = c(
+ hospitalized = "Hospitalization",
+ broken_bone = "Broken Bone",
+ glioma = "Covid19",
+ reckless = "Reckless \nBehavior",
+ drugs = "Cocaine"
+ ),
+ coords = coords
+)
+hosp %>%
+ ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+ geom_dag_point() +
+ geom_dag_edges(edge_width = 2) +
+ geom_dag_label(size = 50, fill = "black", color = "white", nudge_x = 0.2) +
+ # geom_dag_text(size = 10, colour = "black") +
+ theme_dag()
+```
+
+## Selection bias
+### Controlled
+
+```{r}
+hosp %>%
+ control_for(c("hospitalized")) %>%
+ ggplot(aes(x = x, y = y, xend = xend, yend = yend, col = adjusted, shape = adjusted)) +
+ geom_dag_point() +
+ geom_dag_edges(aes(edge_alpha = adjusted), edge_width = 2) +
+ geom_dag_collider_edges(linewidth = 2) +
+ geom_dag_label(aes(fill=adjusted), size = 50, color = "black", nudge_x = 0.1) +
+theme_dag() +
+ scale_adjusted() +
+ theme(legend.position = "none")
+```
+
+
+## More complexity
+
+::: panel-tabset
+## Code
+
+```{r}
+#| label: m_comp
+#| eval: false
+#| echo: true
+my_dag <- dagify(y ~ x + a + b,
+  x ~ a + b,
+  a ~ d,
+  exposure = "x",
+  outcome = "y"
+)
+my_dag %>%
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point() +
+  geom_dag_edges(edge_width = 2) +
+  geom_dag_text(size = 50) +
+  theme_dag()
+```
+
+## Plot
+
+```{r}
+#| label: m_comp
+#| eval: true
+#| echo: false
+```
+:::
+
+## Happy modelling
+
+![](assets/img_l5/unicorn.png){fig-align="center"}
