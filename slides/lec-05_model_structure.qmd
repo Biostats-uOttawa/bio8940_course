@@ -120,6 +120,8 @@ theme_set(theme_dag(base_size = 16))
 
   * NO. Only want to infer patterns from observed data.
 
+When there are a lot of people wearing shorts, there often is an ice cream truck.
+
 [Prediction]{.pred}:
 
   * NO. Only want to infer patterns from observed data. 
