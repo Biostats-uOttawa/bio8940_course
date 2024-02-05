@@ -2,7 +2,8 @@
 /* first board quarto css modified then my stuff */
 @import"./fonts/source-sans-pro/source-sans-pro.css";
 @import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Grandstander&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap');
 
 :root {
   --r-background-color: #fff;
@@ -11,7 +12,7 @@
   --r-main-color: #222;
   --r-block-margin: 12px;
   --r-heading-margin: 0 0 12px 0;
-  --r-heading-font: Shadows Into Light, Source Sans Pro, Helvetica, sans-serif;
+  --r-heading-font: Grandstander, Source Sans Pro, Helvetica, sans-serif;
   --r-heading-color: #222;
   --r-heading-line-height: 1.2;
   --r-heading-letter-spacing: normal;
@@ -199,19 +200,19 @@
   line-height: 1.2em;
   word-wrap: break-word;
   /* box-shadow: 0px 5px 15px rgba(0, 0, 0, .15) */
-    box-shadow: none;
-      background-color: #fff;
-      border: none;
-      margin: 0;
+  box-shadow: none;
+  background-color: #fff;
+  border: none;
+  margin: 0;
 }
 
 .reveal code {
   font-family: var(--r-code-font);
   text-transform: none;
   tab-size: 2;
-    color: var(--quarto-hl-fu-color);
-      background-color: rgba(0, 0, 0, 0);
-      white-space: pre-wrap
+  color: var(--quarto-hl-fu-color);
+  background-color: rgba(0, 0, 0, 0);
+  white-space: pre-wrap
 }
 
 .reveal pre code {
@@ -1757,24 +1758,22 @@ html.print-pdf .reveal .slides .pdf-page:last-child {
   background-size: 100% 100%;
 }
 
-body{
+body {
   color: rgb(211, 199, 199);
 }
 
 /*Headings*/
-.reveal h1{
- font-family: 'Shadows Into Light';
- font-weight: 800;
- color: rgb(188, 75, 220);
- text-align: center;
- background-image: url("figures/underline-blue.png");
- background-position: center bottom;
- background-repeat: no-repeat;
- background-size: 90% 15%;
+.reveal h1 {
+  font-weight: 800;
+  color: rgb(188, 75, 220);
+  text-align: center;
+  background-image: url("figures/underline-blue.png");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 90% 15%;
 }
 
-.reveal h2{
-  font-family: 'Shadows Into Light';
+.reveal h2 {
   font-weight: 700;
   color: rgb(50, 181, 193);
   background-image: url("figures/underline-blue.png");
@@ -1783,30 +1782,30 @@ body{
   background-size: 90% 15%;
 }
 
-.reveal h3{
- font-family: 'Shadows Into Light';
+.reveal h3 {
   color: rgb(222, 112, 47);
   font-weight: 600;
- /*background-image: url("figures/chalk1-white.png");
+  /*background-image: url("figures/chalk1-white.png");
  background-repeat: no-repeat; Do not repeat the image 
  background-position: center;
  background-size: 100% 50%;*/
 }
 
 /* text ad structures*/
-p{
- font-family: Pangolin;
+p {
+  font-family: var(--r-main-font);
 }
 
-pre, code {
- font-family: Pangolin;
- font-size: 1em;
- padding-bottom: 0.25em;
- padding-top: 0.25em;
- background-color: rgba(255, 255, 255, 0.2) !important;
- border-style: solid;
- border-width: 5px 5px 5px 5px;
- border-image: url("figures/frame-blue.png") 10% 0% 40% 20% stretch;
+pre,
+code {
+  font-family: var(--r-main-font);
+  font-size: 1em;
+  padding-bottom: 0.25em;
+  padding-top: 0.25em;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  border-style: solid;
+  border-width: 5px 5px 5px 5px;
+  border-image: url("figures/frame-blue.png") 10% 0% 40% 20% stretch;
 }
 
 .reveal div.sourceCode {
@@ -1817,21 +1816,22 @@ pre, code {
 
 /*extra classes*/
 .framed {
- display: inline-block;
- border-style: solid;
- padding: 10px;  
- border-width: 15px 15px 15px 15px;
- border-image: url("figures/frame2-blue.png") 20% 20% 20% 20% stretch;
+  display: inline-block;
+  border-style: solid;
+  padding: 10px;
+  border-width: 15px 15px 15px 15px;
+  border-image: url("figures/frame2-blue.png") 20% 20% 20% 20% stretch;
 }
 
-.masked{
-      -webkit-mask-image: url("https://raw.githubusercontent.com/schochastics/xaringan-themes/master/blackboard/figures/chalk1-white.png");
-      mask-image: url("https://raw.githubusercontent.com/schochastics/xaringan-themes/master/blackboard/figures/chalk1-white.png");
-      -webkit-mask-size: 100% 100%;
-      mask-size: 100% 100%;
-      display: block;
-      max-width: 100%;
+.masked {
+  -webkit-mask-image: url("https://raw.githubusercontent.com/schochastics/xaringan-themes/master/blackboard/figures/chalk1-white.png");
+  mask-image: url("https://raw.githubusercontent.com/schochastics/xaringan-themes/master/blackboard/figures/chalk1-white.png");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  display: block;
+  max-width: 100%;
 }
+
 /* 
 .small{
   font-size: 0.75em;
@@ -1858,21 +1858,25 @@ pre, code {
 #title-block-header .date {
   text-align: right;
 }
+
 .reveal .quarto-title-block .quarto-title-authors {
   display: flex;
   justify-content: right;
- font-family: 'Shadows Into Light';
+  font-family: 'Shadows Into Light';
   font-size: 1em;
 }
+
 #title-slide,
 div.reveal div.slides section.quarto-title-block {
   text-align: right;
 }
+
 #title-slide .title,
 div.reveal div.slides section.quarto-title-block .title {
   margin-bottom: 2.5rem;
   font-size: 2em
 }
+
 #title-slide .subtitle,
 div.reveal div.slides section.quarto-title-block .subtitle {
   margin-bottom: 2.5rem;
@@ -1886,5 +1890,3 @@ div.reveal div.slides section.quarto-title-block .subtitle {
 .reveal[data-navigation-mode=linear] .title-slide h1 {
   font-size: 2.5em
 }
-
-

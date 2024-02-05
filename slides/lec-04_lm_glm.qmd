@@ -51,16 +51,20 @@ library(tidyverse)
 
 ### Simple linear regression
 
-$$Y_i = \beta_0 + \beta_1 x_i + \epsilon \\
-\epsilon \sim N(0, \sigma^2_{\epsilon})$$
+$$
+Y_i = \beta_0 + \beta_1 x_i + \epsilon \\
+\epsilon \sim N(0, \sigma^2_{\epsilon})
+$$
 
 or in distributional notation $Y \sim N(\beta_0 + \beta_1 x, \sigma^2_{\epsilon})$
  
 
 ### General linear model
 
-$$Y_i = \beta_0 + \beta_1 x_{1i} + \beta_1 x_{2i} + ... + \epsilon \\
-\epsilon \sim N(0, \sigma^2_{\epsilon})$$
+$$
+Y_i = \beta_0 + \beta_1 x_{1i} + \beta_1 x_{2i} + ... + \epsilon \\
+\epsilon \sim N(0, \sigma^2_{\epsilon})
+$$
 
 and $Y \sim N(\beta_0 + \beta_1 x_{1i} + \beta_1 x_{2i} + ..., \sigma^2)$
 
@@ -107,14 +111,19 @@ We maximize the likelihood and make inferences on the probability
 
 ### Likelihood
 
-$$L(parameters | data)$$
+$$
+L(parameters | data)
+$$
+
 How likely it is to get those parameters given the data.
 
 
 
 ### Probability
 
-$$P(data | null\ parameters)$$
+$$
+P(data | null\ parameters)
+$$
 
 Probability to get the data given the null parameters. Or how probable it is to get those data according to the null model.
 
@@ -122,19 +131,25 @@ Probability to get the data given the null parameters. Or how probable it is to 
 
 ## Maximum likelihood approach
 
-$$L(parameters | data) = \prod_{i=1}^{n} f(data_i | parameters)$$
+$$
+L(parameters | data) = \prod_{i=1}^{n} f(data_i | parameters)
+$$
 
 where f is the probability density function of your model.
 
 
 Working with product is more painful than with sum, we can take the log:
 
-$$ln(L(parameters | data)) = \sum_{i=1}^{n} ln(f(data_i | parameters))$$
+$$
+ln(L(parameters | data)) = \sum_{i=1}^{n} ln(f(data_i | parameters))
+$$
 
 
 Need to solve:
 
-$$\frac{\delta ln(L(parameters | data)}{\delta parameters} = 0$$
+$$
+\frac{\delta ln(L(parameters | data)}{\delta parameters} = 0
+$$
 
 For multiple regression, the parameters $\beta$s are given by $\beta = (X^T X)^{-1} X^T y$
 
@@ -329,11 +344,15 @@ Model has 3 components
 
 
 - linear predictors (or independent variables)
-$$\eta = \beta_0 + \beta_1 X_1 + ... + \beta_k X_k$$
+$$
+\eta = \beta_0 + \beta_1 X_1 + ... + \beta_k X_k
+$$
 
 
 - a link function such that
-$$E(Y |X) = \mu = g^{-1} (\eta)$$
+$$
+E(Y |X) = \mu = g^{-1} (\eta)
+$$
 
 <!-- - a structural component or additive expression 
 - a link function: $g(\mu)$ -->
@@ -354,17 +373,23 @@ $$E(Y |X) = \mu = g^{-1} (\eta)$$
 
 * Identity link (form used in linear regression models)
 
-$$g(\eta) = \mu$$
+$$
+g(\eta) = \mu
+$$
 
 
 * Log link (used when $\mu$ cannot be negative, *e.g.* Poisson data)
 
-$$g(\eta) = log(\mu)$$ 
+$$
+g(\eta) = log(\mu)
+$$ 
 
 
 Logit link (used when \mu is bounded between 0 and 1, *e.g.* binary data)
 
-$$g(\eta) = log\left(\frac{\mu}{1-\mu}\right)$$
+$$
+g(\eta) = log\left(\frac{\mu}{1-\mu}\right)
+$$
 
 
 ## Linear regression
@@ -375,8 +400,10 @@ $$g(\eta) = log\left(\frac{\mu}{1-\mu}\right)$$
 
 * Link function: identity
 
-$$g(\eta) = \mu \\
-\mu(X_1, ...,X_k) = \beta_0 + \beta_1 X_1 + ... + \beta_k X_k$$
+$$
+g(\eta) = \mu \\
+\mu(X_1, ...,X_k) = \beta_0 + \beta_1 X_1 + ... + \beta_k X_k
+$$
 
 
 
@@ -388,8 +415,10 @@ $$g(\eta) = \mu \\
 
 * Link function: logit
 
-$$g(\eta) = ln\left(\frac{\mu}{1-\mu}\right) \\
-\mu(X_1, ...,X_k) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X_1 + ... + \beta_k X_k)}}$$
+$$
+g(\eta) = ln\left(\frac{\mu}{1-\mu}\right) \\
+\mu(X_1, ...,X_k) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X_1 + ... + \beta_k X_k)}}
+$$
 
 
 
@@ -401,8 +430,10 @@ $$g(\eta) = ln\left(\frac{\mu}{1-\mu}\right) \\
 
 * Link function: natural logarithm
 
-$$g(\eta) = ln(\mu) \\
-\mu(X_1, ...,X_k) = e^{\beta_0 + \beta_1 X_1 + ... + \beta_k X_k}$$
+$$
+g(\eta) = ln(\mu) \\
+\mu(X_1, ...,X_k) = e^{\beta_0 + \beta_1 X_1 + ... + \beta_k X_k}
+$$
 
 
 
