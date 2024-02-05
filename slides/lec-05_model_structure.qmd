@@ -11,7 +11,7 @@ format:
     height: 950
     chalkboard: true
     theme: [default]
-    css: [assets/theme/whiteboard-blue.css]
+    css: [assets/theme_chalk/whiteboard-blue.css]
 #    output-location: column-fragment
 editor:
   render-on-save: true
@@ -34,32 +34,10 @@ knitr::opts_chunk$set(
   cache = TRUE
 )
 
-library(showtext)
-library(ggplot2)
+source("assets/theme_chalk/themes_board.r")
+
 library(ggdag)
 library(tidyverse)
-font_add_google("Pangolin", "Pangolin")
-showtext_auto()
-
-# theme for chalkboard
-theme_chalk <- function() {
- cowplot::theme_cowplot() %+replace%
- theme(
- axis.ticks = element_line(colour = "black", size = 0.25),
- text = element_text(colour = "black"),
- axis.text = element_text(colour = "black", family = "Pangolin", size = 16),
- axis.title = element_text(colour = "black", family = "Pangolin", size = 24),
- axis.line = element_line(colour = "black", size = 1),
- # panel.background = element_rect(colour = NA, fill = "transparent"),
- # plot.background = element_rect(colour = "white", fill = "transparent"),
- legend.position = "bottom",
- legend.title = element_blank(),
- panel.grid.minor = element_blank(),
- # panel.grid.major.x = element_line(colour = "white", size = 0.25),
- # panel.grid.major.y = element_line(colour = "white", size = 0.25),
- legend.text = element_text(size = 24)
- )
-}
 theme_set(theme_dag(base_size = 16))
 ```
 
@@ -487,6 +465,6 @@ my_dag %>%
 ```
 :::
 
-## Happy modelling
+# Happy modelling
 
 ![](assets/img_l5/unicorn.png){fig-align="center"}

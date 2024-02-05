@@ -46,7 +46,7 @@
     "href": "dataset.html#data-for-praticals",
     "title": "Data and code for BIO8940",
     "section": "Data for praticals",
-    "text": "Data for praticals\n\nBanta_TotalFruits.csv\ndragons.csv\ngala.csv\nmouflon.csv\nunicorns_aggression.csv"
+    "text": "Data for praticals\n\nBanta_TotalFruits.csv\ndragons.csv\ngala.csv\nlm_example.csv\nmouflon.csv\nunicorns_aggression.csv"
   },
   {
     "objectID": "dataset.html#r-code-and-functions-used",
