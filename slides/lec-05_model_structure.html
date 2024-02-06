@@ -451,41 +451,45 @@ Julien Martin
 </section>
 <section id="distinguishing-goals-of-data-analysis" class="slide level2">
 <h2>Distinguishing goals of data analysis</h2>
-<div>
 <p><span class="desc">Descriptive</span>: Document or quantify observed relationships between inputs and outputs.</p>
 <ul>
-<li class="fragment">Does not not necessarily tell us about the true DGP.</li>
-<li class="fragment">Can often inspire questions for further research.</li>
+<li>Does not not necessarily tell us about the true DGP.</li>
+<li>Can often inspire questions for further research.</li>
 </ul>
+<div class="fragment">
 <p><span class="caus">Causal</span>: Learn about causal relationships.</p>
 <ul>
-<li class="fragment">Try to understand how the box works (the true DGP)</li>
-<li class="fragment">When you change one factor, how does it change the result?</li>
+<li>Try to understand how the box works (the true DGP)</li>
+<li>When you change one factor, how does it change the result?</li>
 </ul>
+</div>
+<div class="fragment">
 <p><span class="pred">Predictive</span>: Be able to guess the value of one variable from other information</p>
 <ul>
-<li class="fragment">DGP doesn’t matter, create your own box..</li>
-<li class="fragment">Helps us know what’s likely to happen in a new situation.</li>
+<li>DGP doesn’t matter, create your own box..</li>
+<li>Helps us know what’s likely to happen in a new situation.</li>
 </ul>
 </div>
 </section>
 <section id="difference-of-focus" class="slide level2">
 <h2>Difference of Focus</h2>
-<div>
 <p><span class="desc">Description</span>:</p>
 <ul>
-<li class="fragment">Focus on showing relationships among a few variables.</li>
-<li class="fragment"><strong>Give up goal of correctly modeling the true DGP</strong></li>
+<li>Focus on showing relationships among a few variables.</li>
+<li><strong>Give up goal of correctly modeling the true DGP</strong></li>
 </ul>
+<div class="fragment">
 <p><span class="pred">Prediction</span>:</p>
 <ul>
-<li class="fragment">Focus on predicting given observed data by any possible means.</li>
-<li class="fragment"><strong>Give up goal of correctly modeling the true DGP</strong></li>
+<li>Focus on predicting given observed data by any possible means.</li>
+<li><strong>Give up goal of correctly modeling the true DGP</strong></li>
 </ul>
+</div>
+<div class="fragment">
 <p><span class="caus">Causal inference</span>:</p>
 <ul>
-<li class="fragment">Focus on determining the true direct effect of a treatment variable</li>
-<li class="fragment">Give up goal of understanding causal effects of any other factors</li>
+<li>Focus on determining the true direct effect of a treatment variable</li>
+<li>Give up goal of understanding causal effects of any other factors</li>
 </ul>
 </div>
 </section>
@@ -495,17 +499,21 @@ Julien Martin
 <ul>
 <li>NO. Only want to infer patterns from observed data.</li>
 </ul>
-<p>When there are a lot of people wearing shorts, there often is an ice cream truck.</p>
+<p><span style="color:green;"><strong>When there are a lot of people wearing shorts, there often is an ice cream truck</strong></span></p>
+<div class="fragment">
 <p><span class="pred">Prediction</span>:</p>
 <ul>
 <li>NO. Only want to infer patterns from observed data.</li>
 </ul>
-<p>Given how many people are wearing shorts, will an ice cream truck show up?</p>
+<p><span style="color:green;"><strong>Given how many people are wearing shorts, will an ice cream truck show up?</strong></span></p>
+</div>
+<div class="fragment">
 <p><span class="caus">Causal inference</span>:</p>
 <ul>
 <li>YES. Want to infer the result of active intervention. Must eliminate selection bias to estimate the treatment effect.</li>
 </ul>
-<p>If someone chooses to wear shorts, will it make an ice cream truck show up?</p>
+<p><span style="color:green;"><strong>If someone chooses to wear shorts, will it make an ice cream truck show up?</strong></span></p>
+</div>
 </section>
 <section id="difference-interpretation-of-βn" class="slide level2">
 <h2>Difference Interpretation of β<sub>n</sub></h2>
@@ -514,16 +522,20 @@ Julien Martin
 <li>β<sub>n</sub> represents an association between <span class="math inline">\(X_{n_i}\)</span> and Y<sub>i</sub>.</li>
 <li>Only a statement about the data, not about the reasons behind the pattern.</li>
 </ul>
+<div class="fragment">
 <p><span class="pred">Prediction</span>: Model does not need to be interpretable.</p>
 <ul>
 <li>Coefficients β<sub>n</sub> are informative only of predictive power, not causal effects.</li>
 <li>Model can be treated as a black box.</li>
 </ul>
+</div>
+<div class="fragment">
 <p><span class="caus">Causal inference</span>:</p>
 <ul>
 <li>β<sub>1</sub> is a causal effect of x<sub>1</sub> under stated assumptions (of the identification strategy).</li>
 <li>Many coefficients generally lack interpretability.</li>
 </ul>
+</div>
 </section></section>
 <section>
 <section id="consequences" class="title-slide slide level1 center">
@@ -540,14 +552,16 @@ Julien Martin
 </section>
 <section id="consequences-for-models" class="slide level2">
 <h2>Consequences for models</h2>
+<div>
 <p>Models for prediction and causal inference differ with respect to the following:</p>
 <ol type="1">
-<li>The covariates that should be considered for inclusion in (and possibly exclusion from) the model.</li>
-<li>How a suitable set of covariates to include in the model is determined.</li>
-<li>Which covariates are ultimately selected, and what functional form (i.e.&nbsp;parameterization) they take.</li>
-<li>How the model is evaluated.</li>
-<li>How the model is interpreted.</li>
+<li class="fragment">The covariates that should be considered for inclusion in (and possibly exclusion from) the model.</li>
+<li class="fragment">How a suitable set of covariates to include in the model is determined.</li>
+<li class="fragment">Which covariates are ultimately selected, and what functional form (i.e.&nbsp;parameterization) they take.</li>
+<li class="fragment">How the model is evaluated.</li>
+<li class="fragment">How the model is interpreted.</li>
 </ol>
+</div>
 </section>
 <section id="consequences-for-methods" class="slide level2">
 <h2>Consequences for methods ?</h2>
@@ -557,18 +571,26 @@ Julien Martin
 <ul>
 <li>Exploratory analysis and regression.</li>
 </ul></li>
+</ol>
+<div class="fragment">
+<ol start="2" type="1">
 <li><p><span class="caus">Causal inference</span></p>
 <ul>
 <li>Path analysis</li>
 <li>Structural equation modelling</li>
 <li>Graph theory</li>
 </ul></li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="3" type="1">
 <li><p><span class="pred">Prediction</span></p>
 <ul>
 <li>Statistical learning / machine learning.</li>
 <li>AIC and any kind of model selection</li>
 </ul></li>
 </ol>
+</div>
 </section></section>
 <section>
 <section id="how-to-figure-it-out" class="title-slide slide level1 center">

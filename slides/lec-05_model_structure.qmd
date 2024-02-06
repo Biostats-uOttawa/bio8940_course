@@ -77,42 +77,45 @@ theme_set(theme_dag(base_size = 16))
 
 ## Distinguishing goals of data analysis
 
-::: {.incremental}
-
 [Descriptive]{.desc}: Document or quantify observed relationships between inputs and outputs.
 
   * Does not not necessarily tell us about the true DGP.
   * Can often inspire questions for further research.
+
+. . .
 
 [Causal]{.caus}: Learn about causal relationships.
 
   * Try to understand how the box works (the true DGP)
   * When you change one factor, how does it change the result?
 
+. . .
+
 [Predictive]{.pred}: Be able to guess the value of one variable from other information
 
   * DGP doesn't matter, create your own box..
   * Helps us know what's likely to happen in a new situation.
-:::
 
 ## Difference of Focus
 
-::: {.incremental}
 [Description]{.desc}:
 
   * Focus on showing relationships among a few variables.
   * **Give up goal of correctly modeling the true DGP**
+
+. . .
 
 [Prediction]{.pred}:
 
   * Focus on predicting given observed data by any possible means.
   * **Give up goal of correctly modeling the true DGP**
 
+. . .
+
 [Causal inference]{.caus}:
 
   * Focus on determining the true direct effect of a treatment variable
   * Give up goal of understanding causal effects of any other factors
-:::
 
 ## Impact of selection bias
 
@@ -120,19 +123,23 @@ theme_set(theme_dag(base_size = 16))
 
   * NO. Only want to infer patterns from observed data.
 
-When there are a lot of people wearing shorts, there often is an ice cream truck.
+[**When there are a lot of people wearing shorts, there often is an ice cream truck**]{style="color:green;"}
+
+. . .
 
 [Prediction]{.pred}:
 
   * NO. Only want to infer patterns from observed data. 
 
-Given how many people are wearing shorts, will an ice cream truck show up?
+[**Given how many people are wearing shorts, will an ice cream truck show up?**]{style="color:green;"}
+
+. . .
 
 [Causal inference]{.caus}:
 
   * YES. Want to infer the result of active intervention. Must eliminate selection bias to estimate the treatment effect.
 
-If someone chooses to wear shorts, will it make an ice cream truck show up?
+[**If someone chooses to wear shorts, will it make an ice cream truck show up?**]{style="color:green;"}
 
 ## Difference Interpretation of β~n~
 
@@ -141,10 +148,14 @@ If someone chooses to wear shorts, will it make an ice cream truck show up?
 * β~n~ represents an association between $X_{n_i}$ and Y~i~.
 * Only a statement about the data, not about the reasons behind the pattern.
 
+. . .
+
 [Prediction]{.pred}: Model does not need to be interpretable.
 
 * Coefficients β~n~ are informative only of predictive power, not causal effects.
 * Model can be treated as a black box.
+
+. . .
 
 [Causal inference]{.caus}:
 
@@ -163,6 +174,8 @@ Discerning which type of goal you have is critical for:
 
 ## Consequences for models
 
+::: {.incremental}
+
 Models for prediction and causal inference differ with respect to the following:
 
 1. The covariates that should be considered for inclusion in (and possibly exclusion from) the model.
@@ -170,6 +183,8 @@ Models for prediction and causal inference differ with respect to the following:
 3. Which covariates are ultimately selected, and what functional form (i.e. parameterization) they take.
 4. How the model is evaluated.
 5. How the model is interpreted.
+
+:::
 
 ## Consequences for methods ?
 
@@ -179,11 +194,15 @@ What methods should we use for each goal?
 
     - Exploratory analysis and regression.
 
+. . .
+
 2. [Causal inference]{.caus}
 
     - Path analysis
     - Structural equation modelling
     - Graph theory
+
+. . .
 
 3. [Prediction]{.pred}
 
@@ -328,6 +347,7 @@ m_bias() |>
 ### Relation
 
 ```{r}
+#| echo: false
 butterfly_bias() %>%
  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
  geom_dag_point() +
