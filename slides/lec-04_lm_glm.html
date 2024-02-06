@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.549">
 
   <meta name="author" content="Julien Martin">
-  <meta name="dcterms.date" content="2024-02-04">
+  <meta name="dcterms.date" content="2024-02-05">
   <title>Linear models and generalized linear models</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -409,7 +409,7 @@ Julien Martin
     </div>
 </div>
 
-  <p class="date">2024-02-04</p>
+  <p class="date">2024-02-05</p>
 </section>
 <section>
 <section id="linear-models" class="title-slide slide level1 center">
@@ -419,12 +419,16 @@ Julien Martin
 <section id="what-is-a-linear-regression" class="slide level2">
 <h2>What is a linear regression</h2>
 <h3 id="simple-linear-regression">Simple linear regression</h3>
-<p><span class="math display">\[Y_i = \beta_0 + \beta_1 x_i + \epsilon \\
-\epsilon \sim N(0, \sigma^2_{\epsilon})\]</span></p>
+<p><span class="math display">\[
+Y_i = \beta_0 + \beta_1 x_i + \epsilon \\
+\epsilon \sim N(0, \sigma^2_{\epsilon})
+\]</span></p>
 <p>or in distributional notation <span class="math inline">\(Y \sim N(\beta_0 + \beta_1 x, \sigma^2_{\epsilon})\)</span></p>
 <h3 id="general-linear-model">General linear model</h3>
-<p><span class="math display">\[Y_i = \beta_0 + \beta_1 x_{1i} + \beta_1 x_{2i} + ... + \epsilon \\
-\epsilon \sim N(0, \sigma^2_{\epsilon})\]</span></p>
+<p><span class="math display">\[
+Y_i = \beta_0 + \beta_1 x_{1i} + \beta_1 x_{2i} + ... + \epsilon \\
+\epsilon \sim N(0, \sigma^2_{\epsilon})
+\]</span></p>
 <p>and <span class="math inline">\(Y \sim N(\beta_0 + \beta_1 x_{1i} + \beta_1 x_{2i} + ..., \sigma^2)\)</span></p>
 </section>
 <section id="linear-model-assumptions" class="slide level2">
@@ -458,19 +462,30 @@ Julien Martin
 <h2>Likelihood vs probability</h2>
 <p>We maximize the likelihood and make inferences on the probability</p>
 <h3 id="likelihood">Likelihood</h3>
-<p><span class="math display">\[L(parameters | data)\]</span> How likely it is to get those parameters given the data.</p>
+<p><span class="math display">\[
+L(parameters | data)
+\]</span></p>
+<p>How likely it is to get those parameters given the data.</p>
 <h3 id="probability">Probability</h3>
-<p><span class="math display">\[P(data | null\ parameters)\]</span></p>
+<p><span class="math display">\[
+P(data | null\ parameters)
+\]</span></p>
 <p>Probability to get the data given the null parameters. Or how probable it is to get those data according to the null model.</p>
 </section>
 <section id="maximum-likelihood-approach" class="slide level2">
 <h2>Maximum likelihood approach</h2>
-<p><span class="math display">\[L(parameters | data) = \prod_{i=1}^{n} f(data_i | parameters)\]</span></p>
+<p><span class="math display">\[
+L(parameters | data) = \prod_{i=1}^{n} f(data_i | parameters)
+\]</span></p>
 <p>where f is the probability density function of your model.</p>
 <p>Working with product is more painful than with sum, we can take the log:</p>
-<p><span class="math display">\[ln(L(parameters | data)) = \sum_{i=1}^{n} ln(f(data_i | parameters))\]</span></p>
+<p><span class="math display">\[
+ln(L(parameters | data)) = \sum_{i=1}^{n} ln(f(data_i | parameters))
+\]</span></p>
 <p>Need to solve:</p>
-<p><span class="math display">\[\frac{\delta ln(L(parameters | data)}{\delta parameters} = 0\]</span></p>
+<p><span class="math display">\[
+\frac{\delta ln(L(parameters | data)}{\delta parameters} = 0
+\]</span></p>
 <p>For multiple regression, the parameters <span class="math inline">\(\beta\)</span>s are given by <span class="math inline">\(\beta = (X^T X)^{-1} X^T y\)</span></p>
 </section>
 <section id="doing-linear-models-in-r" class="slide level2">
@@ -697,8 +712,12 @@ RESET = 1.6953, df1 = 2, df2 = 86, p-value = 0.1896</code></pre>
 <p>Model has 3 components</p>
 <ul>
 <li><p>a dependent variable Y with a response distribution to model it: <strong>Gaussian</strong>, <strong>Binomial</strong>, <strong>Bernouilli</strong>, <strong>Poisson</strong>, <strong>negative binomial</strong>, <strong>zero-inflated …</strong>, <strong>zero-truncated …</strong>, …</p></li>
-<li><p>linear predictors (or independent variables) <span class="math display">\[\eta = \beta_0 + \beta_1 X_1 + ... + \beta_k X_k\]</span></p></li>
-<li><p>a link function such that <span class="math display">\[E(Y |X) = \mu = g^{-1} (\eta)\]</span></p></li>
+<li><p>linear predictors (or independent variables) <span class="math display">\[
+\eta = \beta_0 + \beta_1 X_1 + ... + \beta_k X_k
+\]</span></p></li>
+<li><p>a link function such that <span class="math display">\[
+E(Y |X) = \mu = g^{-1} (\eta)
+\]</span></p></li>
 </ul>
 <!-- - a structural component or additive expression 
 - a link function: $g(\mu)$ -->
@@ -716,13 +735,19 @@ RESET = 1.6953, df1 = 2, df2 = 86, p-value = 0.1896</code></pre>
 <ul>
 <li>Identity link (form used in linear regression models)</li>
 </ul>
-<p><span class="math display">\[g(\eta) = \mu\]</span></p>
+<p><span class="math display">\[
+g(\eta) = \mu
+\]</span></p>
 <ul>
 <li>Log link (used when <span class="math inline">\(\mu\)</span> cannot be negative, <em>e.g.</em> Poisson data)</li>
 </ul>
-<p><span class="math display">\[g(\eta) = log(\mu)\]</span></p>
+<p><span class="math display">\[
+g(\eta) = log(\mu)
+\]</span></p>
 <p>Logit link (used when is bounded between 0 and 1, <em>e.g.</em> binary data)</p>
-<p><span class="math display">\[g(\eta) = log\left(\frac{\mu}{1-\mu}\right)\]</span></p>
+<p><span class="math display">\[
+g(\eta) = log\left(\frac{\mu}{1-\mu}\right)
+\]</span></p>
 </section>
 <section id="linear-regression" class="slide level2">
 <h2>Linear regression</h2>
@@ -731,8 +756,10 @@ RESET = 1.6953, df1 = 2, df2 = 86, p-value = 0.1896</code></pre>
 <li><p>Response distribution: Gaussian</p></li>
 <li><p>Link function: identity</p></li>
 </ul>
-<p><span class="math display">\[g(\eta) = \mu \\
-\mu(X_1, ...,X_k) = \beta_0 + \beta_1 X_1 + ... + \beta_k X_k\]</span></p>
+<p><span class="math display">\[
+g(\eta) = \mu \\
+\mu(X_1, ...,X_k) = \beta_0 + \beta_1 X_1 + ... + \beta_k X_k
+\]</span></p>
 </section>
 <section id="logistic-regression" class="slide level2">
 <h2>Logistic regression</h2>
@@ -741,8 +768,10 @@ RESET = 1.6953, df1 = 2, df2 = 86, p-value = 0.1896</code></pre>
 <li><p>Response distribution: Binomial or bernoulli</p></li>
 <li><p>Link function: logit</p></li>
 </ul>
-<p><span class="math display">\[g(\eta) = ln\left(\frac{\mu}{1-\mu}\right) \\
-\mu(X_1, ...,X_k) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X_1 + ... + \beta_k X_k)}}\]</span></p>
+<p><span class="math display">\[
+g(\eta) = ln\left(\frac{\mu}{1-\mu}\right) \\
+\mu(X_1, ...,X_k) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X_1 + ... + \beta_k X_k)}}
+\]</span></p>
 </section>
 <section id="poisson-regression" class="slide level2">
 <h2>Poisson regression</h2>
@@ -751,8 +780,10 @@ RESET = 1.6953, df1 = 2, df2 = 86, p-value = 0.1896</code></pre>
 <li><p>Response distribution: Poisson or Negative binomial</p></li>
 <li><p>Link function: natural logarithm</p></li>
 </ul>
-<p><span class="math display">\[g(\eta) = ln(\mu) \\
-\mu(X_1, ...,X_k) = e^{\beta_0 + \beta_1 X_1 + ... + \beta_k X_k}\]</span></p>
+<p><span class="math display">\[
+g(\eta) = ln(\mu) \\
+\mu(X_1, ...,X_k) = e^{\beta_0 + \beta_1 X_1 + ... + \beta_k X_k}
+\]</span></p>
 </section>
 <section id="model-assumptions" class="slide level2">
 <h2>Model assumptions</h2>
@@ -846,11 +877,8 @@ RESET = 1.6953, df1 = 2, df2 = 86, p-value = 0.1896</code></pre>
 <section id="fitting-the-logistic-regression" class="slide level2">
 <h2>Fitting the logistic regression</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a>m1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(reproduction <span class="sc">~</span> age,</span>
-<span id="cb21-2"><a href=""></a>  <span class="at">data =</span> mouflon,</span>
-<span id="cb21-3"><a href=""></a>  <span class="at">family =</span> binomial</span>
-<span id="cb21-4"><a href=""></a>)</span>
-<span id="cb21-5"><a href=""></a><span class="fu">summary</span>(m1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a>m1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(reproduction <span class="sc">~</span> age, <span class="at">data =</span> mouflon,   <span class="at">family =</span> binomial)</span>
+<span id="cb21-2"><a href=""></a><span class="fu">summary</span>(m1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1106,7 +1134,7 @@ alternative hypothesis: two.sided</code></pre>
 
 <img data-src="assets/img_l4/unicorn.png" class="quarto-figure quarto-figure-center r-stretch"><div class="quarto-auto-generated-content">
 <div class="footer footer-default">
-
+<p>BIO 8940 - Lecture 4</p>
 </div>
 </div>
 </section>
