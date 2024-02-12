@@ -1855,15 +1855,12 @@ code {
 
 /*-----------------------------------------------------------------------------*/
 /* title slide */
-#title-block-header .date {
-  text-align: right;
-}
 
 .reveal .quarto-title-block .quarto-title-authors {
   display: flex;
   justify-content: right;
   font-family: 'Shadows Into Light';
-  font-size: 1em;
+  font-size: 1.3em;
 }
 
 #title-slide,
@@ -1873,18 +1870,22 @@ div.reveal div.slides section.quarto-title-block {
 
 #title-slide .title,
 div.reveal div.slides section.quarto-title-block .title {
+  text-align: center;
   margin-bottom: 2.5rem;
-  font-size: 2em
+  font-size: 2.1em
 }
 
 #title-slide .subtitle,
 div.reveal div.slides section.quarto-title-block .subtitle {
+  text-align: left;
   margin-bottom: 2.5rem;
-  font-size: 1em
+  font-size: 1.5em
 }
-
-.reveal .title-slide h1 {
-  font-size: 2em
+#title-slide .date,
+div.reveal div.slides section.quarto-title-block .date {
+  text-align: right;
+  margin-bottom: 2.5rem;
+  font-size: 0.8em
 }
 
 .reveal[data-navigation-mode=linear] .title-slide h1 {

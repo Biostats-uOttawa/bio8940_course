@@ -1,0 +1,31 @@
+graph G {
+  layout=dot
+//  viewport="1000,1000,2,'a'"
+  a [label = "Study"]
+ subgraph beach {
+  	node [style=filled, color=pink];
+    b1 [label = "A 1"];
+    b2 [label = "A 2"];
+    b3 [label = "A 3"];
+    label = "Exposure";
+  }
+  subgraph site {
+    label="NAP";
+    color=blue;
+  	node [style=filled, color=lightblue];
+    graph [ordering=out]
+    s1 [label ="B 1"]
+    s2 [label ="B 2"]
+    s3 [label ="B 3"]
+    s4 [label ="B 4"]
+    s5 [label ="B 5"]
+    s6 [label ="B 6"]
+    s7 [label ="B 7"]
+    s8 [label ="B 8"]
+    s9 [label ="B 9"]
+  }
+  a -- {b1 b2 b3};
+  b1 -- {s1  s2  s3};
+  b2 -- {s4 s5 s6};
+  b3 -- {s7 s8 s9};
+}

@@ -1,0 +1,625 @@
+---
+title: "Introduction to linear mixed models?"
+subtitle: Harnessing random effects
+author: Julien Martin
+institute: University of Ottawa
+date: today
+from: markdown+emoji
+format:
+  revealjs: 
+#    code-block-background: false
+    width: 1600
+    height: 950
+    chalkboard: true
+    theme: [default]
+    css: [assets/theme_chalk/whiteboard-blue.css]
+#    output-location: column-fragment
+#    logo: assets/MAD_logo_small_rb.png
+    footer: BIO 8940 - Lecture 6
+    show-notes: false
+ #   output-ext: "_slides.html"
+  html:
+    self-contained: true
+    number-sections: true
+    format-links: false
+    css: assets/css/notes.css
+
+
+editor:
+  render-on-save: true
+---
+
+# When you are lacking independence ...
+
+```{r}
+#| label: setup
+#| include: false
+#| purl: false
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  error = FALSE,
+  fig.align = "center",
+  dpi = 300,
+  fig.showtext = TRUE,
+  fig.width = 12,
+  fig.height = 6,
+  #  out.height = "100%",
+  dev.args = list(bg = "transparent"),
+  cache = TRUE
+)
+
+source("assets/theme_chalk/themes_board.r")
+library(tidyverse)
+theme_set(theme_whiteboard())
+```
+
+## Mixed models to the rescue!
+
+* Almost all biological data is inherently grouped
+
+  * Lakes
+
+  * Incubators
+
+  * Individual animals/plants 
+
+  * Sites
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+### Mixed models should probably be the rule, not the exception
+
+::: {.notes}
+Give examples and discuss
+:::
+
+## Advantages of mixed models
+
+* Allows us to account for repeated measurements on the same group
+
+* Allows for missing data. Does not drop entire subject if missing one
+observation for that subject.
+
+* Helps limit problem of overfitting many different parameters
+
+* Avoids the need to average within a group which underestimates the true variation
+
+::: {.notes}
+* Impact of factor with 50 levels on df vs 1 random effect with 50 level
+* Underestimation true variation = overconfidence in results and lower p-values
+:::
+
+## Linear model so far
+
+
+$$
+Y_i = \underbrace{ a + \sum_k^n b_k X_{k_i}}_\text{fixed} + \underbrace{\epsilon_i}_\text{random}
+$$
+
+- Fixed part:
+    - descrtibe deterministic processes.
+
+- Random part:
+    + describe stochastic processes.
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+### Problems when
+
+1. Observations are not independent (**Pseudoreplication**)
+1. Heterogeneous variance
+
+
+
+## Extending the linear model
+
+$$
+Y_{ij} = \underbrace{a + \sum_k^n b_k X_{k_{ij}}}\text{fixed} + \underbrace{\epsilon_{ij} + a_j}_\text{random}
+$$
+
+- Fixed part:
+    + Same as before.
+
+- Random part:
+    + Include grouping variables structuring the data
+
+# Example
+
+## The data
+
+Marine benthic data from nine inter-tidal areas along the Dutch coast collected by the Dutch institute RIKZ in the summer of 2002. In each inter-tidal area (denoted by ‘beach’), five samples were taken, and the macro-fauna and abiotic variables were measured.
+
+- **Sample**: sample number
+
+- **Richness**: species richness
+
+- **Exposure**: index composed of the surf zone, slope, grain size, and depth of anaerobic layer
+
+- **NAP**: height of sampling station compared to mean tidal level
+
+- **Beach**: beach identifier
+
+```{r include = TRUE, echo = FALSE}
+rikz <- read.table(file = "data/RIKZ.txt", header = TRUE, dec = ".")
+head(rikz)
+```
+
+## Data structure
+
+```{dot}
+//| echo: false
+//| eval: false
+//| file: assets/img_l6/data_structure.dot
+```
+
+![](assets/img_l6/test.svg){fig-align="center"}
+
+## Traditional linear model
+
+\
+
+$$Richness = a + b_1\ NAP + b_2\ Exposure + \epsilon$$
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+ Adding index for easier explanation, `i` -> observation
+ 
+ \
+
+$$Richness_{i} = a + b_1\ NAP_{i} + b_2\ Exposure_{i} + \epsilon_{i}$$
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+\
+
+### What are the problems? 
+
+::: {.notes}
+**Pseudoreplication**
+* Exposure varies only across beaches not within
+* Sites within a beach are not independent
+:::
+
+## 2 processes at 2 different levels
+
+1. Within a beach effect: **NAP**
+
+\
+
+1. Between beaches effect: **Exposure**
+
+## Within a beach
+
+* Equation for each beach
+
+$$Richness_{i1} = a_1 + b_{1_1}\ NAP_{i1} + \epsilon_{i1}$$ 
+$$Richness_{i2} = a_2 + b_{1_2}\ NAP_{i2} + \epsilon_{i2}$$ 
+
+::: {style='text-align: center;'}
+...
+:::
+
+$$Richness_{i9} = a_9 + b_{1_9}\ NAP_{i9} + \epsilon_{i9}$$
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+9 equations and 27 parameters **Not great**
+
+Overall, 
+$$Richness_{ij} = a_j + b_{1_j}\ NAP_{ij} + \epsilon_{ij}$$
+ 
+## Between beaches
+
+* Cannot simply do $Richness \sim Exposure$
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+ * In 
+$$
+Richness_{ij} = a_j + b_{1_j}\ NAP_{ij} + \epsilon_{ij}
+$$ 
+ 
+What captures the effect of `Exposure`
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+* Can we do ?
+
+$$
+a_{j} = a + b_{exp}\ exposure_{j} + \epsilon_{j}
+$$ 
+
+## Within and between beaches effects
+
+\
+
+* within effects -> 27 parameters
+
+\
+
+* Between effects -> 3 parameters
+
+\
+
+::: {style='text-align: center;'}
+
+### Total 30 parameters
+### :scream: :sob:
+### (with 3 being stats-on stats) 
+
+:::
+
+## Estimating both simultaneously
+
+$$
+Richness_{ij} = (a + a_j) + b_1 NAP_{ij} + b_2 Exposure_j + \epsilon_{ij}
+$$
+
+- **a** is the general intercept
+- **a~j~** are the deviation from $a$ for each beach
+- **b~1~** and **b~2~** are the intercept and slope for the average beach
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+$$
+Richness_{ij} = \underbrace{a + b_1{NAP_{ij}} + b_2{Exposure_j}}_\text{fixed} + \underbrace{a_j + \epsilon_{ij}}_\text{random}
+$$
+
+### :smiley: 5 parameters estimated :smiley: {style="text-align: center;"}
+
+
+:::{.notes}
+* assuming same NAP effect on each beach
+* assuming same residual variance for each beach
+:::
+
+## Fixed and random effects
+
+### Fixed
+
+* a, b~1~ and b~2~ estimated with a given error
+
+\
+
+### Random
+
+* **a~j~** not estimated directly but assumed to come from a Gaussian distribution with a mena of 0 and an estimated Variance
+
+$$
+a_j \sim N(0, {\sigma^2_{a_j}})
+$$
+
+## Fixed part
+
+```{r include = TRUE, echo = FALSE}
+library(ggplot2)
+library(ggeffects)
+library(lme4)
+mod.mix <- with(rikz, lmer(Richness ~ NAP + scale(Exposure, scale = F) + (1 | Beach)))
+pred <- ggpredict(mod.mix, "NAP")
+ggplot(rikz, aes(x = NAP, y = Richness)) +
+  geom_point(size = 3) +
+  geom_line(data = pred, aes(x = x, y = predicted), color = "blue", linewidth = 2) +
+  ylim(0, 13)
+```
+
+$$y_{ij} = \underbrace{\color{red}{a + b_1{NAP_{ij}}} + b_2{Exposure_j}}_\text{fixed} + \underbrace{a_j + \epsilon_{ij}}_\text{random}$$
+
+## Random part
+
+```{r echo = FALSE}
+pred <- ggpredict(mod.mix, terms = c("NAP", "Beach"), type = "random", ci_level = NA)
+ggplot(rikz, aes(x = NAP, y = Richness)) +
+  geom_point(size = 3) +
+  ylim(0, 13) +
+  geom_line(data = pred, aes(x = x, y = predicted, color = group), linewidth = 1) +
+  theme(legend.position = "none")
+```
+
+$$
+Richness_{ij} = \underbrace{\color{red}{a + b_1{NAP_{ij}}} + b_2{Exposure_j}}_\text{fixed} + \color{purple}{\underbrace{a_j + \epsilon_{ij}}_\text{random}}
+$$
+
+## R model output
+
+```{r include = TRUE}
+summary(mod.mix)
+```
+
+## Estimated equation
+
+$$
+Richness_{ij} = \underbrace{`r paste(round(lme4::fixef(mod.mix)[1], 2))` `r paste(round(lme4::fixef(mod.mix)[2], 2))`{NAP_{ij}} `r paste(round(lme4::fixef(mod.mix)[3], 2))`{Exposure_j}}_\text{fixed} + \underbrace{a_j + \epsilon_{ij}}_\text{random}
+$$
+
+$$
+a_j \sim N(0, `r paste(round(summary(mod.mix)$varcor$Beach[1,1], 2))`)
+$$
+
+$$
+\epsilon_{ij} \sim N(0, `r paste(round(summary(mod.mix)$sigma^2, 2))`)
+$$
+
+## BLUPs ($a_j$) are shrinked
+
+- Estimates for each groups are constrained (shrinked) too avoid extreme values.
+
+```{r include = TRUE, echo = FALSE}
+mod.fix <- with(rikz, lm(Richness ~ NAP + as.factor(Beach)))
+mod.mix <- with(rikz, lmer(Richness ~ NAP + (1 | Beach)))
+dat <- data.frame(
+  fix = mod.fix$coefficients[1] + c(0, mod.fix$coefficients[3:10]),
+  mix = coef(mod.mix)$Beach[, 1]
+)
+ggplot(dat, aes(x = fix, y = mix)) +
+  geom_point(size = 3) +
+  geom_abline(linewidth = 2) +
+  xlab("Estimated as fixed effects") +
+  ylab("Estimated as random effects")
+```
+
+# Variance components
+
+## Modelling the variance
+
+- We estimated the varaince explained by the model
+
+${\sigma_{\hat{y}}}^2$.
+
+- We decomposed teh residual variance in 2 :
+    + ${\sigma_{a_j}}^2$ : across beach variance
+    + ${\sigma_{\epsilon}}^2$ Variation not associeated to beaches (*i.e.* within-beach variance)
+
+## Estimating repeatability
+
+- **Repeatability** Proportion of (residual) variance associated to among levels of a random effect.
+
+- Here variation associted to among beach differences
+
+$$
+Richness_{ij} = \underbrace{a + b_1{NAP_{ij}} + b_2{Exposure_j}}_\text{fixed} + \underbrace{a_j + \epsilon_{ij}}_\text{random}
+$$
+
+$$
+a_j \sim N(0, {\sigma_{a_j}}^2)
+$$
+
+$$\epsilon \sim N(0, {\sigma_{\epsilon}}^2)$$
+
+$$ r = \frac{{\sigma_{a_j}}^2}{{\sigma_{a_j}}^2 + {\sigma_{\epsilon}}^2}$$
+
+
+## With our model
+
+```{r eval = TRUE, include = FALSE}
+mod.mix <- with(rikz, lmer(Richness ~ NAP +  Exposure + (1|Beach)))
+```
+
+$$
+Richness_{ij} = \underbrace{`r paste(round(lme4::fixef(mod.mix)[1], 2))` `r paste(round(lme4::fixef(mod.mix)[2], 2))`{NAP_{ij}} `r paste(round(lme4::fixef(mod.mix)[3], 2))`{Exposure_j}}_\text{fixed} + \underbrace{a_j + \epsilon_{ij}}_\text{random}
+$$
+
+$$a_j \sim N(0, `r paste(round(summary(mod.mix)$varcor$Beach[1,1], 2))`)$$
+
+$$\epsilon_{ij} \sim N(0, `r paste(round(summary(mod.mix)$sigma^2, 2))`)$$
+
+\
+
+$$
+r^2 = \frac{`r paste(round(summary(mod.mix)$varcor$Beach[1,1], 2))`}{`r paste(round(summary(mod.mix)$varcor$Beach[1,1], 2))` + `r paste(round(summary(mod.mix)$sigma^2, 2))`}
+= \frac{`r paste(round(summary(mod.mix)$varcor$Beach[1,1], 2))`}{`r paste(round(summary(mod.mix)$varcor$Beach[1,1] + summary(mod.mix)$sigma^2, 2))`}
+= `r paste(round(summary(mod.mix)$varcor$Beach[1,1] / (summary(mod.mix)$varcor$Beach[1,1] + summary(mod.mix)$sigma^2), 2))`
+$$
+
+## Repeatability is conditionned on fixed effects
+
+Differences among groups can be explained by fixed effects and thus influence ${\sigma_{a_j}}^2$ 
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+We can estimate repeatability with 2 models for example:
+
+* With exposure
+$$
+Richness_{ij} = \underbrace{a + b_1{NAP_{ij}} + b_2{Exposure_j}}_\text{fixed} + \underbrace{a_j + \epsilon_{ij}}_\text{random}
+$$
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+* or without
+
+$$
+Richness_{ij} = \underbrace{a + b_1{NAP_{ij}}}_\text{fixed} + \underbrace{a_j + \epsilon_{ij}}_\text{random}
+$$
+
+```{r, eval = TRUE, echo = FALSE}
+mod.mix.avec <- with(rikz, lmer(Richness ~ NAP + Exposure + (1|Beach)))
+mod.mix.sans <- with(rikz, lmer(Richness ~ NAP + (1|Beach)))
+```
+
+## Repeatability With exposure effects
+
+$$
+Richness_{ij} = \underbrace{`r paste(round(lme4::fixef(mod.mix)[1], 2))` `r paste(round(lme4::fixef(mod.mix)[2], 2))`{NAP_{ij}} `r paste(round(lme4::fixef(mod.mix)[3], 2))`{Exposure_j}}_\text{fixed} + \underbrace{a_j + \epsilon_{ij}}_\text{random}
+$$
+
+$$
+a_j \sim N(0, `r paste(round(summary(mod.mix)$varcor$Beach[1,1], 3))`)
+$$
+
+$$
+\epsilon_{ij} \sim N(0, `r paste(round(summary(mod.mix)$sigma^2, 3))`)
+$$
+
+$$
+r\ (with\ exposure) = \frac{`r round(summary(mod.mix.avec)$varcor$Beach[1,1], 3)`}{`r round(summary(mod.mix.avec)$varcor$Beach[1,1],3)` + `r round(summary(mod.mix.avec)$sigma^2, 2)`} = `r paste(round(summary(mod.mix.avec)$varcor$Beach[1,1] / (summary(mod.mix.avec)$varcor$Beach[1,1] + summary(mod.mix.avec)$sigma^2), 2))`
+$$
+
+## Repeatability without exposure
+
+$$
+Richness_{ij} = \underbrace{`r paste(round(lme4::fixef(mod.mix.sans)[1], 2))` `r paste(round(lme4::fixef(mod.mix.sans)[2], 2))`{NAP_{ij}}}_\text{fixed} + \underbrace{a_j + \epsilon_{ij}}_\text{random}
+$$
+
+$$
+a_j \sim N(0, `r paste(round(summary(mod.mix.sans)$varcor$Beach[1,1], 3))`)
+$$
+
+$$
+\epsilon_{ij} \sim N(0, `r paste(round(summary(mod.mix.sans)$sigma^2, 3))`)
+$$
+
+$$
+r\ (without\ exposure) = \frac{`r round(summary(mod.mix.avec)$varcor$Beach[1,1], 3)`}{`r round(summary(mod.mix.avec)$varcor$Beach[1,1],3)` + `r round(summary(mod.mix.avec)$sigma^2, 2)`} = `r paste(round(summary(mod.mix.avec)$varcor$Beach[1,1] / (summary(mod.mix.avec)$varcor$Beach[1,1] + summary(mod.mix.avec)$sigma^2), 2))`
+$$
+
+# Models with multiple random effects
+
+## When tricky becomes trickier
+
+- Complex model use only when necessaryCes modèles sont compliqués, utilisez-les seulement lorsqu'ils sont nécessaires.
+
+- Easy to build a nonsensical models which is overparametrized ...
+
+### Key to understand differences between random effect types
+
+## Nested effects
+
+B is nested within A if each level of B is present in only 1 level of B
+
+![](assets/img_l6/nested.png){fig-align="center"}
+
+## Crossed effects
+
+A and B are crossed .. when they are not nested :stuck_out_tongue_winking_eye:
+
+A and B are fully crossed when all levels of B are present in all levels of A
+
+![](assets/img_l6/crossed.svg){fig-align="center" width="100%"}
+
+## Random regression
+
+- Previous model assumed that NAP effect was the same for all beaches
+
+::: {style="text-align: center;"}
+**This might not be true**
+:::
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+- Beaches might vary in both their `mean Richness` and their `response to NAP`
+
+$$
+Richness_{ij} = \underbrace{a + b_1{NAP_{ij}} + b_2{Exposure_j}}_\text{fixed} + \underbrace{a_j + \color{#DD3333}{b_{2j}NAP_{ij}} + \epsilon_{ij}}_\text{random}
+$$
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+$$\epsilon_{ij} \sim N(0, \sigma_{a_j})$$
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+$$\begin{bmatrix}
+a_j \\
+\color{#DD3333}{b_{2j}}
+\end{bmatrix}
+\sim N\left(0,
+\begin{matrix}
+\sigma_{a_j}^2  & \color{blue}{cov(a_j, b_{2j})} \\
+\color{blue}{cov(a_j, b_{2j})} & \color{#DD3333}{\sigma_{b_{2j}}^2}
+\end{matrix}
+\right)
+$$
+
+::: {.notes}
+we are thus adding 2 extra parameters:
+
+  *  random slope
+
+  * a covariance between the intercept and slope
+:::
+
+
+## Random regression
+
+```{r eval = TRUE, include = FALSE}
+mod.mix <- lmer(Richness ~ NAP + scale(Exposure, scale = F) + (NAP|Beach), data= rikz)
+```
+
+```{r}
+#| echo: false
+pred <- ggpredict(
+  mod.mix, terms = c("NAP", "Beach"), type = "random", ci_level = NA)
+ggplot(rikz, aes(x = NAP, y = Richness, color = as.factor(Beach))) +
+  geom_point(size = 3) +
+  ylim(0, 13) +
+  geom_line(data = pred, aes(x = x, y = predicted, color = group), linewidth = 1) +
+  theme(legend.position = "none")
+```
+
+$$
+Richness_{ij} = \underbrace{a + b_1{NAP_{ij}} + b_2{Exposure_j}}_\text{fixed} + \underbrace{\color{#DD3333}{a_j + b_1iNAP_{ij}} + \epsilon_{ij}}_\text{random}
+$$
+
+# Building a mixed model
+
+## Choosing effects
+
+### Fixed effects
+
+  a. based on question 
+  b. based on counfounding effects (think and justify based on causality)
+
+\
+
+### Random effects
+  a. based on questions
+  b. based on data structure
+
+## Testing for effects
+
+### Fixed effects
+ 
+Degrees of freedom cannot be estimated exactly
+
+Use approximation (Satterwaite, Kenward-Rogers, ...)
+
+\
+
+### Random effects
+
+Likelihood Ratio test
+
+Fit model with and without a random effect using REML and then compare
+
+# Happy modelling {.unnumbered}
+
+![](assets/img_l5/unicorn.png){fig-align="center"}
+

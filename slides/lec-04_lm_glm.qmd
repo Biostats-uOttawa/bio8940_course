@@ -2,7 +2,7 @@
 title: "Linear models and generalized linear models"
 subtitle: "in R"
 author: "Julien Martin"
-institute: University of Ottawa
+institute: BIO 8940 - Lecture 4
 date: today
 format:
   revealjs: 
@@ -13,6 +13,12 @@ format:
     css: assets/theme_chalk/whiteboard-blue.css
 #    logo: assets/MAD_logo_small_rb.png
     footer: BIO 8940 - Lecture 4
+    show-notes: false
+ #   output-ext: "_slides.html"
+  html:
+    self-contained: true
+    number-sections: true
+    format-links: false
 editor:
   render-on-save: true
 engine: knitr

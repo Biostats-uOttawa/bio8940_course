@@ -4,7 +4,7 @@ font_add_google("Pangolin", "Pangolin")
 showtext_auto()
 
 # theme for chalkboard
-theme_whiteboard <- function() {
+theme_whiteboard <- function(...) {
   cowplot::theme_cowplot() %+replace%
     theme(
       axis.ticks = element_line(colour = "black", size = 0.25),
@@ -19,7 +19,8 @@ theme_whiteboard <- function() {
       panel.grid.minor = element_blank(),
       # panel.grid.major.x = element_line(colour = "white", size = 0.25),
       # panel.grid.major.y = element_line(colour = "white", size = 0.25),
-      legend.text = element_text(size = 24)
+      legend.text = element_text(size = 24),
+      ...
     )
 }
 

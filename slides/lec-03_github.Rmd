@@ -118,7 +118,7 @@ See Jenny Bryan's post on [**project oriented workflows**](https://www.tidyverse
 
 # Alternatives to RStudio Projects
 
-### So You don't like `RStudio` `r emo::ji("broken_heart")`
+### So You don't like `RStudio` `r emoji::emoji("broken_heart")`
 
 --
 
@@ -135,14 +135,14 @@ Essentially a **Rstudio Project**:
 --
 
 .pull-right[
-#### simply, do the same without using RStudio `r emo::ji("star_struck")`
+#### simply, do the same without using RStudio `r emoji::emoji("star_struck")`
 ]
 
 ---
 
 # Version Control
 
-### What is it? `r emo::ji("thinking")`
+### What is it? `r emoji::emoji("thinking")`
 
 The **management of changes** to documents, computer programs, large web sites and other collections of information.
 
@@ -188,15 +188,15 @@ For more details got to https://git-scm.com/downloads
 
 # Git, Github & IDE
 
-#### Before: git only through the terminal `r emo::ji("cry")`
+#### Before: git only through the terminal `r emoji::emoji("cry")`
 ***
 --
 
 #### Now: git can be used via multiple user-friendly interfaces
 
 --
-RStudio + `usethis` `r emo::ji("package")` + `gitcreds` `r emo::ji("package")` ==
-`r emo::ji("heart")` `Git` & `GitHub` `r emo::ji("star_struck")`
+RStudio + `usethis` `r emoji::emoji("package")` + `gitcreds` `r emoji::emoji("package")` ==
+`r emoji::emoji("heart")` `Git` & `GitHub` `r emoji::emoji("star_struck")`
 
 --
 

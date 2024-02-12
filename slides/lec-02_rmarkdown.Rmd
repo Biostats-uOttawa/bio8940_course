@@ -33,7 +33,7 @@ add something about quarto what is it and how is it different
 knitr::opts_chunk$set(purl = FALSE, fig.path = 'assets/chunks/', cache.path = "assets/cache/", dpi = 300)
 library(tidyverse)
 theme_set(theme_grey(base_size = 16))
-library(emo)
+library(emoji)
 ```
 
 class: inverse, center, middle

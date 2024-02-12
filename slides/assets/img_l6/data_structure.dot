@@ -1,0 +1,37 @@
+graph G {
+  layout=neato
+//  viewport="1000,1000,2,'a'"
+  a [label = "Study"]
+ subgraph cluster_beach {
+  	node [style=filled, color=pink];
+    b1 [label = "Beach 1"];
+    b2 [label = "Beach 2"];
+    b3 [label = "Beach 3"];
+    label = "Exposure";
+  }
+  subgraph site {
+    label="NAP";
+    color=blue;
+  	node [style=filled, color=lightblue];
+    graph [ordering=out]
+    s1 [label ="Site 1"]
+    s2 [label ="Site 2"]
+    s3 [label ="Site 3"]
+    s4 [label ="Site 4"]
+    s5 [label ="Site 5"]
+    s6 [label ="Site 6"]
+    s7 [label ="Site 7"]
+    s8 [label ="Site 8"]
+    s9 [label ="Site 9"]
+    s10 [label ="Site 10"]
+    s11 [label ="Site 11"]
+    s12 [label ="Site 12"]
+    s13 [label ="Site 13"]
+    s14 [label ="Site 14"]
+    s15 [label ="Site 15"]
+  }
+  a -- {b1 b2 b3};
+  b1 -- {s1  s2  s3  s4  s5};
+  b2 -- {s6  s7  s8  s9  s10};
+  b3 -- {s11  s12  s13  s14  s15};
+}

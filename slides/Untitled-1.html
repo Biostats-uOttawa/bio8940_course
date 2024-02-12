@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Untitled</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Untitled-1_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Untitled-1_files/libs/quarto-html/quarto.js"></script>
+<script src="Untitled-1_files/libs/quarto-html/popper.min.js"></script>
+<script src="Untitled-1_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Untitled-1_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Untitled-1_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Untitled-1_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Untitled-1_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Untitled-1_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Untitled-1_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="Untitled-1_files/libs/quarto-diagram/mermaid-postprocess-shim.js"></script>
+<script src="Untitled-1_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="Untitled-1_files/libs/hammer-2.0.8/hammer.min.js"></script>
+<script src="Untitled-1_files/libs/svg-pan-zoom-3.6.1/dist/svg-pan-zoom.min.js"></script>
+<script src="Untitled-1_files/libs/svgPanZoom-binding-0.3.4/svgPanZoom.js"></script>
+<script src="Untitled-1_files/libs/d3-3.3.8/d3.min.js"></script>
+<script src="Untitled-1_files/libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="Untitled-1_files/libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet">
+<script src="Untitled-1_files/libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<link href="Untitled-1_files/libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+<script src="Untitled-1_files/libs/chromatography-0.1/chromatography.js"></script>
+<script src="Untitled-1_files/libs/DiagrammeR-binding-1.0.11/DiagrammeR.js"></script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Untitled</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="test" class="level1">
+<h1>test</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(svglite)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DiagrammeR)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DiagrammeRsvg)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(svgPanZoom)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>svg <span class="ot">&lt;-</span> <span class="fu">grViz</span>(<span class="st">'</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="st">graph G {</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">  layout=neato</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st">  a [label = "Study"]</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st"> subgraph cluster_beach {</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="st">    node [style=filled, color=pink];</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="st">    b1 [label = "Beach 1"];</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st">    b2 [label = "Beach 2"];</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="st">    b3 [label = "Beach 3"];</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="st">    label = "Exposure";</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="st">  }</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="st">  subgraph site {</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="st">    label="NAP";</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="st">    color=blue;</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="st">    node [style=filled, color=lightblue];</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="st">    graph [ordering=out]</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="st">    s1 [label ="Site 1"]</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="st">    s2 [label ="Site 2"]</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="st">    s3 [label ="Site 3"]</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="st">    s4 [label ="Site 4"]</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="st">    s5 [label ="Site 5"]</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="st">    s6 [label ="Site 6"]</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="st">    s7 [label ="Site 7"]</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="st">    s8 [label ="Site 8"]</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="st">    s9 [label ="Site 9"]</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="st">    s10 [label ="Site 10"]</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="st">    s11 [label ="Site 11"]</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="st">    s12 [label ="Site 12"]</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="st">    s13 [label ="Site 13"]</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="st">    s14 [label ="Site 14"]</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="st">    s15 [label ="Site 15"]</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="st">  }</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="st">  a -- {b1 b2 b3};</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="st">  b1 -- {s1  s2  s3  s4  s5};</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="st">  b2 -- {s6  s7  s8  s9  s10};</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="st">  b3 -- {s11  s12  s13  s14  s15};</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="st">'</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">export_svg</span>()</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="fu">svgPanZoom</span>(svg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="svgPanZoom html-widget html-fill-item" id="htmlwidget-a90a8438cc8e41ea254c" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-a90a8438cc8e41ea254c">{"x":{"svg":"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n<!-- Generated by graphviz version 2.40.1 (20161225.0304)\n -->\n<!-- Title: G Pages: 1 -->\n<svg width=\"407pt\" height=\"364pt\"\n viewBox=\"0.00 0.00 407.00 363.74\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n<g id=\"graph0\" class=\"graph\" transform=\"scale(1 1) rotate(0) translate(4 359.7407)\">\n<title>G<\/title>\n<polygon fill=\"#ffffff\" stroke=\"transparent\" points=\"-4,4 -4,-359.7407 403.0024,-359.7407 403.0024,4 -4,4\"/>\n<!-- a -->\n<g id=\"node1\" class=\"node\">\n<title>a<\/title>\n<ellipse fill=\"none\" stroke=\"#000000\" cx=\"194.8798\" cy=\"-160.7462\" rx=\"33.6479\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"194.8798\" y=\"-156.5462\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">Study<\/text>\n<\/g>\n<!-- b1 -->\n<g id=\"node2\" class=\"node\">\n<title>b1<\/title>\n<ellipse fill=\"#ffc0cb\" stroke=\"#ffc0cb\" cx=\"118.9027\" cy=\"-103.769\" rx=\"42.3163\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"118.9027\" y=\"-99.569\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">Beach 1<\/text>\n<\/g>\n<!-- a&#45;&#45;b1 -->\n<g id=\"edge1\" class=\"edge\">\n<title>a&#45;&#45;b1<\/title>\n<path fill=\"none\" stroke=\"#000000\" d=\"M175.3138,-146.0732C164.4977,-137.9619 151.0527,-127.8792 140.0019,-119.5919\"/>\n<\/g>\n<!-- b2 -->\n<g id=\"node3\" class=\"node\">\n<title>b2<\/title>\n<ellipse fill=\"#ffc0cb\" stroke=\"#ffc0cb\" cx=\"282.5432\" cy=\"-123.9424\" rx=\"42.3163\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"282.5432\" y=\"-119.7424\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">Beach 2<\/text>\n<\/g>\n<!-- a&#45;&#45;b2 -->\n<g id=\"edge2\" class=\"edge\">\n<title>a&#45;&#45;b2<\/title>\n<path fill=\"none\" stroke=\"#000000\" d=\"M221.658,-149.5039C231.3256,-145.4451 242.3045,-140.8359 252.2516,-136.6597\"/>\n<\/g>\n<!-- b3 -->\n<g id=\"node4\" class=\"node\">\n<title>b3<\/title>\n<ellipse fill=\"#ffc0cb\" stroke=\"#ffc0cb\" cx=\"183.0153\" cy=\"-254.6307\" rx=\"42.3163\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"183.0153\" y=\"-250.4307\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">Beach 3<\/text>\n<\/g>\n<!-- a&#45;&#45;b3 -->\n<g id=\"edge3\" class=\"edge\">\n<title>a&#45;&#45;b3<\/title>\n<path fill=\"none\" stroke=\"#000000\" d=\"M192.5922,-178.8481C190.4913,-195.4729 187.3946,-219.9772 185.2958,-236.5844\"/>\n<\/g>\n<!-- s1 -->\n<g id=\"node5\" class=\"node\">\n<title>s1<\/title>\n<ellipse fill=\"#add8e6\" stroke=\"#add8e6\" cx=\"150.3961\" cy=\"-31.8189\" rx=\"33.1043\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"150.3961\" y=\"-27.6189\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">Site 1<\/text>\n<\/g>\n<!-- b1&#45;&#45;s1 -->\n<g id=\"edge4\" class=\"edge\">\n<title>b1&#45;&#45;s1<\/title>\n<path fill=\"none\" stroke=\"#000000\" d=\"M126.6876,-85.9836C131.5692,-74.831 137.8362,-60.5134 142.7008,-49.3998\"/>\n<\/g>\n<!-- s2 -->\n<g id=\"node6\" class=\"node\">\n<title>s2<\/title>\n<ellipse fill=\"#add8e6\" stroke=\"#add8e6\" cx=\"53.6108\" cy=\"-151.1868\" rx=\"33.1043\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"53.6108\" y=\"-146.9868\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">Site 2<\/text>\n<\/g>\n<!-- b1&#45;&#45;s2 -->\n<g id=\"edge5\" class=\"edge\">\n<title>b1&#45;&#45;s2<\/title>\n<path fill=\"none\" stroke=\"#000000\" d=\"M97.1614,-119.5585C89.5937,-125.0545 81.1427,-131.1919 73.7138,-136.5872\"/>\n<\/g>\n<!-- s3 -->\n<g id=\"node7\" class=\"node\">\n<title>s3<\/title>\n<ellipse fill=\"#add8e6\" stroke=\"#add8e6\" cx=\"33.3016\" cy=\"-102.8594\" rx=\"33.1043\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"33.3016\" y=\"-98.6594\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">Site 3<\/text>\n<\/g>\n<!-- b1&#45;&#45;s3 -->\n<g id=\"edge6\" class=\"edge\">\n<title>b1&#45;&#45;s3<\/title>\n<path fill=\"none\" stroke=\"#000000\" d=\"M76.3529,-103.3169C73.1639,-103.283 69.9731,-103.2491 66.8513,-103.2159\"/>\n<\/g>\n<!-- s4 -->\n<g id=\"node8\" class=\"node\">\n<title>s4<\/title>\n<ellipse fill=\"#add8e6\" stroke=\"#add8e6\" cx=\"101.2268\" cy=\"-18\" rx=\"33.1043\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"101.2268\" y=\"-13.8\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">Site 4<\/text>\n<\/g>\n<!-- b1&#45;&#45;s4 -->\n<g id=\"edge7\" class=\"edge\">\n<title>b1&#45;&#45;s4<\/title>\n<path fill=\"none\" stroke=\"#000000\" d=\"M115.1541,-85.5796C112.1544,-71.0243 107.9682,-50.7116 104.97,-36.1632\"/>\n<\/g>\n<!-- s5 -->\n<g id=\"node9\" class=\"node\">\n<title>s5<\/title>\n<ellipse fill=\"#add8e6\" stroke=\"#add8e6\" cx=\"54.429\" cy=\"-50.2795\" rx=\"33.1043\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"54.429\" y=\"-46.0795\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">Site 5<\/text>\n<\/g>\n<!-- b1&#45;&#45;s5 -->\n<g id=\"edge8\" class=\"edge\">\n<title>b1&#45;&#45;s5<\/title>\n<path fill=\"none\" stroke=\"#000000\" d=\"M99.5584,-87.7204C91.1014,-80.7042 81.2271,-72.5121 72.8749,-65.5828\"/>\n<\/g>\n<!-- s6 -->\n<g id=\"node10\" class=\"node\">\n<title>s6<\/title>\n<ellipse fill=\"#add8e6\" stroke=\"#add8e6\" cx=\"322.9452\" cy=\"-47.1826\" rx=\"33.1043\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"322.9452\" y=\"-42.9826\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">Site 6<\/text>\n<\/g>\n<!-- b2&#45;&#45;s6 -->\n<g id=\"edge9\" class=\"edge\">\n<title>b2&#45;&#45;s6<\/title>\n<path fill=\"none\" stroke=\"#000000\" d=\"M291.9138,-106.1392C298.4874,-93.6499 307.2335,-77.0333 313.7648,-64.6246\"/>\n<\/g>\n<!-- s7 -->\n<g id=\"node11\" class=\"node\">\n<title>s7<\/title>\n<ellipse fill=\"#add8e6\" stroke=\"#add8e6\" cx=\"359.3168\" cy=\"-90.3389\" rx=\"33.1043\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"359.3168\" y=\"-86.1389\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">Site 7<\/text>\n<\/g>\n<!-- b2&#45;&#45;s7 -->\n<g id=\"edge10\" class=\"edge\">\n<title>b2&#45;&#45;s7<\/title>\n<path fill=\"none\" stroke=\"#000000\" d=\"M312.4457,-110.8542C319.3506,-107.8319 326.641,-104.641 333.3615,-101.6994\"/>\n<\/g>\n<!-- s8 -->\n<g id=\"node12\" class=\"node\">\n<title>s8<\/title>\n<ellipse fill=\"#add8e6\" stroke=\"#add8e6\" cx=\"271.5046\" cy=\"-45.0043\" rx=\"33.1043\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"271.5046\" y=\"-40.8043\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">Site 8<\/text>\n<\/g>\n<!-- b2&#45;&#45;s8 -->\n<g id=\"edge11\" class=\"edge\">\n<title>b2&#45;&#45;s8<\/title>\n<path fill=\"none\" stroke=\"#000000\" d=\"M279.9829,-105.634C278.1996,-92.8813 275.8312,-75.9442 274.0509,-63.2134\"/>\n<\/g>\n<!-- s9 -->\n<g id=\"node13\" class=\"node\">\n<title>s9<\/title>\n<ellipse fill=\"#add8e6\" stroke=\"#add8e6\" cx=\"365.7008\" cy=\"-146.4349\" rx=\"33.1043\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"365.7008\" y=\"-142.2349\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">Site 9<\/text>\n<\/g>\n<!-- b2&#45;&#45;s9 -->\n<g id=\"edge12\" class=\"edge\">\n<title>b2&#45;&#45;s9<\/title>\n<path fill=\"none\" stroke=\"#000000\" d=\"M318.7754,-133.7425C324.4653,-135.2815 330.291,-136.8572 335.8167,-138.3518\"/>\n<\/g>\n<!-- s10 -->\n<g id=\"node14\" class=\"node\">\n<title>s10<\/title>\n<ellipse fill=\"#add8e6\" stroke=\"#add8e6\" cx=\"332.7191\" cy=\"-186.5827\" rx=\"38.2605\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"332.7191\" y=\"-182.3827\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">Site 10<\/text>\n<\/g>\n<!-- b2&#45;&#45;s10 -->\n<g id=\"edge13\" class=\"edge\">\n<title>b2&#45;&#45;s10<\/title>\n<path fill=\"none\" stroke=\"#000000\" d=\"M296.2539,-141.0591C303.3338,-149.8978 311.9474,-160.651 319.0249,-169.4867\"/>\n<\/g>\n<!-- s11 -->\n<g id=\"node15\" class=\"node\">\n<title>s11<\/title>\n<ellipse fill=\"#add8e6\" stroke=\"#add8e6\" cx=\"173.0512\" cy=\"-337.7407\" rx=\"38.2605\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"173.0512\" y=\"-333.5407\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">Site 11<\/text>\n<\/g>\n<!-- b3&#45;&#45;s11 -->\n<g id=\"edge14\" class=\"edge\">\n<title>b3&#45;&#45;s11<\/title>\n<path fill=\"none\" stroke=\"#000000\" d=\"M180.8532,-272.6643C179.1819,-286.6047 176.8793,-305.8108 175.2091,-319.7422\"/>\n<\/g>\n<!-- s12 -->\n<g id=\"node16\" class=\"node\">\n<title>s12<\/title>\n<ellipse fill=\"#add8e6\" stroke=\"#add8e6\" cx=\"228.7152\" cy=\"-328.0044\" rx=\"38.2605\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"228.7152\" y=\"-323.8044\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">Site 12<\/text>\n<\/g>\n<!-- b3&#45;&#45;s12 -->\n<g id=\"edge15\" class=\"edge\">\n<title>b3&#45;&#45;s12<\/title>\n<path fill=\"none\" stroke=\"#000000\" d=\"M194.0779,-272.3924C201.3159,-284.0134 210.7269,-299.1232 217.9121,-310.6594\"/>\n<\/g>\n<!-- s13 -->\n<g id=\"node17\" class=\"node\">\n<title>s13<\/title>\n<ellipse fill=\"#add8e6\" stroke=\"#add8e6\" cx=\"257.0101\" cy=\"-284.7999\" rx=\"38.2605\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"257.0101\" y=\"-280.5999\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">Site 13<\/text>\n<\/g>\n<!-- b3&#45;&#45;s13 -->\n<g id=\"edge16\" class=\"edge\">\n<title>b3&#45;&#45;s13<\/title>\n<path fill=\"none\" stroke=\"#000000\" d=\"M213.967,-267.2504C218.5609,-269.1234 223.2826,-271.0485 227.8384,-272.906\"/>\n<\/g>\n<!-- s14 -->\n<g id=\"node18\" class=\"node\">\n<title>s14<\/title>\n<ellipse fill=\"#add8e6\" stroke=\"#add8e6\" cx=\"121.3562\" cy=\"-314.8527\" rx=\"38.2605\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"121.3562\" y=\"-310.6527\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">Site 14<\/text>\n<\/g>\n<!-- b3&#45;&#45;s14 -->\n<g id=\"edge17\" class=\"edge\">\n<title>b3&#45;&#45;s14<\/title>\n<path fill=\"none\" stroke=\"#000000\" d=\"M165.8398,-271.4059C157.1452,-279.8979 146.6349,-290.1632 138.0141,-298.583\"/>\n<\/g>\n<!-- s15 -->\n<g id=\"node19\" class=\"node\">\n<title>s15<\/title>\n<ellipse fill=\"#add8e6\" stroke=\"#add8e6\" cx=\"103.7063\" cy=\"-266.084\" rx=\"38.2605\" ry=\"18\"/>\n<text text-anchor=\"middle\" x=\"103.7063\" y=\"-261.884\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">Site 15<\/text>\n<\/g>\n<!-- b3&#45;&#45;s15 -->\n<g id=\"edge18\" class=\"edge\">\n<title>b3&#45;&#45;s15<\/title>\n<path fill=\"none\" stroke=\"#000000\" d=\"M142.4315,-260.4916C141.8217,-260.5796 141.2122,-260.6677 140.6036,-260.7555\"/>\n<\/g>\n<\/g>\n<\/svg>\n","config":[],"options":{"viewBox":true}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<svg width="672" height="480" viewbox="0.00 0.00 407.00 363.74" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 359.74)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-359.74 403,-359.74 403,4 -4,4"></polygon>
+<!-- a -->
+<g id="node1" class="node">
+<title>a</title>
+<ellipse fill="none" stroke="black" cx="194.88" cy="-160.75" rx="33.65" ry="18"></ellipse>
+<text text-anchor="middle" x="194.88" y="-156.55" font-family="Times,serif" font-size="14.00">Study</text>
+</g>
+<!-- b1 -->
+<g id="node2" class="node">
+<title>b1</title>
+<ellipse fill="pink" stroke="pink" cx="118.9" cy="-103.77" rx="42.32" ry="18"></ellipse>
+<text text-anchor="middle" x="118.9" y="-99.57" font-family="Times,serif" font-size="14.00">Beach 1</text>
+</g>
+<!-- a&#45;&#45;b1 -->
+<g id="edge1" class="edge">
+<title>a--b1</title>
+<path fill="none" stroke="black" d="M175.31,-146.07C164.5,-137.96 151.05,-127.88 140,-119.59"></path>
+</g>
+<!-- b2 -->
+<g id="node3" class="node">
+<title>b2</title>
+<ellipse fill="pink" stroke="pink" cx="282.54" cy="-123.94" rx="42.32" ry="18"></ellipse>
+<text text-anchor="middle" x="282.54" y="-119.74" font-family="Times,serif" font-size="14.00">Beach 2</text>
+</g>
+<!-- a&#45;&#45;b2 -->
+<g id="edge2" class="edge">
+<title>a--b2</title>
+<path fill="none" stroke="black" d="M221.66,-149.5C231.33,-145.45 242.31,-140.84 252.25,-136.66"></path>
+</g>
+<!-- b3 -->
+<g id="node4" class="node">
+<title>b3</title>
+<ellipse fill="pink" stroke="pink" cx="183.02" cy="-254.63" rx="42.32" ry="18"></ellipse>
+<text text-anchor="middle" x="183.02" y="-250.43" font-family="Times,serif" font-size="14.00">Beach 3</text>
+</g>
+<!-- a&#45;&#45;b3 -->
+<g id="edge3" class="edge">
+<title>a--b3</title>
+<path fill="none" stroke="black" d="M192.59,-178.85C190.49,-195.47 187.4,-219.98 185.3,-236.58"></path>
+</g>
+<!-- s1 -->
+<g id="node5" class="node">
+<title>s1</title>
+<ellipse fill="lightblue" stroke="lightblue" cx="150.4" cy="-31.82" rx="33.11" ry="18"></ellipse>
+<text text-anchor="middle" x="150.4" y="-27.62" font-family="Times,serif" font-size="14.00">Site 1</text>
+</g>
+<!-- b1&#45;&#45;s1 -->
+<g id="edge4" class="edge">
+<title>b1--s1</title>
+<path fill="none" stroke="black" d="M126.69,-85.98C131.57,-74.83 137.84,-60.51 142.7,-49.4"></path>
+</g>
+<!-- s2 -->
+<g id="node6" class="node">
+<title>s2</title>
+<ellipse fill="lightblue" stroke="lightblue" cx="53.61" cy="-151.19" rx="33.11" ry="18"></ellipse>
+<text text-anchor="middle" x="53.61" y="-146.99" font-family="Times,serif" font-size="14.00">Site 2</text>
+</g>
+<!-- b1&#45;&#45;s2 -->
+<g id="edge5" class="edge">
+<title>b1--s2</title>
+<path fill="none" stroke="black" d="M97.16,-119.56C89.59,-125.05 81.14,-131.19 73.71,-136.59"></path>
+</g>
+<!-- s3 -->
+<g id="node7" class="node">
+<title>s3</title>
+<ellipse fill="lightblue" stroke="lightblue" cx="33.3" cy="-102.86" rx="33.11" ry="18"></ellipse>
+<text text-anchor="middle" x="33.3" y="-98.66" font-family="Times,serif" font-size="14.00">Site 3</text>
+</g>
+<!-- b1&#45;&#45;s3 -->
+<g id="edge6" class="edge">
+<title>b1--s3</title>
+<path fill="none" stroke="black" d="M76.35,-103.32C73.16,-103.28 69.97,-103.25 66.85,-103.22"></path>
+</g>
+<!-- s4 -->
+<g id="node8" class="node">
+<title>s4</title>
+<ellipse fill="lightblue" stroke="lightblue" cx="101.23" cy="-18" rx="33.11" ry="18"></ellipse>
+<text text-anchor="middle" x="101.23" y="-13.8" font-family="Times,serif" font-size="14.00">Site 4</text>
+</g>
+<!-- b1&#45;&#45;s4 -->
+<g id="edge7" class="edge">
+<title>b1--s4</title>
+<path fill="none" stroke="black" d="M115.15,-85.58C112.16,-71.02 107.97,-50.71 104.97,-36.16"></path>
+</g>
+<!-- s5 -->
+<g id="node9" class="node">
+<title>s5</title>
+<ellipse fill="lightblue" stroke="lightblue" cx="54.43" cy="-50.28" rx="33.11" ry="18"></ellipse>
+<text text-anchor="middle" x="54.43" y="-46.08" font-family="Times,serif" font-size="14.00">Site 5</text>
+</g>
+<!-- b1&#45;&#45;s5 -->
+<g id="edge8" class="edge">
+<title>b1--s5</title>
+<path fill="none" stroke="black" d="M99.56,-87.72C91.1,-80.7 81.23,-72.51 72.88,-65.58"></path>
+</g>
+<!-- s6 -->
+<g id="node10" class="node">
+<title>s6</title>
+<ellipse fill="lightblue" stroke="lightblue" cx="322.95" cy="-47.18" rx="33.11" ry="18"></ellipse>
+<text text-anchor="middle" x="322.95" y="-42.98" font-family="Times,serif" font-size="14.00">Site 6</text>
+</g>
+<!-- b2&#45;&#45;s6 -->
+<g id="edge9" class="edge">
+<title>b2--s6</title>
+<path fill="none" stroke="black" d="M291.91,-106.14C298.49,-93.65 307.23,-77.03 313.77,-64.62"></path>
+</g>
+<!-- s7 -->
+<g id="node11" class="node">
+<title>s7</title>
+<ellipse fill="lightblue" stroke="lightblue" cx="359.32" cy="-90.34" rx="33.11" ry="18"></ellipse>
+<text text-anchor="middle" x="359.32" y="-86.14" font-family="Times,serif" font-size="14.00">Site 7</text>
+</g>
+<!-- b2&#45;&#45;s7 -->
+<g id="edge10" class="edge">
+<title>b2--s7</title>
+<path fill="none" stroke="black" d="M312.45,-110.85C319.35,-107.83 326.64,-104.64 333.36,-101.7"></path>
+</g>
+<!-- s8 -->
+<g id="node12" class="node">
+<title>s8</title>
+<ellipse fill="lightblue" stroke="lightblue" cx="271.51" cy="-45" rx="33.11" ry="18"></ellipse>
+<text text-anchor="middle" x="271.51" y="-40.8" font-family="Times,serif" font-size="14.00">Site 8</text>
+</g>
+<!-- b2&#45;&#45;s8 -->
+<g id="edge11" class="edge">
+<title>b2--s8</title>
+<path fill="none" stroke="black" d="M279.98,-105.63C278.2,-92.88 275.83,-75.94 274.05,-63.21"></path>
+</g>
+<!-- s9 -->
+<g id="node13" class="node">
+<title>s9</title>
+<ellipse fill="lightblue" stroke="lightblue" cx="365.7" cy="-146.43" rx="33.11" ry="18"></ellipse>
+<text text-anchor="middle" x="365.7" y="-142.23" font-family="Times,serif" font-size="14.00">Site 9</text>
+</g>
+<!-- b2&#45;&#45;s9 -->
+<g id="edge12" class="edge">
+<title>b2--s9</title>
+<path fill="none" stroke="black" d="M318.78,-133.74C324.47,-135.28 330.29,-136.86 335.82,-138.35"></path>
+</g>
+<!-- s10 -->
+<g id="node14" class="node">
+<title>s10</title>
+<ellipse fill="lightblue" stroke="lightblue" cx="332.72" cy="-186.58" rx="38.26" ry="18"></ellipse>
+<text text-anchor="middle" x="332.72" y="-182.38" font-family="Times,serif" font-size="14.00">Site 10</text>
+</g>
+<!-- b2&#45;&#45;s10 -->
+<g id="edge13" class="edge">
+<title>b2--s10</title>
+<path fill="none" stroke="black" d="M296.25,-141.06C303.33,-149.9 311.95,-160.65 319.03,-169.49"></path>
+</g>
+<!-- s11 -->
+<g id="node15" class="node">
+<title>s11</title>
+<ellipse fill="lightblue" stroke="lightblue" cx="173.05" cy="-337.74" rx="38.26" ry="18"></ellipse>
+<text text-anchor="middle" x="173.05" y="-333.54" font-family="Times,serif" font-size="14.00">Site 11</text>
+</g>
+<!-- b3&#45;&#45;s11 -->
+<g id="edge14" class="edge">
+<title>b3--s11</title>
+<path fill="none" stroke="black" d="M180.85,-272.66C179.18,-286.6 176.88,-305.81 175.21,-319.74"></path>
+</g>
+<!-- s12 -->
+<g id="node16" class="node">
+<title>s12</title>
+<ellipse fill="lightblue" stroke="lightblue" cx="228.72" cy="-328" rx="38.26" ry="18"></ellipse>
+<text text-anchor="middle" x="228.72" y="-323.8" font-family="Times,serif" font-size="14.00">Site 12</text>
+</g>
+<!-- b3&#45;&#45;s12 -->
+<g id="edge15" class="edge">
+<title>b3--s12</title>
+<path fill="none" stroke="black" d="M194.08,-272.39C201.32,-284.01 210.73,-299.12 217.91,-310.66"></path>
+</g>
+<!-- s13 -->
+<g id="node17" class="node">
+<title>s13</title>
+<ellipse fill="lightblue" stroke="lightblue" cx="257.01" cy="-284.8" rx="38.26" ry="18"></ellipse>
+<text text-anchor="middle" x="257.01" y="-280.6" font-family="Times,serif" font-size="14.00">Site 13</text>
+</g>
+<!-- b3&#45;&#45;s13 -->
+<g id="edge16" class="edge">
+<title>b3--s13</title>
+<path fill="none" stroke="black" d="M213.97,-267.25C218.56,-269.12 223.28,-271.05 227.84,-272.91"></path>
+</g>
+<!-- s14 -->
+<g id="node18" class="node">
+<title>s14</title>
+<ellipse fill="lightblue" stroke="lightblue" cx="121.36" cy="-314.85" rx="38.26" ry="18"></ellipse>
+<text text-anchor="middle" x="121.36" y="-310.65" font-family="Times,serif" font-size="14.00">Site 14</text>
+</g>
+<!-- b3&#45;&#45;s14 -->
+<g id="edge17" class="edge">
+<title>b3--s14</title>
+<path fill="none" stroke="black" d="M165.84,-271.41C157.15,-279.9 146.64,-290.16 138.01,-298.58"></path>
+</g>
+<!-- s15 -->
+<g id="node19" class="node">
+<title>s15</title>
+<ellipse fill="lightblue" stroke="lightblue" cx="103.71" cy="-266.08" rx="38.26" ry="18"></ellipse>
+<text text-anchor="middle" x="103.71" y="-261.88" font-family="Times,serif" font-size="14.00">Site 15</text>
+</g>
+<!-- b3&#45;&#45;s15 -->
+<g id="edge18" class="edge">
+<title>b3--s15</title>
+<path fill="none" stroke="black" d="M142.43,-260.49C141.82,-260.58 141.21,-260.67 140.6,-260.76"></path>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="-8 -8 1676.984375 315" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="672" id="mermaid-figure-1" height="480">
+<style>#mermaid-figure-1{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#000000;}#mermaid-figure-1 .error-icon{fill:#552222;}#mermaid-figure-1 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-1 .edge-thickness-normal{stroke-width:2px;}#mermaid-figure-1 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-1 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-1 .marker{fill:#000000;stroke:#000000;}#mermaid-figure-1 .marker.cross{stroke:#000000;}#mermaid-figure-1 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-figure-1 .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#000000;}#mermaid-figure-1 .cluster-label text{fill:#333;}#mermaid-figure-1 .cluster-label span,#mermaid-figure-1 p{color:#333;}#mermaid-figure-1 .label text,#mermaid-figure-1 span,#mermaid-figure-1 p{fill:#000000;color:#000000;}#mermaid-figure-1 .node rect,#mermaid-figure-1 .node circle,#mermaid-figure-1 .node ellipse,#mermaid-figure-1 .node polygon,#mermaid-figure-1 .node path{fill:#cde498;stroke:#13540c;stroke-width:1px;}#mermaid-figure-1 .flowchart-label text{text-anchor:middle;}#mermaid-figure-1 .node .label{text-align:center;}#mermaid-figure-1 .node.clickable{cursor:pointer;}#mermaid-figure-1 .arrowheadPath{fill:green;}#mermaid-figure-1 .edgePath .path{stroke:#000000;stroke-width:2.0px;}#mermaid-figure-1 .flowchart-link{stroke:#000000;fill:none;}#mermaid-figure-1 .edgeLabel{background-color:#e8e8e8;text-align:center;}#mermaid-figure-1 .edgeLabel rect{opacity:0.5;background-color:#e8e8e8;fill:#e8e8e8;}#mermaid-figure-1 .cluster rect{fill:#cdffb2;stroke:#6eaa49;stroke-width:1px;}#mermaid-figure-1 .cluster text{fill:#333;}#mermaid-figure-1 .cluster span,#mermaid-figure-1 p{color:#333;}#mermaid-figure-1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(78.1578947368, 58.4615384615%, 84.5098039216%);border:1px solid #6eaa49;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-1 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#000000;}#mermaid-figure-1 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+<g><marker orient="auto" markerheight="12" markerwidth="12" markerunits="userSpaceOnUse" refy="5" refx="10" viewbox="0 0 10 10" class="marker flowchart" id="flowchart-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="12" markerwidth="12" markerunits="userSpaceOnUse" refy="5" refx="0" viewbox="0 0 10 10" class="marker flowchart" id="flowchart-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart" id="flowchart-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart" id="flowchart-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart" id="flowchart-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart" id="flowchart-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"><g id="NAP" class="cluster default flowchart-label"><rect height="83" width="1660.984375" y="216" x="0" ry="0" rx="0" style="fill:#f9f;stroke:#333;stroke-width:4px;"></rect><g transform="translate(814.0390625, 216)" class="cluster-label"><foreignobject height="18" width="32.90625">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">NAP</span>
+</div>
+</foreignobject></g></g><g id="subGraph0" class="cluster default flowchart-label"><rect height="83" width="1595.06640625" y="83" x="22.9609375" ry="0" rx="0" style=""></rect><g transform="translate(786.697265625, 83)" class="cluster-label"><foreignobject height="18" width="67.59375">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">Exposure</span>
+</div>
+</foreignobject></g></g></g><g class="edgePaths"><path style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-a LE-b1" id="L-a-b1-0" d="M776.453125,18.69100899837734L692.8450520833334,25.242507498647786C609.2369791666666,31.794005998918227,442.0208333333333,44.89700299945912,358.4127604166667,55.615168166396224C274.8046875,66.33333333333333,274.8046875,74.66666666666667,274.8046875,83C274.8046875,91.33333333333333,274.8046875,99.66666666666667,274.8046875,103.83333333333333L274.8046875,108"></path><path style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-a LE-b2" id="L-a-b2-0" d="M804.4140625,33L804.4140625,37.166666666666664C804.4140625,41.333333333333336,804.4140625,49.666666666666664,804.4140625,58C804.4140625,66.33333333333333,804.4140625,74.66666666666667,804.4140625,83C804.4140625,91.33333333333333,804.4140625,99.66666666666667,804.4140625,103.83333333333333L804.4140625,108"></path><path style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-a LE-b3" id="L-a-b3-0" d="M832.375,18.573812150067717L920.9713541666666,25.14484345838976C1009.5677083333334,31.71587476671181,1186.7604166666667,44.8579373833559,1275.3567708333333,55.59563535834462C1363.953125,66.33333333333333,1363.953125,74.66666666666667,1363.953125,83C1363.953125,91.33333333333333,1363.953125,99.66666666666667,1363.953125,103.83333333333333L1363.953125,108"></path><path style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-b1 LE-s1" id="L-b1-s1-0" d="M237.9453125,131.72071839504352L208.78125,137.43393199586959C179.6171875,143.14714559669568,121.2890625,154.57357279834784,92.125,164.4534530658406C62.9609375,174.33333333333334,62.9609375,182.66666666666666,62.9609375,191C62.9609375,199.33333333333334,62.9609375,207.66666666666666,62.9609375,216C62.9609375,224.33333333333334,62.9609375,232.66666666666666,62.9609375,236.83333333333334L62.9609375,241"></path><path style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-b1 LE-s2" id="L-b1-s2-0" d="M237.9453125,138.94143679008704L226.43489583333334,143.4511973250725C214.92447916666666,147.96095786005802,191.90364583333334,156.98047893002902,180.39322916666666,165.65690613168115C168.8828125,174.33333333333334,168.8828125,182.66666666666666,168.8828125,191C168.8828125,199.33333333333334,168.8828125,207.66666666666666,168.8828125,216C168.8828125,224.33333333333334,168.8828125,232.66666666666666,168.8828125,236.83333333333334L168.8828125,241"></path><path style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-b1 LE-s3" id="L-b1-s3-0" d="M274.8046875,141L274.8046875,145.16666666666666C274.8046875,149.33333333333334,274.8046875,157.66666666666666,274.8046875,166C274.8046875,174.33333333333334,274.8046875,182.66666666666666,274.8046875,191C274.8046875,199.33333333333334,274.8046875,207.66666666666666,274.8046875,216C274.8046875,224.33333333333334,274.8046875,232.66666666666666,274.8046875,236.83333333333334L274.8046875,241"></path><path style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-b1 LE-s4" id="L-b1-s4-0" d="M311.6640625,138.94143679008704L323.1744791666667,143.4511973250725C334.6848958333333,147.96095786005802,357.7057291666667,156.98047893002902,369.2161458333333,165.65690613168115C380.7265625,174.33333333333334,380.7265625,182.66666666666666,380.7265625,191C380.7265625,199.33333333333334,380.7265625,207.66666666666666,380.7265625,216C380.7265625,224.33333333333334,380.7265625,232.66666666666666,380.7265625,236.83333333333334L380.7265625,241"></path><path style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-b1 LE-s5" id="L-b1-s5-0" d="M311.6640625,131.72071839504352L340.828125,137.43393199586959C369.9921875,143.14714559669568,428.3203125,154.57357279834784,457.484375,164.4534530658406C486.6484375,174.33333333333334,486.6484375,182.66666666666666,486.6484375,191C486.6484375,199.33333333333334,486.6484375,207.66666666666666,486.6484375,216C486.6484375,224.33333333333334,486.6484375,232.66666666666666,486.6484375,236.83333333333334L486.6484375,241"></path><path style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-b2 LE-s6" id="L-b2-s6-0" d="M767.5546875,131.72071839504352L738.390625,137.43393199586959C709.2265625,143.14714559669568,650.8984375,154.57357279834784,621.734375,164.4534530658406C592.5703125,174.33333333333334,592.5703125,182.66666666666666,592.5703125,191C592.5703125,199.33333333333334,592.5703125,207.66666666666666,592.5703125,216C592.5703125,224.33333333333334,592.5703125,232.66666666666666,592.5703125,236.83333333333334L592.5703125,241"></path><path style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-b2 LE-s7" id="L-b2-s7-0" d="M767.5546875,138.94143679008704L756.0442708333334,143.4511973250725C744.5338541666666,147.96095786005802,721.5130208333334,156.98047893002902,710.0026041666666,165.65690613168115C698.4921875,174.33333333333334,698.4921875,182.66666666666666,698.4921875,191C698.4921875,199.33333333333334,698.4921875,207.66666666666666,698.4921875,216C698.4921875,224.33333333333334,698.4921875,232.66666666666666,698.4921875,236.83333333333334L698.4921875,241"></path><path style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-b2 LE-s8" id="L-b2-s8-0" d="M804.4140625,141L804.4140625,145.16666666666666C804.4140625,149.33333333333334,804.4140625,157.66666666666666,804.4140625,166C804.4140625,174.33333333333334,804.4140625,182.66666666666666,804.4140625,191C804.4140625,199.33333333333334,804.4140625,207.66666666666666,804.4140625,216C804.4140625,224.33333333333334,804.4140625,232.66666666666666,804.4140625,236.83333333333334L804.4140625,241"></path><path style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-b2 LE-s9" id="L-b2-s9-0" d="M841.2734375,138.94143679008704L852.7838541666666,143.4511973250725C864.2942708333334,147.96095786005802,887.3151041666666,156.98047893002902,898.8255208333334,165.65690613168115C910.3359375,174.33333333333334,910.3359375,182.66666666666666,910.3359375,191C910.3359375,199.33333333333334,910.3359375,207.66666666666666,910.3359375,216C910.3359375,224.33333333333334,910.3359375,232.66666666666666,910.3359375,236.83333333333334L910.3359375,241"></path><path style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-b2 LE-s10" id="L-b2-s10-0" d="M841.2734375,131.5723135271808L871.1783854166666,137.31026127265065C901.0833333333334,143.04820901812053,960.8932291666666,154.52410450906027,990.7981770833334,164.4287189211968C1020.703125,174.33333333333334,1020.703125,182.66666666666666,1020.703125,191C1020.703125,199.33333333333334,1020.703125,207.66666666666666,1020.703125,216C1020.703125,224.33333333333334,1020.703125,232.66666666666666,1020.703125,236.83333333333334L1020.703125,241"></path><path style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-b3 LE-s11" id="L-b3-s11-0" d="M1327.09375,131.17884431709646L1295.0651041666667,136.98237026424707C1263.0364583333333,142.78589621139764,1198.9791666666667,154.39294810569882,1166.9505208333333,164.36314071951608C1134.921875,174.33333333333334,1134.921875,182.66666666666666,1134.921875,191C1134.921875,199.33333333333334,1134.921875,207.66666666666666,1134.921875,216C1134.921875,224.33333333333334,1134.921875,232.66666666666666,1134.921875,236.83333333333334L1134.921875,241"></path><path style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-b3 LE-s12" id="L-b3-s12-0" d="M1327.09375,137.823149156233L1314.1015625,142.5192909635275C1301.109375,147.215432770822,1275.125,156.607716385411,1262.1328125,165.47052485937218C1249.140625,174.33333333333334,1249.140625,182.66666666666666,1249.140625,191C1249.140625,199.33333333333334,1249.140625,207.66666666666666,1249.140625,216C1249.140625,224.33333333333334,1249.140625,232.66666666666666,1249.140625,236.83333333333334L1249.140625,241"></path><path style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-b3 LE-s13" id="L-b3-s13-0" d="M1363.953125,141L1363.953125,145.16666666666666C1363.953125,149.33333333333334,1363.953125,157.66666666666666,1363.953125,166C1363.953125,174.33333333333334,1363.953125,182.66666666666666,1363.953125,191C1363.953125,199.33333333333334,1363.953125,207.66666666666666,1363.953125,216C1363.953125,224.33333333333334,1363.953125,232.66666666666666,1363.953125,236.83333333333334L1363.953125,241"></path><path style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-b3 LE-s14" id="L-b3-s14-0" d="M1400.8125,137.823149156233L1413.8046875,142.5192909635275C1426.796875,147.215432770822,1452.78125,156.607716385411,1465.7734375,165.47052485937218C1478.765625,174.33333333333334,1478.765625,182.66666666666666,1478.765625,191C1478.765625,199.33333333333334,1478.765625,207.66666666666666,1478.765625,216C1478.765625,224.33333333333334,1478.765625,232.66666666666666,1478.765625,236.83333333333334L1478.765625,241"></path><path style="fill:none;" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-b3 LE-s15" id="L-b3-s15-0" d="M1400.8125,131.1615745781165L1432.9401041666667,136.9679788150971C1465.0677083333333,142.77438305207767,1529.3229166666667,154.38719152603883,1561.4505208333333,164.3602624296861C1593.578125,174.33333333333334,1593.578125,182.66666666666666,1593.578125,191C1593.578125,199.33333333333334,1593.578125,207.66666666666666,1593.578125,216C1593.578125,224.33333333333334,1593.578125,232.66666666666666,1593.578125,236.83333333333334L1593.578125,241"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="edgeLabel"></span>
+</div>
+</foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="edgeLabel"></span>
+</div>
+</foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="edgeLabel"></span>
+</div>
+</foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="edgeLabel"></span>
+</div>
+</foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="edgeLabel"></span>
+</div>
+</foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="edgeLabel"></span>
+</div>
+</foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="edgeLabel"></span>
+</div>
+</foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="edgeLabel"></span>
+</div>
+</foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="edgeLabel"></span>
+</div>
+</foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="edgeLabel"></span>
+</div>
+</foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="edgeLabel"></span>
+</div>
+</foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="edgeLabel"></span>
+</div>
+</foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="edgeLabel"></span>
+</div>
+</foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="edgeLabel"></span>
+</div>
+</foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="edgeLabel"></span>
+</div>
+</foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="edgeLabel"></span>
+</div>
+</foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="edgeLabel"></span>
+</div>
+</foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="edgeLabel"></span>
+</div>
+</foreignobject></g></g></g><g class="nodes"><g transform="translate(62.9609375, 257.5)" id="flowchart-s1-89" class="node default default flowchart-label"><rect height="33" width="55.921875" y="-16.5" x="-27.9609375" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(-20.4609375, -9)" style="" class="label"><rect></rect><foreignobject height="18" width="40.921875">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">Site 1</span>
+</div>
+</foreignobject></g></g><g transform="translate(168.8828125, 257.5)" id="flowchart-s2-90" class="node default default flowchart-label"><rect height="33" width="55.921875" y="-16.5" x="-27.9609375" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(-20.4609375, -9)" style="" class="label"><rect></rect><foreignobject height="18" width="40.921875">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">Site 2</span>
+</div>
+</foreignobject></g></g><g transform="translate(274.8046875, 257.5)" id="flowchart-s3-91" class="node default default flowchart-label"><rect height="33" width="55.921875" y="-16.5" x="-27.9609375" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(-20.4609375, -9)" style="" class="label"><rect></rect><foreignobject height="18" width="40.921875">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">Site 3</span>
+</div>
+</foreignobject></g></g><g transform="translate(380.7265625, 257.5)" id="flowchart-s4-92" class="node default default flowchart-label"><rect height="33" width="55.921875" y="-16.5" x="-27.9609375" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(-20.4609375, -9)" style="" class="label"><rect></rect><foreignobject height="18" width="40.921875">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">Site 4</span>
+</div>
+</foreignobject></g></g><g transform="translate(486.6484375, 257.5)" id="flowchart-s5-93" class="node default default flowchart-label"><rect height="33" width="55.921875" y="-16.5" x="-27.9609375" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(-20.4609375, -9)" style="" class="label"><rect></rect><foreignobject height="18" width="40.921875">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">Site 5</span>
+</div>
+</foreignobject></g></g><g transform="translate(592.5703125, 257.5)" id="flowchart-s6-94" class="node default default flowchart-label"><rect height="33" width="55.921875" y="-16.5" x="-27.9609375" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(-20.4609375, -9)" style="" class="label"><rect></rect><foreignobject height="18" width="40.921875">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">Site 6</span>
+</div>
+</foreignobject></g></g><g transform="translate(698.4921875, 257.5)" id="flowchart-s7-95" class="node default default flowchart-label"><rect height="33" width="55.921875" y="-16.5" x="-27.9609375" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(-20.4609375, -9)" style="" class="label"><rect></rect><foreignobject height="18" width="40.921875">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">Site 7</span>
+</div>
+</foreignobject></g></g><g transform="translate(804.4140625, 257.5)" id="flowchart-s8-96" class="node default default flowchart-label"><rect height="33" width="55.921875" y="-16.5" x="-27.9609375" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(-20.4609375, -9)" style="" class="label"><rect></rect><foreignobject height="18" width="40.921875">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">Site 8</span>
+</div>
+</foreignobject></g></g><g transform="translate(910.3359375, 257.5)" id="flowchart-s9-97" class="node default default flowchart-label"><rect height="33" width="55.921875" y="-16.5" x="-27.9609375" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(-20.4609375, -9)" style="" class="label"><rect></rect><foreignobject height="18" width="40.921875">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">Site 9</span>
+</div>
+</foreignobject></g></g><g transform="translate(1020.703125, 257.5)" id="flowchart-s10-98" class="node default default flowchart-label"><rect height="33" width="64.8125" y="-16.5" x="-32.40625" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(-24.90625, -9)" style="" class="label"><rect></rect><foreignobject height="18" width="49.8125">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">Site 10</span>
+</div>
+</foreignobject></g></g><g transform="translate(1134.921875, 257.5)" id="flowchart-s11-99" class="node default default flowchart-label"><rect height="33" width="63.625" y="-16.5" x="-31.8125" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(-24.3125, -9)" style="" class="label"><rect></rect><foreignobject height="18" width="48.625">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">Site 11</span>
+</div>
+</foreignobject></g></g><g transform="translate(1249.140625, 257.5)" id="flowchart-s12-100" class="node default default flowchart-label"><rect height="33" width="64.8125" y="-16.5" x="-32.40625" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(-24.90625, -9)" style="" class="label"><rect></rect><foreignobject height="18" width="49.8125">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">Site 12</span>
+</div>
+</foreignobject></g></g><g transform="translate(1363.953125, 257.5)" id="flowchart-s13-101" class="node default default flowchart-label"><rect height="33" width="64.8125" y="-16.5" x="-32.40625" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(-24.90625, -9)" style="" class="label"><rect></rect><foreignobject height="18" width="49.8125">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">Site 13</span>
+</div>
+</foreignobject></g></g><g transform="translate(1478.765625, 257.5)" id="flowchart-s14-102" class="node default default flowchart-label"><rect height="33" width="64.8125" y="-16.5" x="-32.40625" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(-24.90625, -9)" style="" class="label"><rect></rect><foreignobject height="18" width="49.8125">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">Site 14</span>
+</div>
+</foreignobject></g></g><g transform="translate(1593.578125, 257.5)" id="flowchart-s15-103" class="node default default flowchart-label"><rect height="33" width="64.8125" y="-16.5" x="-32.40625" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(-24.90625, -9)" style="" class="label"><rect></rect><foreignobject height="18" width="49.8125">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">Site 15</span>
+</div>
+</foreignobject></g></g><g transform="translate(274.8046875, 124.5)" id="flowchart-b1-83" class="node default default flowchart-label"><rect height="33" width="73.71875" y="-16.5" x="-36.859375" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(-29.359375, -9)" style="" class="label"><rect></rect><foreignobject height="18" width="58.71875">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">Beach 1</span>
+</div>
+</foreignobject></g></g><g transform="translate(804.4140625, 124.5)" id="flowchart-b2-84" class="node default default flowchart-label"><rect height="33" width="73.71875" y="-16.5" x="-36.859375" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(-29.359375, -9)" style="" class="label"><rect></rect><foreignobject height="18" width="58.71875">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">Beach 2</span>
+</div>
+</foreignobject></g></g><g transform="translate(1363.953125, 124.5)" id="flowchart-b3-85" class="node default default flowchart-label"><rect height="33" width="73.71875" y="-16.5" x="-36.859375" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(-29.359375, -9)" style="" class="label"><rect></rect><foreignobject height="18" width="58.71875">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">Beach 3</span>
+</div>
+</foreignobject></g></g><g transform="translate(804.4140625, 16.5)" id="flowchart-a-82" class="node default default flowchart-label"><rect height="33" width="55.921875" y="-16.5" x="-27.9609375" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(-20.4609375, -9)" style="" class="label"><rect></rect><foreignobject height="18" width="40.921875">
+<div style="display: inline-block; white-space: nowrap;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">Study</span>
+</div>
+</foreignobject></g></g></g></g></g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DiagrammeR</span>(<span class="st">"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="st">flowchart TB</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="st">  a(Study) --- b1(Beach 1) &amp; b2(Beach 2) &amp; b3(Beach 3)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="st">    subgraph Exposure</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="st">    b1</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="st">    b2</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="st">    b3</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="st">  end</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="st">  subgraph NAP[NAP]</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="st">    s1(Site 1)</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="st">    s2(Site 2)</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="st">    s3(Site 3)</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="st">    s4(Site 4)</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="st">    s5(Site 5)</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="st">    s6(Site 6)</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="st">    s7(Site 7)</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="st">    s8(Site 8)</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="st">    s9(Site 9)</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="st">    s10(Site 10)</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="st">    s11(Site 11)</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="st">    s12(Site 12)</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="st">    s13(Site 13)</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="st">    s14(Site 14)</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="st">    s15(Site 15)</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="st">  end</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="st">  b1 --- s1 &amp; s2 &amp; s3 &amp; s4 &amp; s5</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="st">  b2 --- s6 &amp; s7 &amp; s8 &amp; s9 &amp; s10</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="st">  b3 --- s11 &amp; s12 &amp; s13 &amp; s14 &amp; s15</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="st">  style NAP fill:#f9f,stroke:#333,stroke-width:4px</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-2afbdbed39f2a101aaa8" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-2afbdbed39f2a101aaa8">{"x":{"diagram":"\nflowchart TB\n  a(Study) --- b1(Beach 1) & b2(Beach 2) & b3(Beach 3)\n    subgraph Exposure\n    b1\n    b2\n    b3\n  end\n  subgraph NAP[NAP]\n    s1(Site 1)\n    s2(Site 2)\n    s3(Site 3)\n    s4(Site 4)\n    s5(Site 5)\n    s6(Site 6)\n    s7(Site 7)\n    s8(Site 8)\n    s9(Site 9)\n    s10(Site 10)\n    s11(Site 11)\n    s12(Site 12)\n    s13(Site 13)\n    s14(Site 14)\n    s15(Site 15)\n  end\n  b1 --- s1 & s2 & s3 & s4 & s5\n  b2 --- s6 & s7 & s8 & s9 & s10\n  b3 --- s11 & s12 & s13 & s14 & s15\n  style NAP fill:#f9f,stroke:#333,stroke-width:4px\n"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># export_svg(svg)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
