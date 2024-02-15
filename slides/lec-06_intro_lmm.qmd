@@ -21,6 +21,9 @@ format:
     number-sections: true
     format-links: false
     css: assets/css/notes.css
+    number-depth: 2
+    comments:
+      hypothesis: true
 editor:
   render-on-save: false
 ---
@@ -80,7 +83,7 @@ Give examples and discuss
 * Allows for missing data. Does not drop entire subject if missing one
 observation for that subject.
 
-* Helps limit problem of overfitting many different parameters
+* Helps limit problem of over-fitting many different parameters
 
 * Avoids the need to average within a group which underestimates the true variation
 
@@ -96,11 +99,13 @@ $$
 Y_i = \underbrace{ a + \sum_k^n b_k X_{k_i}}_\text{fixed} + \underbrace{\epsilon_i}_\text{random}
 $$
 
+$$\epsilon_i \sim N(0, {\sigma_{\epsilon}}^2)$$
+
 - Fixed part:
-    - descrtibe deterministic processes.
+    - describe deterministic processes.
 
 - Random part:
-    + describe stochastic processes.
+    - describe stochastic processes.
 
 ::: {.content-visible when-format="revealjs"}
 . . .
@@ -108,7 +113,7 @@ $$
 
 ### Problems when
 
-1. Observations are not independent (**Pseudoreplication**)
+1. Observations are not independent (**Pseudo-replication**)
 1. Heterogeneous variance
 
 
@@ -116,7 +121,13 @@ $$
 ## Extending the linear model
 
 $$
-Y_{ij} = \underbrace{a + \sum_k^n b_k X_{k_{ij}}}\text{fixed} + \underbrace{\epsilon_{ij} + a_j}_\text{random}
+Y_{ij} = \underbrace{a + \sum_k^n b_k X_{k_{ij}}}_\text{fixed} + \underbrace{\epsilon_{ij} + a_j}_\text{random}
+$$
+
+$$\epsilon_{ij} \sim N(0, {\sigma_{\epsilon}}^2)$$
+
+$$
+a_j \sim N(0, {\sigma_{a}}^2)
 $$
 
 - Fixed part:
@@ -160,15 +171,6 @@ head(rikz)
 
 \
 
-$$Richness = a + b_1\ NAP + b_2\ Exposure + \epsilon$$
-
-::: {.content-visible when-format="revealjs"}
-. . .
-:::
- Adding index for easier explanation, `i` -> observation
- 
- \
-
 $$Richness_{i} = a + b_1\ NAP_{i} + b_2\ Exposure_{i} + \epsilon_{i}$$
 
 ::: {.content-visible when-format="revealjs"}
@@ -180,7 +182,7 @@ $$Richness_{i} = a + b_1\ NAP_{i} + b_2\ Exposure_{i} + \epsilon_{i}$$
 ### What are the problems? 
 
 ::: {.notes}
-**Pseudoreplication**
+**Pseudo-replication**
 * Exposure varies only across beaches not within
 * Sites within a beach are not independent
 :::
@@ -278,6 +280,10 @@ $$
 Richness_{ij} = \underbrace{a + b_1{NAP_{ij}} + b_2{Exposure_j}}_\text{fixed} + \underbrace{a_j + \epsilon_{ij}}_\text{random}
 $$
 
+
+$$a_j \sim N(0, {\sigma_{a}}^2)$$
+$$\epsilon_{ij} \sim N(0, {\sigma_{\epsilon}}^2)$$
+
 ### :smiley: 5 parameters estimated :smiley: {style="text-align: center;"}
 
 
@@ -353,9 +359,9 @@ $$
 \epsilon_{ij} \sim N(0, `r paste(round(summary(mod.mix)$sigma^2, 2))`)
 $$
 
-## BLUPs ($a_j$) are shrinked
+## BLUPs ($a_j$) are shrunk
 
-- Estimates for each groups are constrained (shrinked) too avoid extreme values.
+- Estimates for each groups are constrained (shrunk) too avoid extreme values.
 
 ```{r include = TRUE, echo = FALSE}
 mod.fix <- with(rikz, lm(Richness ~ NAP + as.factor(Beach)))
@@ -375,37 +381,37 @@ ggplot(dat, aes(x = fix, y = mix)) +
 
 ## Modelling the variance
 
-- We estimated the varaince explained by the model
+- We estimated the variance explained by the model
 
 ${\sigma_{\hat{y}}}^2$.
 
 - We decomposed teh residual variance in 2 :
-    + ${\sigma_{a_j}}^2$ : across beach variance
-    + ${\sigma_{\epsilon}}^2$ Variation not associeated to beaches (*i.e.* within-beach variance)
+    + ${\sigma_a}^2$ : across beach variance
+    + ${\sigma_{\epsilon}}^2$ Variation not associated to beaches (*i.e.* within-beach variance)
 
 ## Estimating repeatability
 
 - **Repeatability** Proportion of (residual) variance associated to among levels of a random effect.
 
-- Here variation associted to among beach differences
+- Here variation associated to among beach differences
 
 $$
 Richness_{ij} = \underbrace{a + b_1{NAP_{ij}} + b_2{Exposure_j}}_\text{fixed} + \underbrace{a_j + \epsilon_{ij}}_\text{random}
 $$
 
 $$
-a_j \sim N(0, {\sigma_{a_j}}^2)
+a_j \sim N(0, {\sigma_a}^2)
 $$
 
 $$\epsilon \sim N(0, {\sigma_{\epsilon}}^2)$$
 
-$$ r = \frac{{\sigma_{a_j}}^2}{{\sigma_{a_j}}^2 + {\sigma_{\epsilon}}^2}$$
+$$ r = \frac{{\sigma_a}^2}{{\sigma_a}^2 + {\sigma_{\epsilon}}^2}$$
 
 
 ## With our model
 
 ```{r eval = TRUE, include = FALSE}
-mod.mix <- with(rikz, lmer(Richness ~ NAP +  Exposure + (1|Beach)))
+mod.mix <- with(rikz, lmer(Richness ~ NAP + Exposure + (1 | Beach)))
 ```
 
 $$
@@ -424,9 +430,9 @@ r^2 = \frac{`r paste(round(summary(mod.mix)$varcor$Beach[1,1], 2))`}{`r paste(ro
 = `r paste(round(summary(mod.mix)$varcor$Beach[1,1] / (summary(mod.mix)$varcor$Beach[1,1] + summary(mod.mix)$sigma^2), 2))`
 $$
 
-## Repeatability is conditionned on fixed effects
+## Repeatability is conditioned on fixed effects
 
-Differences among groups can be explained by fixed effects and thus influence ${\sigma_{a_j}}^2$ 
+Differences among groups can be explained by fixed effects and thus influence ${\sigma_a}^2$ 
 
 ::: {.content-visible when-format="revealjs"}
 . . .
@@ -450,8 +456,8 @@ Richness_{ij} = \underbrace{a + b_1{NAP_{ij}}}_\text{fixed} + \underbrace{a_j + 
 $$
 
 ```{r, eval = TRUE, echo = FALSE}
-mod.mix.avec <- with(rikz, lmer(Richness ~ NAP + Exposure + (1|Beach)))
-mod.mix.sans <- with(rikz, lmer(Richness ~ NAP + (1|Beach)))
+mod.mix.avec <- with(rikz, lmer(Richness ~ NAP + Exposure + (1 | Beach)))
+mod.mix.sans <- with(rikz, lmer(Richness ~ NAP + (1 | Beach)))
 ```
 
 ## Repeatability With exposure effects
@@ -487,16 +493,16 @@ $$
 $$
 
 $$
-r\ (without\ exposure) = \frac{`r round(summary(mod.mix.avec)$varcor$Beach[1,1], 3)`}{`r round(summary(mod.mix.avec)$varcor$Beach[1,1],3)` + `r round(summary(mod.mix.avec)$sigma^2, 2)`} = `r paste(round(summary(mod.mix.avec)$varcor$Beach[1,1] / (summary(mod.mix.avec)$varcor$Beach[1,1] + summary(mod.mix.avec)$sigma^2), 2))`
+r\ (without\ exposure) = \frac{`r round(summary(mod.mix.sans)$varcor$Beach[1,1], 3)`}{`r round(summary(mod.mix.sans)$varcor$Beach[1,1],3)` + `r round(summary(mod.mix.sans)$sigma^2, 2)`} = `r paste(round(summary(mod.mix.sans)$varcor$Beach[1,1] / (summary(mod.mix.sans)$varcor$Beach[1,1] + summary(mod.mix.sans)$sigma^2), 2))`
 $$
 
 # Models with multiple random effects
 
 ## When tricky becomes trickier
 
-- Complex model use only when necessaryCes modèles sont compliqués, utilisez-les seulement lorsqu'ils sont nécessaires.
+- Complex model use only when necessary
 
-- Easy to build a nonsensical models which is overparametrized ...
+- Easy to build a nonsensical models which is over-parametrized ...
 
 ### Key to understand differences between random effect types
 
@@ -529,14 +535,14 @@ A and B are fully crossed when all levels of B are present in all levels of A
 - Beaches might vary in both their `mean Richness` and their `response to NAP`
 
 $$
-Richness_{ij} = \underbrace{a + b_1{NAP_{ij}} + b_2{Exposure_j}}_\text{fixed} + \underbrace{a_j + \color{#DD3333}{b_{2j}NAP_{ij}} + \epsilon_{ij}}_\text{random}
+Richness_{ij} = \underbrace{a + b_1{NAP_{ij}} + b_2{Exposure_j}}_\text{fixed} + \underbrace{a_j + \color{#DD3333}{b_{1j}NAP_{ij}} + \epsilon_{ij}}_\text{random}
 $$
 
 ::: {.content-visible when-format="revealjs"}
 . . .
 :::
 
-$$\epsilon_{ij} \sim N(0, \sigma_{a_j})$$
+$$\epsilon_{ij} \sim N(0, \sigma^2_{\epsilon})$$
 
 ::: {.content-visible when-format="revealjs"}
 . . .
@@ -544,12 +550,12 @@ $$\epsilon_{ij} \sim N(0, \sigma_{a_j})$$
 
 $$\begin{bmatrix}
 a_j \\
-\color{#DD3333}{b_{2j}}
+\color{#DD3333}{b_{1j}}
 \end{bmatrix}
 \sim N\left(0,
 \begin{matrix}
-\sigma_{a_j}^2  & \color{blue}{cov(a_j, b_{2j})} \\
-\color{blue}{cov(a_j, b_{2j})} & \color{#DD3333}{\sigma_{b_{2j}}^2}
+\sigma_a^2  & \color{blue}{cov(a_j, b_{1j})} \\
+\color{blue}{cov(a_j, b_{1j})} & \color{#DD3333}{\sigma_{b_{1j}}^2}
 \end{matrix}
 \right)
 $$
@@ -566,22 +572,26 @@ we are thus adding 2 extra parameters:
 ## Random regression
 
 ```{r eval = TRUE, include = FALSE}
-mod.mix <- lmer(Richness ~ NAP + scale(Exposure, scale = F) + (NAP|Beach), data= rikz)
+mod.mix <- lmer(Richness ~ NAP + scale(Exposure, scale = F) + (NAP | Beach), data = rikz)
 ```
 
 ```{r}
 #| echo: false
 pred <- ggpredict(
-  mod.mix, terms = c("NAP", "Beach"), type = "random", ci_level = NA)
+  mod.mix,
+  terms = c("NAP", "Beach"), type = "random", ci_level = NA
+)
 ggplot(rikz, aes(x = NAP, y = Richness, color = as.factor(Beach))) +
   geom_point(size = 3) +
   ylim(0, 13) +
-  geom_line(data = pred, aes(x = x, y = predicted, color = group), linewidth = 1) +
+  geom_line(
+    data = pred, aes(x = x, y = predicted, color = group), linewidth = 1
+   ) +
   theme(legend.position = "none")
 ```
 
 $$
-Richness_{ij} = \underbrace{a + b_1{NAP_{ij}} + b_2{Exposure_j}}_\text{fixed} + \underbrace{\color{#DD3333}{a_j + b_1iNAP_{ij}} + \epsilon_{ij}}_\text{random}
+Richness_{ij} = \underbrace{a + b_1{NAP_{ij}} + b_2{Exposure_j}}_\text{fixed} + \underbrace{\color{#DD3333}{a_j + b_{1j}NAP_{ij}} + \epsilon_{ij}}_\text{random}
 $$
 
 # Building a mixed model
@@ -591,7 +601,7 @@ $$
 ### Fixed effects
 
   a. based on question 
-  b. based on counfounding effects (think and justify based on causality)
+  b. based on confounding effects (think and justify based on causality)
 
 \
 

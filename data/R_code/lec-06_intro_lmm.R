@@ -45,25 +45,29 @@ ggplot(dat, aes(x = fix, y = mix)) +
 
 
 ## ----eval = TRUE, include = FALSE---------------------------------------------
-mod.mix <- with(rikz, lmer(Richness ~ NAP +  Exposure + (1|Beach)))
+mod.mix <- with(rikz, lmer(Richness ~ NAP + Exposure + (1 | Beach)))
 
 
 ## ----eval = TRUE, echo = FALSE------------------------------------------------
-mod.mix.avec <- with(rikz, lmer(Richness ~ NAP + Exposure + (1|Beach)))
-mod.mix.sans <- with(rikz, lmer(Richness ~ NAP + (1|Beach)))
+mod.mix.avec <- with(rikz, lmer(Richness ~ NAP + Exposure + (1 | Beach)))
+mod.mix.sans <- with(rikz, lmer(Richness ~ NAP + (1 | Beach)))
 
 
 ## ----eval = TRUE, include = FALSE---------------------------------------------
-mod.mix <- lmer(Richness ~ NAP + scale(Exposure, scale = F) + (NAP|Beach), data= rikz)
+mod.mix <- lmer(Richness ~ NAP + scale(Exposure, scale = F) + (NAP | Beach), data = rikz)
 
 
 ## -----------------------------------------------------------------------------
 #| echo: false
 pred <- ggpredict(
-  mod.mix, terms = c("NAP", "Beach"), type = "random", ci_level = NA)
+  mod.mix,
+  terms = c("NAP", "Beach"), type = "random", ci_level = NA
+)
 ggplot(rikz, aes(x = NAP, y = Richness, color = as.factor(Beach))) +
   geom_point(size = 3) +
   ylim(0, 13) +
-  geom_line(data = pred, aes(x = x, y = predicted, color = group), linewidth = 1) +
+  geom_line(
+    data = pred, aes(x = x, y = predicted, color = group), linewidth = 1
+   ) +
   theme(legend.position = "none")
 

@@ -1,0 +1,214 @@
+---
+title: "Introduction to Generalized linear mixed models?"
+subtitle: Harnessing non linearity random effects
+author: Julien Martin
+institute:  BIO 8940 - Lecture 8
+date: today
+from: markdown+emoji
+format:
+  revealjs: 
+    width: 1600
+    height: 950
+    chalkboard: true
+    theme: [default]
+    css: [assets/theme_chalk/whiteboard-blue.css]
+#    output-location: column-fragment
+#    logo: assets/MAD_logo_small_rb.png
+    footer: BIO 8940 - Lecture 8
+    show-notes: false
+  html:
+    self-contained: true
+    number-sections: true
+    format-links: false
+    css: assets/css/notes.css
+    number-depth: 2
+    comments:
+      hypothesis: true
+editor:
+  render-on-save: true
+---
+
+## Questions after reading *Bolker et al 2009*
+
+```{r}
+#| label: setup
+#| include: false
+#| purl: false
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  error = FALSE,
+  fig.align = "center",
+  dpi = 300,
+  fig.showtext = TRUE,
+  fig.width = 12,
+  fig.height = 6,
+  #  out.height = "100%",
+  dev.args = list(bg = "transparent"),
+  cache = TRUE
+)
+
+source("assets/theme_chalk/themes_board.r")
+library(tidyverse)
+theme_set(theme_whiteboard())
+```
+
+::: {.incremental}
+- Difference between fixed and random effects
+
+- When to transform data?
+    - if you have a funky looking distribution of continuous data, is it always ok to transform to achieve normality if you don’t violate any test assumptions?
+
+- Walkthrough Figure 1 ?
+
+- Get rid of non-significant fixed effects?
+    - If important for my hypothesis, should I always keep them?
+    - What if I have a fairly small dataset?
+
+- How to choose a link function? Why not using the default?
+
+- Can we go through example in Box 1?
+:::
+
+# GLMM: What are they?
+
+## GaCha Life Minie Movie
+
+Video game allowing you to dress-up *anime* style characters
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+
+```{r glmm-anime, echo=F, eval=T, dev.args=list(bg = 'transparent'), cache=FALSE, fig.align = "center"}
+knitr::include_graphics("assets/img_l8/glmm-anime.png")
+```
+
+## Generalized linear mixed model
+
+An extension to **Generalized linear model** and an extension to **linear mixed model**
+
+GLMM expresses the transformed conditional expectation of the dependent variable y as a linear combination of the regression variables X
+
+Model has 3 components
+
+- a structural component or additive expression $\beta_0 + \beta_1 X_1 + ... + \beta_k X_k$
+- a link function: $g(\mu)$
+- a response distribution: **Gaussian**, **Binomial**, **Bernouilli**, **Poisson**, **negative binomial**, **zero-inflated ...**, **zero-truncated ...**, ...
+
+<!-- $$
+g(\mu_i) = \sum_{j=0}^p \beta_j X_{ij}
+$$ -->
+
+$$
+g(\mu_i) = \beta_0 + \beta_1 X_1 + ... + \beta_k X_k
+$$
+
+and
+
+$$
+\mu_i = E(y_i | x_i) = g(\mu_i)^{-1}
+$$
+
+
+## How do you fit them?
+
+In R:
+
+- `glmer()` from `lme4` `r emoji::emoji("package")` same as `lmer()` but with a `family` argument
+- `glmmPQL()` from `MASS` `r emoji::emoji("package")` (based on `lme()`)
+- `glmmADMB()` from - `glmmADMB` `r emoji::emoji("package")` works well and flexible be beware
+- `glmmTMB()` from `glmmTMB` `r emoji::emoji("package")` works well and flexible be beware
+- `asreml()` from `glmmTMB` `r emoji::emoji("package")` great but not-free
+- `MCMCglmm()` from `MCMCglmm` `r emoji::emoji("package")` great but Bayesian
+- Choose you bayesian flavor `r emoji::emoji("package")`:
+    - `stan`: `brms`, `rethinking`, `rstan`, ...
+    - `BUGS`: `runjags`, `rjags`, ...
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+
+## Model assumptions
+
+- Easy answer none or really few
+
+- More advanced answer I am not sure, it is complicated
+
+- Just check residuals I as usual
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+
+- Technically only 3 assumption:
+    - **Variance is a function of the mean specific to the distribution used**
+    - observations are independent
+    - linear relation on the latent scale
+
+::: {.callout-warning .large}
+Generalized Linear Models do not care if the residual errors are normally distributed as long as the specified mean-variance relationship is satisfied by the data
+:::
+
+
+## Choosing a link function
+
+A link function should map the stuctural component from $(-\infty,\infty)$ to the distribution interval (*e.g.* (0,1) for binomial)
+
+So number of link function possible is extremley large.
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+
+[Choice of **link** function heavily influenced by field tradiditon]{.emph}
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+For binomial models
+
+- **logit** assume modelling probability of an observation to be one
+- **probit** assume binary outcome from a hidden gaussian variable (*i.e.* threshold model)
+- **logit** & **probit** are really similar, both are symmetric but **probit** tapers faster. **logit** coefficient easier to interpret directly
+- **cologlog** not-symmetrical
+
+
+
+## Estimating repeatability ?
+
+[Latent scale]{.emph}
+
+Business as usual ?
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+[Observed scale ??????]{.emph}
+
+- Using `rptR` `r emoji::emoji("package")` is the easiest or `QGGlmm` `r emoji::emoji("package")` (see associated citation for reference and explanations)
+
+
+## Marginalized vs Conditioned estimates
+
+
+Difference between **marginalized** and **conditioned** coefficients?
+
+**GLMMadaptive** `r emoji::emoji("package")` is the only way I know to do easily get marginalized coefficients
+
+
+## Practical
+
+[Walkthrough Example box 1]{style="text-align: center;"}
+
+# Happy modelling {.unnumbered}
+
+![](assets/img_l5/unicorn.png){fig-align="center"}
+

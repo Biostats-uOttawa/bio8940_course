@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.549">
 
   <meta name="author" content="Julien Martin">
-  <meta name="dcterms.date" content="2024-02-12">
+  <meta name="dcterms.date" content="2024-02-14">
   <title>Introduction to linear mixed models?</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -409,7 +409,7 @@ Julien Martin
     </div>
 </div>
 
-  <p class="date">2024-02-12</p>
+  <p class="date">2024-02-14</p>
 </section>
 <section>
 <section id="when-you-are-lacking-independence" class="title-slide slide level1 center">
@@ -449,7 +449,7 @@ Julien Martin
 <ul>
 <li><p>Allows us to account for repeated measurements on the same group</p></li>
 <li><p>Allows for missing data. Does not drop entire subject if missing one observation for that subject.</p></li>
-<li><p>Helps limit problem of overfitting many different parameters</p></li>
+<li><p>Helps limit problem of over-fitting many different parameters</p></li>
 <li><p>Avoids the need to average within a group which underestimates the true variation</p></li>
 </ul>
 <aside class="notes">
@@ -474,10 +474,11 @@ Julien Martin
 <p><span class="math display">\[
 Y_i = \underbrace{ a + \sum_k^n b_k X_{k_i}}_\text{fixed} + \underbrace{\epsilon_i}_\text{random}
 \]</span></p>
+<p><span class="math display">\[\epsilon_i \sim N(0, {\sigma_{\epsilon}}^2)\]</span></p>
 <ul>
 <li>Fixed part:
 <ul>
-<li>descrtibe deterministic processes.</li>
+<li>describe deterministic processes.</li>
 </ul></li>
 <li>Random part:
 <ul>
@@ -487,7 +488,7 @@ Y_i = \underbrace{ a + \sum_k^n b_k X_{k_i}}_\text{fixed} + \underbrace{\epsilon
 <div class="fragment">
 <h3 id="problems-when">Problems when</h3>
 <ol type="1">
-<li>Observations are not independent (<strong>Pseudoreplication</strong>)</li>
+<li>Observations are not independent (<strong>Pseudo-replication</strong>)</li>
 <li>Heterogeneous variance</li>
 </ol>
 </div>
@@ -495,7 +496,11 @@ Y_i = \underbrace{ a + \sum_k^n b_k X_{k_i}}_\text{fixed} + \underbrace{\epsilon
 <section id="extending-the-linear-model" class="slide level2">
 <h2>Extending the linear model</h2>
 <p><span class="math display">\[
-Y_{ij} = \underbrace{a + \sum_k^n b_k X_{k_{ij}}}\text{fixed} + \underbrace{\epsilon_{ij} + a_j}_\text{random}
+Y_{ij} = \underbrace{a + \sum_k^n b_k X_{k_{ij}}}_\text{fixed} + \underbrace{\epsilon_{ij} + a_j}_\text{random}
+\]</span></p>
+<p><span class="math display">\[\epsilon_{ij} \sim N(0, {\sigma_{\epsilon}}^2)\]</span></p>
+<p><span class="math display">\[
+a_j \sim N(0, {\sigma_{a}}^2)
 \]</span></p>
 <ul>
 <li>Fixed part:
@@ -554,19 +559,13 @@ Y_{ij} = \underbrace{a + \sum_k^n b_k X_{k_{ij}}}\text{fixed} + \underbrace{\eps
 <h2>Traditional linear model</h2>
 <p><br>
 </p>
-<p><span class="math display">\[Richness = a + b_1\ NAP + b_2\ Exposure + \epsilon\]</span></p>
-<div class="fragment">
-<p>Adding index for easier explanation, <code>i</code> -&gt; observation</p>
-<p><br>
-</p>
 <p><span class="math display">\[Richness_{i} = a + b_1\ NAP_{i} + b_2\ Exposure_{i} + \epsilon_{i}\]</span></p>
-</div>
 <div class="fragment">
 <p><br>
 </p>
 <h3 id="what-are-the-problems">What are the problems?</h3>
 <aside class="notes">
-<p><strong>Pseudoreplication</strong> * Exposure varies only across beaches not within * Sites within a beach are not independent</p>
+<p><strong>Pseudo-replication</strong> * Exposure varies only across beaches not within * Sites within a beach are not independent</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -662,6 +661,7 @@ Richness_{ij} = (a + a_j) + b_1 NAP_{ij} + b_2 Exposure_j + \epsilon_{ij}
 <p><span class="math display">\[
 Richness_{ij} = \underbrace{a + b_1{NAP_{ij}} + b_2{Exposure_j}}_\text{fixed} + \underbrace{a_j + \epsilon_{ij}}_\text{random}
 \]</span></p>
+<p><span class="math display">\[a_j \sim N(0, {\sigma_{a}}^2)\]</span> <span class="math display">\[\epsilon_{ij} \sim N(0, {\sigma_{\epsilon}}^2)\]</span></p>
 <h3 style="text-align: center;" id="parameters-estimated"><span class="emoji" data-emoji="smiley">😃</span> 5 parameters estimated <span class="emoji" data-emoji="smiley">😃</span></h3>
 <aside class="notes">
 <ul>
@@ -754,10 +754,10 @@ a_j \sim N(0, 0.34)
 \epsilon_{ij} \sim N(0, 9.37)
 \]</span></p>
 </section>
-<section id="blups-a_j-are-shrinked" class="slide level2">
-<h2>BLUPs (<span class="math inline">\(a_j\)</span>) are shrinked</h2>
+<section id="blups-a_j-are-shrunk" class="slide level2">
+<h2>BLUPs (<span class="math inline">\(a_j\)</span>) are shrunk</h2>
 <ul>
-<li>Estimates for each groups are constrained (shrinked) too avoid extreme values.</li>
+<li>Estimates for each groups are constrained (shrunk) too avoid extreme values.</li>
 </ul>
 
 <img data-src="lec-06_intro_lmm_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"></section></section>
@@ -769,14 +769,14 @@ a_j \sim N(0, 0.34)
 <section id="modelling-the-variance" class="slide level2">
 <h2>Modelling the variance</h2>
 <ul>
-<li>We estimated the varaince explained by the model</li>
+<li>We estimated the variance explained by the model</li>
 </ul>
 <p><span class="math inline">\({\sigma_{\hat{y}}}^2\)</span>.</p>
 <ul>
 <li>We decomposed teh residual variance in 2 :
 <ul>
-<li><span class="math inline">\({\sigma_{a_j}}^2\)</span> : across beach variance</li>
-<li><span class="math inline">\({\sigma_{\epsilon}}^2\)</span> Variation not associeated to beaches (<em>i.e.</em> within-beach variance)</li>
+<li><span class="math inline">\({\sigma_a}^2\)</span> : across beach variance</li>
+<li><span class="math inline">\({\sigma_{\epsilon}}^2\)</span> Variation not associated to beaches (<em>i.e.</em> within-beach variance)</li>
 </ul></li>
 </ul>
 </section>
@@ -784,16 +784,16 @@ a_j \sim N(0, 0.34)
 <h2>Estimating repeatability</h2>
 <ul>
 <li><p><strong>Repeatability</strong> Proportion of (residual) variance associated to among levels of a random effect.</p></li>
-<li><p>Here variation associted to among beach differences</p></li>
+<li><p>Here variation associated to among beach differences</p></li>
 </ul>
 <p><span class="math display">\[
 Richness_{ij} = \underbrace{a + b_1{NAP_{ij}} + b_2{Exposure_j}}_\text{fixed} + \underbrace{a_j + \epsilon_{ij}}_\text{random}
 \]</span></p>
 <p><span class="math display">\[
-a_j \sim N(0, {\sigma_{a_j}}^2)
+a_j \sim N(0, {\sigma_a}^2)
 \]</span></p>
 <p><span class="math display">\[\epsilon \sim N(0, {\sigma_{\epsilon}}^2)\]</span></p>
-<p><span class="math display">\[ r = \frac{{\sigma_{a_j}}^2}{{\sigma_{a_j}}^2 + {\sigma_{\epsilon}}^2}\]</span></p>
+<p><span class="math display">\[ r = \frac{{\sigma_a}^2}{{\sigma_a}^2 + {\sigma_{\epsilon}}^2}\]</span></p>
 </section>
 <section id="with-our-model" class="slide level2">
 <h2>With our model</h2>
@@ -810,9 +810,9 @@ r^2 = \frac{0.34}{0.34 + 9.37}
 = 0.03
 \]</span></p>
 </section>
-<section id="repeatability-is-conditionned-on-fixed-effects" class="slide level2">
-<h2>Repeatability is conditionned on fixed effects</h2>
-<p>Differences among groups can be explained by fixed effects and thus influence <span class="math inline">\({\sigma_{a_j}}^2\)</span></p>
+<section id="repeatability-is-conditioned-on-fixed-effects" class="slide level2">
+<h2>Repeatability is conditioned on fixed effects</h2>
+<p>Differences among groups can be explained by fixed effects and thus influence <span class="math inline">\({\sigma_a}^2\)</span></p>
 <div class="fragment">
 <p>We can estimate repeatability with 2 models for example:</p>
 <ul>
@@ -857,7 +857,7 @@ a_j \sim N(0, 8.668)
 \epsilon_{ij} \sim N(0, 9.362)
 \]</span></p>
 <p><span class="math display">\[
-r\ (without\ exposure) = \frac{0.338}{0.338 + 9.37} = 0.03
+r\ (without\ exposure) = \frac{8.668}{8.668 + 9.36} = 0.48
 \]</span></p>
 </section></section>
 <section>
@@ -868,8 +868,8 @@ r\ (without\ exposure) = \frac{0.338}{0.338 + 9.37} = 0.03
 <section id="when-tricky-becomes-trickier" class="slide level2">
 <h2>When tricky becomes trickier</h2>
 <ul>
-<li><p>Complex model use only when necessaryCes modèles sont compliqués, utilisez-les seulement lorsqu’ils sont nécessaires.</p></li>
-<li><p>Easy to build a nonsensical models which is overparametrized …</p></li>
+<li><p>Complex model use only when necessary</p></li>
+<li><p>Easy to build a nonsensical models which is over-parametrized …</p></li>
 </ul>
 <h3 id="key-to-understand-differences-between-random-effect-types">Key to understand differences between random effect types</h3>
 </section>
@@ -897,21 +897,21 @@ r\ (without\ exposure) = \frac{0.338}{0.338 + 9.37} = 0.03
 <li>Beaches might vary in both their <code>mean Richness</code> and their <code>response to NAP</code></li>
 </ul>
 <p><span class="math display">\[
-Richness_{ij} = \underbrace{a + b_1{NAP_{ij}} + b_2{Exposure_j}}_\text{fixed} + \underbrace{a_j + \color{#DD3333}{b_{2j}NAP_{ij}} + \epsilon_{ij}}_\text{random}
+Richness_{ij} = \underbrace{a + b_1{NAP_{ij}} + b_2{Exposure_j}}_\text{fixed} + \underbrace{a_j + \color{#DD3333}{b_{1j}NAP_{ij}} + \epsilon_{ij}}_\text{random}
 \]</span></p>
 </div>
 <div class="fragment">
-<p><span class="math display">\[\epsilon_{ij} \sim N(0, \sigma_{a_j})\]</span></p>
+<p><span class="math display">\[\epsilon_{ij} \sim N(0, \sigma^2_{\epsilon})\]</span></p>
 </div>
 <div class="fragment">
 <p><span class="math display">\[\begin{bmatrix}
 a_j \\
-\color{#DD3333}{b_{2j}}
+\color{#DD3333}{b_{1j}}
 \end{bmatrix}
 \sim N\left(0,
 \begin{matrix}
-\sigma_{a_j}^2  &amp; \color{blue}{cov(a_j, b_{2j})} \\
-\color{blue}{cov(a_j, b_{2j})} &amp; \color{#DD3333}{\sigma_{b_{2j}}^2}
+\sigma_a^2  &amp; \color{blue}{cov(a_j, b_{1j})} \\
+\color{blue}{cov(a_j, b_{1j})} &amp; \color{#DD3333}{\sigma_{b_{1j}}^2}
 \end{matrix}
 \right)
 \]</span></p>
@@ -938,7 +938,7 @@ a_j \\
 <h2>Random regression</h2>
 
 <img data-src="lec-06_intro_lmm_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"><p><span class="math display">\[
-Richness_{ij} = \underbrace{a + b_1{NAP_{ij}} + b_2{Exposure_j}}_\text{fixed} + \underbrace{\color{#DD3333}{a_j + b_1iNAP_{ij}} + \epsilon_{ij}}_\text{random}
+Richness_{ij} = \underbrace{a + b_1{NAP_{ij}} + b_2{Exposure_j}}_\text{fixed} + \underbrace{\color{#DD3333}{a_j + b_{1j}NAP_{ij}} + \epsilon_{ij}}_\text{random}
 \]</span></p>
 </section></section>
 <section>
@@ -951,7 +951,7 @@ Richness_{ij} = \underbrace{a + b_1{NAP_{ij}} + b_2{Exposure_j}}_\text{fixed} + 
 <h3 id="fixed-effects">Fixed effects</h3>
 <ol type="a">
 <li>based on question</li>
-<li>based on counfounding effects (think and justify based on causality)</li>
+<li>based on confounding effects (think and justify based on causality)</li>
 </ol>
 <p><br>
 </p>

@@ -1,0 +1,574 @@
+---
+title: "Writing dynamic and reproducible documents"
+subtitle: "An introduction to R Markdown / Quarto"
+author: Julien Martin
+institute:  BIO 8940 - Lecture 2
+date: today
+from: markdown+emoji
+format:
+  revealjs: 
+    width: 1600
+    height: 950
+    chalkboard: true
+    theme: [default]
+    css: [assets/theme_chalk/whiteboard-blue.css]
+#    output-location: column-fragment
+#    logo: assets/MAD_logo_small_rb.png
+    footer: BIO 8940 - Lecture 2
+    show-notes: false
+    mermaid-format: svg
+    mermaid:
+      theme: forest
+  html:
+    self-contained: true
+    number-sections: true
+    format-links: false
+    css: assets/css/notes.css
+    number-depth: 2
+    comments:
+      hypothesis: true
+    mermaid-format: svg
+    mermaid:
+      theme: forest
+editor:
+  render-on-save: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+#| purl: false
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  error = FALSE,
+  fig.align = "center",
+  dpi = 300,
+  fig.showtext = TRUE,
+  fig.width = 12,
+  fig.height = 6,
+  dev.args = list(bg = "transparent"),
+  cache = TRUE
+)
+
+source("assets/theme_chalk/themes_board.r")
+theme_set(theme_whiteboard())
+library(emoji)
+library(tidyverse)
+```
+
+
+<!-- To add / change
+
+add something about quarto what is it and how is it different
+
+  -->
+
+{{< video https://www.youtube.com/embed/s3JldKoA0zw width="100%" height="100%" >}}
+
+
+Credit: [Ignasi Bartomeus, PhD](https://bartomeuslab.com/)
+
+##
+
+![](assets/img_l2/phd031214s.png){fig-align="center"}
+
+# How can you reproduce results?
+
+## 
+
+![](assets/img_l2/ctrlcctrlv.png){fig-align="center"}
+
+## What do we need to make research reproducible?
+
+- Something to integrate text, figures and code
+     * `R`, `Python`, etc
+
+
+- Something that can be continuously edited and updated
+     * Living or dynamic document
+
+
+- Something that can be easily used in versioning tools
+     * Git
+
+##
+
+![](assets/img_l2/trio.jpg){fig-align="center"}
+
+## Quarto ?
+
+* multi-language, next generation version of R Markdown 
+
+* include many new new features and capabilities
+
+* Like R Markdown, Quarto uses knitr to execute R code, and is therefore able to render most existing Rmd files without modification.
+
+[![](assets/img_l2/quarto.png){fig-align="center"}](https://quarto.org/){preview-link="true"}
+
+
+## R Markdown workflow
+
+![](assets/img_l2/rmarkdown_workflow.png){fig-align="center"}
+
+![](assets/img_l2/rmd_flow.png){fig-align="center"}
+
+## Quarto workflow
+
+![](assets/img_l2/rstudio-qmd-how-it-works.png){fig-align="center"}
+
+# Structure of a Rmd/qmd document
+
+##
+```{mermaid}
+flowchart TB
+  a(qmd/Rmd)
+  yaml(YAML frontmatter)
+  md(Markdown content)
+  knitr(Code chunks)
+  a --- yaml & md & knitr
+```
+
+## Rmd/qmd document
+
+![](assets/img_l2/3components.png){fig-align="center"}
+
+## Rmd/qmd document
+
+![](assets/img_l2/3componentson.png){fig-align="center"}
+
+
+# Markdown
+
+```{mermaid}
+flowchart TB
+  a(qmd/Rmd)
+  yaml(YAML frontmatter)
+  md(Markdown content)
+  knitr(Code chunks)
+  a --- yaml & md & knitr
+  style md fill:#f9f,stroke:#333,stroke-width:4px
+```
+
+## What is Markdown?
+
+- A way to write stuff
+- Mostly plain words, with some formating
+
+![](assets/img_l2/md.png){fig-align="center"}
+
+## Websites that use Markdown
+
+- GitHub <https://github.com/>
+- StackOverflow <https://stackoverflow.com/>
+- HackMD <https://hackmd.io>
+- Many more
+
+## Headers
+
+- Use # to create headers
+- Multiple #'s create lower level headers
+
+![](assets/img_l2/headers.png){fig-align="center"}
+
+
+## Text
+
+- Text is rendered as plain text
+
+![](assets/img_l2/text.png){fig-align="center"}
+
+
+## Lists
+
+- Use asterisks to make bullet points
+- Use numbers to make numbered lists
+- Use 4 spaces or 1 tab for indentation
+
+![](assets/img_l2/lists.png){fig-align="center"}
+
+
+## Hyperlinks
+
+- To add a hyperlink, put your text between brackets
+- Then place the URL between parentheses
+
+![](assets/img_l2/url.png){fig-align="center"}
+
+## Images
+
+- Use a link preceded by an ! to insert an image
+- The link text should be
+    - a URL if the image is hosted online
+    - a file path if the image is saved on your computer
+
+![](assets/img_l2/images.png){fig-align="center"}
+
+
+## Equations
+
+- Write equations with Latex syntax
+
+![](assets/img_l2/eqns.png){fig-align="center"}
+
+## Equation blocks
+
+![](assets/img_l2/eqns2.png){fig-align="center"}
+
+## Tables
+
+```markdown
+| header A | header B  | header C |
+|:---------:|:--------:|---------:|
+| left      | center   | right    |
+
+Table: This is a title
+```
+
+| header A | header B  | header C |
+|:---------:|:--------:|---------:|
+| left      | center   | right    |
+
+Table: This is a title
+
+- A bit of a hassle...
+
+
+- Use a [generator of Tables for Markdown](https://www.tablesgenerator.com/markdown_tables)
+
+- Wait for next section to learn how to generate tables from `R`
+
+## R Markdown Reference Guide
+
+<https://rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf>
+
+![](assets/img_l2/refguide.png){fig-align="center"}
+
+
+# Knitr Code chunks
+
+```{mermaid}
+flowchart TB
+  a(qmd/Rmd)
+  yaml(YAML frontmatter)
+  md(Markdown content)
+  knitr(Code chunks)
+  a --- yaml & md & knitr
+  style knitr fill:#f9f,stroke:#333,stroke-width:4px
+```
+
+## Embed code
+
+- Insert chunk of `R` code
+- Code will run and include results.
+
+![](assets/img_l2/embed.png){fig-align="center"}
+
+## Inline code
+
+- Place code in a sentence with `r #code`
+- Code will be replaced with results
+
+![](assets/img_l2/inline.png){fig-align="center"}
+
+## Chunk options
+
+Rmd (R markdown) and qmd (quarto) differ:
+  
+  * **Rmd**: chunk options on one line between the {} after the r
+  * **qmd**: either as Rmd or within the chunk with yaml style notation
+
+:::: {.columns}
+
+::: {.column}
+Rmd
+
+```` markdown
+```{{r name, echo=FALSE}}
+1+1
+```
+````
+
+Can lead to really long lines
+:::
+
+::: {.column}
+qmd
+
+```` markdown
+```{{r}}
+#| label: name
+#| echo: false
+1+1
+```
+````
+takes more vertical space but cleaner
+:::
+
+::::
+
+## echo
+
+- `echo = FALSE` or  `#| echo: false` hides code.
+
+![](assets/img_l2/echo.png){fig-align="center"}
+
+## eval
+
+- `eval = FALSE` or `#| eval: false` prevents code from being run
+- No results is displayed, only code
+
+![](assets/img_l2/eval.png){fig-align="center"}
+
+## fig.height, fig.width
+
+- Specify dimension of plots (in inches) with fig.width and fig.height
+- Separate multiple arguments with commas.
+
+![](assets/img_l2/figheightfigwidth.png){fig-align="center"}
+
+
+## message
+
+- `message = FALSE` or `#| meassage: false`prevents messages from appearing
+in output
+
+![](assets/img_l2/message.png){fig-align="center"}
+
+## Default chunk options
+
+- Repeating chunk options can be painful
+
+
+- If you have `echo = FALSE` in every single chunk, how to set the default chunk option to `echo = FALSE` ?
+
+
+- Use `knitr::opts_chunk$set(echo = FALSE)`
+
+
+- You may overwrite the default for each chunk
+
+
+- For chunk options, check out <https://yihui.name/knitr/options/>
+
+## Including tables
+
+```{r}
+# cars is a built-in-to-R data set of cars and their stopping distances
+cars %>%
+  head(4) %>%
+  knitr::kable(format = "html", caption = "A kable table")
+```
+
+- The [`kable`](https://www.rdocumentation.org/packages/knitr/versions/1.21/topics/kable) package is often used with the [`kableExtra`](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) package
+- A number of other packages are available for making pretty tables, by far my favourite is [`gt`](https://gt.rstudio.com/) using similar approach to table that `ggplot` has to figures
+
+## R Markdown Reference Guide
+
+<https://rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf>
+
+![](assets/img_l2/knitr.png){fig-align="center"}
+
+
+# YAML: Yet Another Markup Language
+
+```{mermaid}
+flowchart TB
+  a(qmd/Rmd)
+  yaml(YAML frontmatter)
+  md(Markdown content)
+  knitr(Code chunks)
+  a --- yaml & md & knitr
+  style yaml fill:#f9f,stroke:#333,stroke-width:4px
+```
+
+## YAML in brief
+
+- Contains the metadata of the document
+
+- Starts and ends by three dashes
+
+- Comes first in the document
+
+## Simplest example
+
+![](assets/img_l2/yaml.png){fig-align="center"}
+
+## Knit
+
+![](assets/img_l2/knit_rstudio.png){fig-align="center"}
+
+## Output formats
+
+![](assets/img_l2/output_formats.png){fig-align="center"}
+
+## Appearance and style
+
+**Rmd**
+
+- In HTML output, you can use `theme` or a custom **.css** style sheet
+
+- `theme` options ([bootswatch.com](https://bootswatch.com/)) : *“cerulean”, “journal”, “flatly”, “darkly”, “readable”, “spacelab”, “united”, “cosmo”, “lumen”, “paper”, “sandstone”, “simplex”, “yeti”*
+
+- You may also use LaTeX templates with R Markdown, and write [reproducible scientific paper](https://github.com/rstudio/rticles)
+
+
+**qmd**
+
+- this is were Quarto is leaps beyong R markdown 
+
+- excellent doc on the [website](https://quarto.org/docs/guide/)
+
+# Managing bibliography
+
+## Reference file
+
+1. Put references in a plain text file with the extension **.bib**, in **BibTex** format (my advice: use [Zotero](https://www.zotero.org) and `betterbibtex` extension for dynamic file)
+
+```bibtex
+*@article{Shea2014,
+  author =        {Shea, Nicholas and Boldt, Annika},
+  journal =       {Trends in Cognitive Sciences},
+  pages =         {186--193},
+  title =         {{Supra-personal cognitive control}},
+  volume =        {18},
+  year =          {2014},
+  doi =           {10.1016/j.tics.2014.01.006},
+}
+```
+
+2. Reference this file in your YAML header and add a csl style for formatting (browse through and download styles at [zotero.org/styles](https://www.zotero.org/styles))
+
+```yaml
+---
+title: "Citation test"
+output: html_document
+bibliography: example.bib
+csl: my-style.csl 
+---
+```
+
+## Citations
+
+3. In your text, citations go inside brackets and separated by semicolons
+
+
+:::: {.columns}
+
+::: {.column}
+### This...
+Blah blah [@Shea2014; @Lottridge2012].
+:::
+
+::: {.column}
+### turns into this...
+
+Blah blah (Shea et al. 2014; Lottridge et al. 2012).
+:::
+
+::::
+
+## Citations
+
+3. In your text, citations go inside brackets and separated by semicolons
+
+
+:::: {.columns}
+
+::: {.column}
+### This...
+Blah blah [@Shea2014; @Lottridge2012].
+
+@Shea2014 says blah.
+
+Blah blah [see @Shea2014, pp. 33-35; also @Wu2016, ch. 1].
+:::
+
+::: {.column}
+### turns into this...
+
+Blah blah (Shea et al. 2014; Lottridge et al. 2012).
+
+Shea et al. (2014) says blah.
+
+Blah blah (see Shea et al. 2014, 33–35; also Wu 2016, ch. 1).
+:::
+
+::::
+
+
+## Citations
+
+For an easy way to insert citations, try the [`citr`](https://github.com/crsh/citr) RStudio add-in.
+
+If you are using `Zotero`, then RStudio can link directly for both Rmd and qmd files (same for VScode)
+
+
+```{r, out.width="75%", echo = FALSE}
+knitr::include_graphics("https://raw.githubusercontent.com/crsh/citr/master/tools/images/addin_demo.gif")
+```
+
+# Notebook vs console in Rstudio
+
+## Notebook and console
+
+In Rstudio, Rmarkdown file = notebook
+
+Meaning that R output:
+
+- are embedded in doc
+- not available in R envir and console
+
+If you don't like the notebook and want the console, add to YAML header
+
+```
+editor_options:
+  chunk_output_type: console
+```
+
+## Notebook
+
+![](assets/img_l2/notebook.png){fig-align="center"}
+
+
+## Console
+
+![](assets/img_l2/console.png){fig-align="center"}
+
+
+## R Markdown Reference Guide
+
+<https://rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf>
+
+![](assets/img_l2/pandoc.png){fig-align="center"}
+
+
+# What else can we do with R Markdown/ Quarto?
+
+## Let's have a tour
+
+![](https://awesome-rmarkdown-2019.netlify.app/imgs/gallery.gif)
+
+## To go further
+
+Most of what works for R markdown works for Quarto
+
+### [R Markdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)
+
+\
+
+### [R Markdown Guide](https://bookdown.org/yihui/rmarkdown/)
+
+\
+
+### [Quarto website](https://quarto.org/)
+
+
+# Happy coding
+
+![](assets/img_l2/repro_rmarkdown.jpg){fig-align="center"}
+
+::: aside
+I borrowed slides from [Garrett Grolemund](https://rstudio.com/speakers/garrett-grolemund/), [Ulrik Lyngs](https://ulriklyngs.com/), [Olivier Gimenez](https://oliviergimenez.github.io) . I also used the beautiful illustrations shared by [Allison Horst](https://github.com/allisonhorst/stats-illustrations)
+:::

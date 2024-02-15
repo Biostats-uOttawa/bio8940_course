@@ -1,0 +1,157 @@
+---
+title: "Advanced stats and Open Science"
+subtitle: "BIO8940"
+author: Julien Martin
+institute:  BIO 8940 - Lecture 1
+date: today
+from: markdown+emoji
+format:
+  revealjs: 
+    width: 1600
+    height: 950
+    chalkboard: true
+    theme: [default]
+    css: [assets/theme_chalk/whiteboard-blue.css]
+#    output-location: column-fragment
+#    logo: assets/MAD_logo_small_rb.png
+    footer: BIO 8940 - Lecture 1
+    show-notes: false
+  html:
+    self-contained: true
+    number-sections: true
+    format-links: false
+    css: assets/css/notes.css
+    number-depth: 2
+    comments:
+      hypothesis: true
+editor:
+  render-on-save: true
+---
+
+```{r}
+#| label: setup
+#| include: false
+#| purl: false
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  error = FALSE,
+  fig.align = "center",
+  dpi = 300,
+  fig.showtext = TRUE,
+  fig.width = 12,
+  fig.height = 6,
+  dev.args = list(bg = "transparent"),
+  cache = TRUE
+)
+
+source("assets/theme_chalk/themes_board.r")
+library(tidyverse)
+theme_set(theme_whiteboard())
+```
+
+# A bit about ...
+
+## ... me
+
+* Evolutionary ecologist
+
+* Not a statisticians by training
+
+* Complex data
+
+* Enjoy coding
+
+* Humour of a 5 years old
+
+## ... you
+
+* Name
+
+* PI
+
+* Subject
+
+* R knowledge
+
+* Expectation from the course
+
+# Structure of the course
+
+## Topics
+
+- Intro to github with exercises
+- Intro to Open science
+- Intro to rmarkdown and to workflowr
+- Mixed models
+  - Intro, why, when and how
+  - Non gaussian, non-linear ?
+  - multivariate ?
+- p-values and their limits
+
+## Teaching style
+
+- Minimum slides from myself
+- flipped classroom or learning by problems
+- Session = mixed of lecture, discussion and exercises
+
+## Schedule
+
+::: {contenteditable="true"}
+| Week | Theme |
+|:----:|:-----:|
+|  1 | Intro |
+|  2 | Github |
+|  3 | Markdown / Quarto |
+|  4 | Lm & glm |
+|  5 | Causal structure |
+|  6 | Lmm |
+|  7 | Bayesian approach |
+|  8 | Glmm |
+|  9 | to |
+| 10 | be |
+| 11 | decided |
+| 12 | together |
+:::
+
+# Assessment
+
+## In class (50%)
+
+- participation to discussion (20%)
+- presentation on a given topic in small teams (30%)
+
+## Project (50%)
+
+- analysis of data using techniques from courses or beyond
+- Report written using Rmarkdown
+- posted on Github classroom
+
+# Software and accounts
+
+## Softwares
+
+- R (version 4.0 or higher)
+- Text editor: Rstudio or VSCode
+- R packages (up to date)
+  - open science: rmarkdown, tinytex
+  - mixed models: lme4, gremlin, glmmTMB, MCMCglmm
+  - latex: full version or tinytex
+
+## Accounts
+
+- github (https://github.com/)
+- Open Science Framework (OSF, https://osf.io/)
+<!-- - gather.town -->
+
+
+# What is expected from you
+
+## What is expected from you
+
+* Weekly Reading
+
+* In class participation
+
+* Do the praticals

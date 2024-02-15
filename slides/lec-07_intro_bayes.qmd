@@ -1,0 +1,813 @@
+---
+title: "Introduction Bayesian statistics"
+subtitle: Why make it simple when you could go Bayesian
+author: Julien Martin
+institute:  BIO 8940 - Lecture 7
+date: today
+from: markdown+emoji
+format:
+  revealjs: 
+    width: 1600
+    height: 950
+    chalkboard: true
+    theme: [default]
+    css: [assets/theme_chalk/whiteboard-blue.css]
+#    output-location: column-fragment
+#    logo: assets/MAD_logo_small_rb.png
+    footer: BIO 8940 - Lecture 7
+    show-notes: false
+  html:
+    self-contained: true
+    number-sections: true
+    format-links: false
+    css: assets/css/notes.css
+    number-depth: 2
+    comments:
+      hypothesis: true
+editor:
+  render-on-save: false
+---
+
+# Overview ...
+
+```{r}
+#| label: setup
+#| include: false
+#| purl: false
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  error = FALSE,
+  fig.align = "center",
+  dpi = 300,
+  fig.showtext = TRUE,
+  fig.width = 12,
+  fig.height = 6,
+  dev.args = list(bg = "transparent"),
+  cache = TRUE
+)
+
+source("assets/theme_chalk/themes_board.r")
+library(tidyverse)
+theme_set(theme_whiteboard())
+```
+
+* For many years – until recently – Bayesian ideas in statistics 
+were widely dismissed, often without much thought
+* Advocates of Bayes had to fight hard to be heard, leading to
+an ‘us against the world’ mentality – & predictable backlash
+* Today, debates tend be less acrimonious, and more tolerant
+
+add xkcd cartoon
+
+# Bayes' Theorem
+
+## Formal
+
+Bayes' theorem is the results in a conditional probability of two events:
+$$
+P[A|B] = \frac{P[A\ \&\ B]}{P[B]} = P[B|A]\frac{P[A]}{P[B]}
+$$
+
+The conditional probability of A given B is the conditional probality ob B given A scaled by the relative probability of A compared to B.
+
+## Bayesian inference
+
+
+|Reality       |Reject H~0~ |Accept H~0~ |Total |
+|:-------------|:----------:|:----------:|:----:|
+|H~0~ is true  |a           |b           |a + b |
+|H~0~ is false |c           |d           |c + d |
+|Total         |a+c         |b+d         |N     |
+
+
+[a]{.emph} type I error 
+
+[d]{.emph} type II error (1-power)
+
+[False positive]{.emph} $P[H_0\ true | Reject\ H_0] = \frac{a}{b+c}$
+
+\
+
+[False negative]{.emph}: $P[H_0\ true | Reject\ H_0] = \frac{a}{b+c}$
+
+::: {.content-visible when-format="revealjs"}
+## Applied to Covid
+
+
+Why does it matter? If 1% of a population have covid, for a 
+screening test with 80% sensitivity (1- Type II) and 95% specificity (1-Type I).
+
+```{r}
+#| echo: false
+n <- 100
+prior <- 0.01
+type_1 <- 0.05
+type_2 <- 0.2
+
+ba <- n * (1 - prior) * type_1
+bb <- n * (1 - prior) * (1 - type_1)
+bc <- n * prior * (1 - type_2)
+bd <- n * prior * type_2
+```
+
+Assuming N test = 100,
+
+|Reality   |Test +ve |Test -ve |Total |
+|:---------|:-------:|:-------:|:----:|
+|Healthy   | | | |
+|Has COVID | | | |
+|Total     | | |**`r n`**|
+
+
+## Applied to Covid
+
+
+Why does it matter? If 1% of a population have covid, for a 
+screening test with 80% sensitivity (1- Type II) and 95% specificity (1-Type I).
+
+Assuming N test = 100 
+
+|Reality   |Test +ve |Test -ve |Total |
+|:---------|:-------:|:-------:|:----:|
+|Healthy   | | | **`r n * (1 - prior)`** |
+|Has COVID | | | **`r n * prior`** |
+|Total     | | | `r n` |
+
+Adding the prior
+
+
+## Applied to Covid
+
+
+Why does it matter? If 1% of a population have covid, for a 
+screening test with 80% sensitivity (1- Type II) and 95% specificity (1-Type I).
+
+Assuming N test = 100 
+
+|Reality   |Test +ve |Test -ve |Total |
+|:---------|:-------:|:-------:|:----:|
+|Healthy   | | | `r n * (1 - prior)` |
+|Has COVID | **`r bc`** | **`r bd`**| `r n * prior` |
+|Total     | | | `r n` |
+
+Adding the Type II error
+
+## Applied to Covid
+
+
+Why does it matter? If 1% of a population have covid, for a 
+screening test with 80% sensitivity (1- Type II) and 95% specificity (1-Type I).
+
+Assuming N test = 100 
+
+|Reality   |Test +ve |Test -ve |Total |
+|:---------|:-------:|:-------:|:----:|
+|Healthy   | **`r ba`** | **`r bb`** | `r n * (1 - prior)` |
+|Has COVID |   `r bc`  |   `r bd`   | `r n * prior` |
+|Total     | | | `r n` |
+
+Adding the Type I error
+
+## Applied to Covid
+
+
+Why does it matter? If 1% of a population have covid, for a 
+screening test with 80% sensitivity (1- Type II) and 95% specificity (1-Type I).
+
+Assuming N test = 100 
+
+|Reality   |Test +ve |Test -ve |Total |
+|:---------|:-------:|:-------:|:----:|
+|Healthy   | `r ba` | `r bb` | `r n * (1 - prior)` |
+|Has COVID |   `r bc`  |   `r bd`   | `r n * prior` |
+|Total     | **`r ba + bc`** | **`r bb + bd`** | `r n` |
+
+Adding colum sums
+:::
+
+## Applied to Covid 
+
+
+Why does it matter? If 1% of a population have covid, for a 
+screening test with 80% sensitivity and 95% specificity.
+
+\
+
+|Reality   |Test +ve |Test -ve |Total |
+|:---------|:-------:|:-------:|:----:|
+|Healthy   | `r ba` | `r bb` | `r n * (1 - prior)` |
+|Has COVID |   `r bc`  |   `r bd`   | `r n * prior` |
+|Total     | `r ba + bc` | `r bb + bd` | `r n` |
+
+::: {.incremental}
+
+* Sensitivity: **P[test + | Covid ] = `r (1 - type_2) * 100`**
+* Specificity: P[test + | Healthy ] = `r (1 - type_1) * 100`
+* True positive: **P[ Covid | test + ] = `r round(bc/(ba+bc),3)`**
+* True negative: P[ Healthy | test - ] = `r round(bb/(bb+bd),3)`
+* False positive: P[ Healthy | test + ] = `r round(ba/(ba+bc),3)`
+* False negative: P[ Covid | test - ] = `r round(bd/(bb+bd),3)`
+:::
+
+:::{.notes}
+Talk about changing prior implications
+:::
+
+## What if COVID % changes?
+
+```{r}
+#| echo: false
+n <- 100
+prior <- 0.2
+type_1 <- 0.05
+type_2 <- 0.2
+
+ba <- n * (1 - prior) * type_1
+bb <- n * (1 - prior) * (1 - type_1)
+bc <- n * prior * (1 - type_2)
+bd <- n * prior * type_2
+```
+
+Why does it matter? If 20% of a population have covid instead of 1%?
+
+\
+
+|Reality   |Test +ve |Test -ve |Total |
+|:---------|:-------:|:-------:|:----:|
+|Healthy   | `r ba` | `r bb` | `r n * (1 - prior)` |
+|Has COVID |   `r bc`  |   `r bd`   | `r n * prior` |
+|Total     | `r ba + bc` | `r bb + bd` | `r n` |
+
+* True positive: P[ Covid | test + ] = `r round(bc/(ba+bc),3)`
+* True negative: P[ Healthy | test - ] = `r round(bb/(bb+bd),3)`
+* False positive: P[ Healthy | test + ] = `r round(ba/(ba+bc),3)`
+* False negative: P[ Covid | test - ] = `r round(bd/(bb+bd),3)`
+
+
+:::{.notes}
+Explain impact of changing prior on test results reliability
+:::
+
+## Prosecutor's fallacy
+
+**Mixing up P[ A | B ] with P[ B | A ] is the Prosecutor’s Fallacy**
+
+::: {.center .emph}
+small P evidence given innocence $\neq$ small P of innocence given evidence
+:::
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+**True Story**
+![](assets/img_l7/s_clark.jpg){.absolute top=0 right=50 width="250" height="400"}
+
+::: {.incremental}
+* After the sudden death of two baby sons, Sally Clark was sentenced to life in prison in 1999
+* Expert witness Prof Roy Meadow had interpreted the small probability of two cot deaths as a small probability of Clark’s innocence
+* After a long campaign, including refutation of Meadow’s
+statistics (among other errors), Clark was cleared in 2003
+* After being freed, she developed alcoholism and died in 2007
+:::
+
+## Meeting mosquitoes
+
+![](assets/img_l7/sharks.png){fig-align="center"}
+
+## Bayes' Theorem
+
+Bayes’ Theorem is a rule about the ‘language’ of probabilities, that can be used in any analysis
+describing random variables, i.e. any data analysis.
+
+[Q. So why all the fuss?]{.emph}
+
+A. Bayesian inference uses more than just Bayes’ Theorem
+
+Bayesian inference uses the ‘language’ of probability to describe what is known
+about parameters.
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+::: {.callout-warning .large}
+Frequentist inference, e.g. using p-values & confidence intervals, does not quantify what is known about parameters. many people initially think it does; an important job for instructors of intro Stat/Biostat courses is convincing those people that they are wrong
+:::
+
+# Frequentist and Bayesian
+
+[A shooting cartoon]{.emph .center}
+
+
+::: {.small}
+Adapted from Gonick & Smith, The Cartoon Guide to Statistics
+:::
+
+---
+
+![](assets/img_l7/shoot_1.jpg){fig-align="center"}
+
+---
+
+![](assets/img_l7/shoot_2.jpg){fig-align="center"}
+
+---
+
+![](assets/img_l7/shoot_3.jpg){fig-align="center"}
+
+::: {.notes}
+We ‘trap’ the truth with 95% confidence. 95% of what?
+:::
+
+---
+
+![](assets/img_l7/shoot_4.jpg){fig-align="center"}
+
+---
+
+## 95% of what?
+
+* We ‘trap’ the truth with 95% confidence.
+* 95% of what?
+* The interval traps the truth in 95% of experiments.
+
+::: {.emph}
+To define
+anything frequentist, you have to imagine repeated experiments.
+:::
+
+Let’s do some more ‘target practice’, for frequentist testing
+
+---
+
+![](assets/img_l7/shoot_5.jpg){fig-align="center"}
+
+---
+
+![](assets/img_l7/shoot_6.jpg){fig-align="center"}
+
+---
+
+![](assets/img_l7/shoot_7.jpg){fig-align="center"}
+
+---
+
+![](assets/img_l7/shoot_8.jpg){fig-align="center"}
+
+---
+
+## Frequentist testing 
+
+* imagine running your experiment again and again.
+* or make an argument like this:
+  * On day 1 you collect data and construct a [valid] 95% confidence interval for a parameter $\theta_1$. 
+  * On day 2 you collect new data and construct a 95% confidence interval for an unrelated parameter $\theta_2$.
+  * On day 3 ... [the same]. and so on constructing confidence intervals
+  * ... 95% of your intervals will trap the true parameter value
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+* ... neither version says anything about whether your data is
+in the 95% or the 5%
+* ... both versions require you to think about many other datasets, not just the one you have to analyze
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+[How does Bayesian inference differ? Let’s take aim...]{.emph}
+
+---
+
+![](assets/img_l7/shoot_9.jpg){fig-align="center"}
+
+---
+
+![](assets/img_l7/shoot_10.jpg){fig-align="center"}
+
+---
+
+![](assets/img_l7/shoot_11.jpg){fig-align="center"}
+
+---
+
+![](assets/img_l7/shoot_12.jpg){fig-align="center"}
+
+---
+
+![](assets/img_l7/shoot_13.jpg){fig-align="center"}
+
+---
+
+## Here it is in practice
+
+::: {.incremental}
+* Air France Flight 447 crashed in the ocean On June 1, 2009.
+
+\
+
+* Major wreckage recovered within 5 days. No blackbox
+![](assets/img_l7/plane_crash.jpg){.absolute top=50 right=50 width="400" height="300"}
+
+\
+
+* Probability of blackbox location described via Bayesian inference
+![](assets/img_l7/plane_crash_map.jpg){.absolute top=500 right=50 width="400" height="400"}
+
+\
+
+* Eventually, the black box was found in the red area
+:::
+
+# Bayesian inference
+
+## Updating knowledge
+
+We use:
+
+* [**Prior distribution**]{.underline}: what you know about parameter β, excluding the information in the data – denoted $P_{prior}(β)$
+* [**Likelihood**]{.underline}: based on modeling assumptions, how [relatively] likely the data Y are if the truth is β - denoted $f(Y|β)$
+
+To get a posterior distribution, denoted $P_{post}(β|Y)$: stating what we know about β combining the prior with the data – ?
+
+Bayes Theorem used for inference tells us:
+
+$$
+\begin{align}
+P_{post}(β|Y) &∝ f(Y|β) × P_{prior}(β)\\
+\text{Posterior} &∝ \text{Likelihood} × \text{Prior}
+\end{align}
+$$
+
+[... and that’s it! (essentially!)]{.emph}
+
+::: {.notes}
+* No replications – e.g. no replicate plane searches
+* Given modeling assumptions & prior, process is automatic
+* Keep adding data, and updating knowledge, as data becomes
+available... knowledge will concentrate around true β
+:::
+
+::: {.content-visible when-format="revealjs"}
+
+## Updating knowledge
+
+```{r}
+#| echo: false
+library(tidyverse)
+dat <- data.frame(x = seq(0, 1, len = 1001)) %>%
+  mutate(
+    prior = dbeta(x, 4, 6),
+    likelihood = dbeta(x, 8, 2),
+    posterior = prior * likelihood / 0.3
+  )
+ggplot(dat, aes(x = x)) +
+  geom_line(aes(y = prior, color = "pr"), linewidth = 1.5) +
+  geom_area(aes(y = prior, color = "pr", fill = "pr"), alpha = 0.5) +
+  labs(x = "Parameter value", y = "Probability density", color = "", fill = "") +
+  scale_color_manual(
+    values = c("pr" = "red"),
+    labels = c("Prior")
+  ) +
+  scale_fill_manual(
+    values = c("pr" = "red"),
+    labels = c("Prior")
+  ) +
+  guides(color = "none") +
+  ylim(0, max(dat$likelihood))
+```
+
+## Updating knowledge
+
+```{r}
+#| echo: false
+ggplot(dat, aes(x = x)) +
+  geom_line(aes(y = prior, color = "pr"), linewidth = 1.5) +
+  geom_area(aes(y = prior, color = "pr", fill = "pr"), alpha = 0.5) +
+  geom_line(aes(y = likelihood, color = "lik"), linewidth = 1.5) +
+  geom_area(aes(y = likelihood, color = "lik", fill = "lik"), alpha = 0.5) +
+  labs(x = "Parameter value", y = "Probability density", color = "", fill = "") +
+  scale_color_manual(
+    values = c("pr" = "red", "lik" = "yellow", "ps" = "orange"),
+    labels = c("Prior", "Likelihood", "Posterior")
+  ) +
+  scale_fill_manual(
+    values = c("pr" = "red", "lik" = "yellow"),
+    labels = c("Likelihood", "Prior")
+  ) +
+  guides(color = "none") +
+  ylim(0, max(dat$likelihood))
+```
+
+:::
+
+## Updating knowledge {auto-animate="true"}
+
+```{r}
+#| echo: false
+ggplot(dat, aes(x = x)) +
+  geom_line(aes(y = prior, color = "pr"), linewidth = 1.5) +
+  geom_area(aes(y = prior, color = "pr", fill = "pr"), alpha = 0.5) +
+  geom_line(aes(y = likelihood, color = "lik"), linewidth = 1.5) +
+  geom_area(aes(y = likelihood, color = "lik", fill = "lik"), alpha = 0.5) +
+  geom_line(aes(y = posterior, color = "ps"), linewidth = 1.5) +
+  geom_area(aes(y = posterior, color = "ps", fill = "ps"), alpha = 0.5) +
+  labs(x = "Parameter value", y = "Probability density", color = "", fill = "") +
+  scale_color_manual(
+    values = c("pr" = "red", "lik" = "yellow", "ps" = "orange"),
+    labels = c("Prior", "Likelihood", "Posterior")
+  ) +
+  scale_fill_manual(
+    values = c("pr" = "red", "lik" = "yellow", "ps" = "orange"),
+    labels = c("Likelihood", "Prior", "Posterior")
+  ) +
+  guides(color = "none") +
+  ylim(0, max(dat$likelihood))
+```
+
+## Updating knowledge {auto-animate="true"}
+
+```{r}
+#| echo: false
+dat_text <- data.frame(
+  x = c(0.38, 0.61, 0.85), y = 2,
+  label = c("Horse", "Mule", "Donkey")
+)
+ggplot(dat, aes(x = x)) +
+  geom_line(aes(y = prior, color = "pr"), linewidth = 1.5) +
+  geom_area(aes(y = prior, color = "pr", fill = "pr"), alpha = 0.5) +
+  geom_line(aes(y = likelihood, color = "lik"), linewidth = 1.5) +
+  geom_area(aes(y = likelihood, color = "lik", fill = "lik"), alpha = 0.5) +
+  geom_line(aes(y = posterior, color = "ps"), linewidth = 1.5) +
+  geom_area(aes(y = posterior, color = "ps", fill = "ps"), alpha = 0.5) +
+  labs(x = "Parameter value", y = "Probability density", color = "", fill = "") +
+  scale_color_manual(
+    values = c("pr" = "red", "lik" = "yellow", "ps" = "orange"),
+    labels = c("Prior", "Likelihood", "Posterior")
+  ) +
+  scale_fill_manual(
+    values = c("pr" = "red", "lik" = "yellow", "ps" = "orange"),
+    labels = c("Likelihood", "Prior", "Posterior")
+  ) +
+  guides(color = "none") +
+  ylim(0, max(dat$likelihood)) +
+  geom_text(data = dat_text, aes(x = x, y = y, label = label), size = 10)
+```
+
+> A Bayesian is one who, vaguely **expecting a horse**, and catching a **glimpse of a donkey**, strongly **believes he has seen a mule**
+
+## Where do priors come from
+
+Priors come from all data external to the current study (*i.e.* everything else)
+‘Boiling down’ what subject-matter experts know/think is known as eliciting a prior.
+It’s not easy but here are some simple tips
+
+* Discuss parameters experts understand – e.g. code variables so intercept is mean outcome in people with average covariates, not with age = height = ... = 0
+* Avoid leading questions (just as in survey design)
+* The ‘language’ of probability is unfamiliar, help users express their uncertainty
+
+## Where do priors come from
+
+Ideas to help experts ‘translate’ to the language of probability
+
+\
+
+::: {.center}
+Use stickers or a survey in the hallway
+:::
+
+:::: {.columns}
+
+::: {.column}
+
+![](assets/img_l7/priors_1.png)
+
+Use 20×5% stickers (Johnson et
+al 2010, J Clin Epi) for prior on
+survival when taking warfarin
+
+:::
+
+::: {.column}
+
+![](assets/img_l7/priors_2.png)
+
+Normalize marks (Latthe et al
+2005, J Obs Gync) for prior on
+pain effect of LUNA vs placebo
+
+:::
+
+::::
+
+::: {.notes}
+* Typically these ‘coarse’ priors are smoothed. Providing the
+basic shape remains, exactly how much you smooth is unlikely
+to be critical in practice.
+* Elicitation is also very useful for non-Bayesian analyses – it’s
+similar to study design & analysis planning
+:::
+
+## Where do priors come from
+
+If the experts disagree? Try it both ways
+
+\
+
+If the posteriors differ, what you believe based on the data **depends** on your prior knowledge
+
+\
+
+[To convince other people, expect to have to convince skeptics – and note that **convincing [rational] skeptics** is what science is all about]{.emph}
+
+# When priors don't matter (much)?
+
+## Very informative data
+
+When the data provide a lot more information than the prior
+
+```{r}
+#| echo: false
+dat <- data.frame(x = seq(0, 1, len = 1000)) %>%
+  mutate(
+    pr_1 = dbeta(x, 4, 16),
+    pr_2 = dbeta(x, 16, 4),
+    lik = dbeta(x, 300, 200),
+    pr_lik_1 = pr_1 * lik,
+    ps_1 = pr_lik_1 / sum(pr_lik_1) * sum(pr_1),
+    pr_lik_2 = pr_2 * lik,
+    ps_2 = pr_lik_2 / sum(pr_lik_2) * sum(pr_2)
+  )
+ggplot(dat, aes(x = x)) +
+  geom_line(aes(y = pr_1, color = "pr"), linewidth = 1.5) +
+  geom_line(aes(y = pr_2, color = "pr"), linewidth = 1.5, linetype = 2) +
+  geom_line(aes(y = lik, color = "lik"), linewidth = 1.5) +
+  geom_area(aes(y = lik, color = "lik", fill = "lik"), alpha = 0.5) +
+  geom_line(aes(y = ps_1, color = "ps"), linewidth = 1.5) +
+  geom_line(aes(y = ps_2, color = "ps"), linewidth = 1.5, linetype = 2) +
+  labs(x = "Parameter value", y = "Probability density", color = "", fill = "") +
+  scale_color_manual(
+    values = c("lik" = "yellow", "pr" = "red", "pr" = "red", "ps" = "orange"),
+    labels = c("Likelihood", "Prior", "Posterior")
+  ) +
+  scale_fill_manual(values = c("lik" = "yellow")) +
+  guides(fill = "none")
+```
+
+Priors here are dominated by the likelihood, and they give very similar posteriors – i.e. everyone agrees. (Phew!)
+
+## Flat priors
+
+Using very flat priors to represent ignorance
+
+```{r}
+#| echo: false
+dat <- data.frame(x = seq(0, 1, len = 1000)) %>%
+  mutate(
+    pr = dunif(x, 0, 1),
+    lik = dbeta(x, 60, 40),
+    pr_lik = pr * lik,
+    ps = pr_lik / sum(pr_lik) * sum(pr),
+  )
+ggplot(dat, aes(x = x)) +
+  geom_line(aes(y = pr, color = "pr"), linewidth = 1.5) +
+  geom_line(aes(y = lik, color = "lik"), linewidth = 1.5) +
+  geom_area(aes(y = lik, color = "lik", fill = "lik"), alpha = 0.5) +
+  geom_line(aes(y = ps, color = "ps"), linewidth = 1.5) +
+  labs(x = "Parameter value", y = "Probability density", color = "", fill = "") +
+  scale_color_manual(
+    values = c("lik" = "yellow", "pr" = "red", "pr" = "red", "ps" = "orange"),
+    labels = c("Likelihood", "Prior", "Posterior")
+  ) +
+  scale_fill_manual(values = c("lik" = "yellow")) +
+  guides(fill = "none")
+```
+
+Flat priors do [NOT]{.emph} actually represent ignorance!
+
+::: {.notes}
+Most of their support is for very extreme parameter values
+:::
+
+##  Bayesian $\approx$ frequentist
+
+```{r}
+#| echo: false
+dat <- data.frame(x = seq(0, 1, len = 1001)) %>%
+  mutate(
+    pr = dbeta(x, 1, 2),
+    lik = dbeta(x, 60, 40),
+    pr_lik = pr * lik,
+    ps = pr_lik / sum(pr_lik) * 1000,
+  )
+inter_ps <- c(
+  min(which(cumsum(dat$ps) / sum(dat$ps) > 0.025)),
+  min(which(cumsum(dat$ps) / sum(dat$ps) > 0.975))
+)
+dat_inter_1 <- dat[1:inter_ps[1], ]
+dat_inter_2 <- dat[inter_ps[2]:nrow(dat), ]
+dat_text <- data.frame(
+  x = c(qbeta(0.025, 60, 40), 0.6, qbeta(0.975, 60, 40)),
+  label = c("95%CI", "beta", "95% CI"),
+  y = 9
+)
+ggplot(dat, aes(x = x)) +
+  geom_line(aes(y = pr, color = "pr"), linewidth = 1.5) +
+  geom_line(aes(y = lik, color = "lik"), linewidth = 1.5) +
+  geom_area(aes(y = lik, color = "lik", fill = "lik"), alpha = 0.5) +
+  geom_line(aes(y = ps, color = "ps"), linewidth = 1.5) +
+  labs(x = "Parameter value", y = "Probability density", color = "", fill = "") +
+  scale_color_manual(
+    values = c("lik" = "yellow", "pr" = "red", "pr" = "red", "ps" = "orange"),
+    labels = c("Likelihood", "Prior", "Posterior")
+  ) +
+  scale_fill_manual(values = c("lik" = "yellow")) +
+  guides(fill = "none") +
+  xlim(0.4, 0.8) +
+  ylim(0, 9) +
+  geom_vline(aes(xintercept = 0.6), linetype = 2) +
+  geom_vline(aes(xintercept = qbeta(0.025, 60, 40)), color = "grey") +
+  geom_vline(aes(xintercept = qbeta(0.975, 60, 40)), colour = "grey") +
+  geom_area(data = dat_inter_1, aes(y = ps), alpha = 0.3) +
+  geom_area(data = dat_inter_2, aes(y = ps), alpha = 0.3) +
+  geom_text(data = dat_text, aes(x = x, y = y, label = label), nudge_x = 0.015, size = 10)
+```
+
+Likelihood gives the classic 95% confidence interval can be good approx of Bayesian 95% Highest Posterior Density interval
+
+## Bayesian $\approx$ frequentist
+
+With large samples (and some regularity conditions)
+
+* (sane) frequentist confidence intervals and (sane) Bayesian credible intervals are essentially identical
+
+* it’s actually okay to give Bayesian interpretations to 95% CIs,
+i.e. to say we have $\neq$ 95% posterior belief that the true β lies within that range
+
+## Frequentist :smiley: & Bayesian :confused:
+
+Prior strongly supporting small effects, and with data from an imprecise study
+
+```{r}
+#| echo: false
+dat <- data.frame(x = seq(-2, 5, len = 1001)) %>%
+  mutate(
+    pr = dnorm(x, 0, 0.5),
+    lik = dnorm(x, 2.2, 1),
+    pr_lik = pr * lik,
+    ps = pr_lik / sum(pr_lik) * sum(pr),
+  )
+ggplot(dat, aes(x = x)) +
+  geom_line(aes(y = pr, color = "pr"), linewidth = 1.5) +
+  geom_line(aes(y = lik, color = "lik"), linewidth = 1.5) +
+  geom_area(aes(y = lik, color = "lik", fill = "lik"), alpha = 0.5) +
+  geom_line(aes(y = ps, color = "ps"), linewidth = 1.5) +
+  geom_pointrange(aes(x = 2.2, y = 0.05, xmin = qnorm(0.025, 2.2, 1), xmax = qnorm(0.975, 2.2, 1))) +
+  labs(x = "Parameter value", y = "Probability density", color = "", fill = "") +
+  geom_vline(aes(xintercept = 0), color = "grey", linetype = 2) +
+  scale_color_manual(
+    values = c("lik" = "yellow", "pr" = "red", "pr" = "red", "ps" = "orange"),
+    labels = c("Likelihood", "Prior", "Posterior")
+  ) +
+  scale_fill_manual(values = c("lik" = "yellow")) +
+  guides(fill = "none")
+```
+
+::: {.notes}
+Frequentist ‘Textbook’ analysis says ‘reject’ (p < 0.05, woohoo, Nature her we go)
+
+Bayesian Posterior is ‘shrunk’ toward zero. We’re sure true β is very small (& hard to replicate) & we’re unsure of its sign. Wait a second, about that front page
+:::
+
+
+## Where is Bayesian approach used
+
+* Almost any analysis
+
+* Bayesian arguments are often seen in
+  
+  * Hierarchical modeling (Some expert calls the classic frequentist version a “statistical no-man’s land”)
+
+  * Complex models: for messy data, measurement error, multiple sources of data   fitting them is possible under Bayesian approaches, but perhaps still not easy
+
+# Summary
+
+## Bayesian statistics:
+
+* I barely scratched the surface
+
+* Is useful in many settings, and you should know about it
+
+* Is often not very different in practice from frequentist statistics. It is often helpful to think about analyses from both Bayesian and non-Bayesian points of view
+
+* Is not reserved for hard-core mathematicians, or computer scientists, or philosophers. If you find it helpful, use it.
+
+# Happy modelling {.unnumbered}
+
+![](assets/img_l5/unicorn.png){fig-align="center"}
+

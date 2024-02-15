@@ -19,6 +19,10 @@ format:
     self-contained: true
     number-sections: true
     format-links: false
+    css: assets/css/notes.css
+    number-depth: 2
+    comments:
+      hypothesis: true
 editor:
   render-on-save: true
 engine: knitr

@@ -1,0 +1,488 @@
+---
+title: "Introduction to Git and GitHub"
+subtitle: "with RStudio"
+author: Julien Martin
+institute:  BIO 8940 - Lecture 3
+date: today
+from: markdown+emoji
+format:
+  revealjs: 
+    width: 1600
+    height: 950
+    chalkboard: true
+    theme: [default]
+    css: [assets/theme_chalk/whiteboard-blue.css]
+#    output-location: column-fragment
+#    logo: assets/MAD_logo_small_rb.png
+    footer: BIO 8940 - Lecture 3
+    show-notes: false
+    mermaid-format: svg
+    mermaid:
+      theme: forest
+  html:
+    self-contained: true
+    number-sections: true
+    format-links: false
+    css: assets/css/notes.css
+    number-depth: 2
+    comments:
+      hypothesis: true
+    mermaid-format: svg
+    mermaid:
+      theme: forest
+editor:
+  render-on-save: true
+---
+
+## Learning expectations
+```{r}
+#| label: setup
+#| include: false
+#| purl: false
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  error = FALSE,
+  fig.align = "center",
+  dpi = 300,
+  fig.showtext = TRUE,
+  fig.width = 12,
+  fig.height = 6,
+  dev.args = list(bg = "transparent"),
+  cache = TRUE
+)
+
+source("assets/theme_chalk/themes_board.r")
+theme_set(theme_whiteboard())
+library(emoji)
+library(tidyverse)
+```
+
+This won't even touch the surface of git... But! Hopefully, you:
+
+- Recognize the power of using version control
+
+- Know the basic tools to get started using git
+
+- Where to go for help
+
+::: aside
+Credit: I borrowed slides from [Olivier Gimenez](https://oliviergimenez.github.io)
+:::
+
+## Getting started
+
+You need:
+
+* RStudio or VS Code
+
+* R
+
+* a github account
+
+* git software
+
+* R packages:
+  * `usethis`
+  * `gitcreds`
+
+```{r, echo = FALSE}
+library(gitcreds)
+library(usethis)
+```
+
+# Workflow
+
+## Rings a bell?
+
+![](http://www.phdcomics.com/comics/archive/phd101212s.gif){fig-align="center"}
+
+## Is your workflow...
+
+![](assets/img_l3/definitions.jpg){fig-align="center"}
+
+## Why reproducible science?
+
+![](assets/img_l3/natureCapture.png){fig-align="center"}
+
+
+## RStudio Projects
+
+[Use RStudio projects to keep materials associated with a particular analysis together]{.emph}
+
+:::: {.columns}
+
+::: {.column}
+- **Self contained** and **portable**
+
+- **Working directory set to root** of project on launch
+
+- **Fresh session** everytime the project is launched
+
+See Jenny Bryan's post on [**project oriented workflows**](https://www.tidyverse.org/articles/2017/12/workflow-vs-script/) for more details
+:::
+
+::: {.column}
+
+**File > New Project > New Directory**
+
+![](assets/img_l3/new_project.png){fig-align="center"}
+:::
+
+::::
+
+
+## Alternatives to RStudio Projects
+
+So You don't like `RStudio` `r emoji::emoji("broken_heart")`
+
+:::: {.columns}
+
+::: {.column}
+Essentially a **Rstudio Project**:
+
+- organise all the files within a given project folder
+
+- set project folder as *working directory*
+
+- ensure a fresh, clean session
+:::
+
+::: {.column}
+**simply, do the same without using RStudio `r emoji::emoji("star_struck")`**
+:::
+
+::::
+
+# Version Control
+
+## What is it? `r emoji::emoji("thinking")`
+
+The **management of changes** to documents, computer programs, large web sites and other collections of information.
+
+### Git ![](https://git-scm.com/images/logos/downloads/Git-Logo-2Color.png){height="75px"}
+
+Open source (free to use) **Version control software.**
+
+### GitHub ![](https://raw.githubusercontent.com/annakrystalli/rrresearch/master/docs/assets/github_logo.jpg){height="75px"}
+
+A [**website**](https://github.com/) that allows you to **store your Git repositories online** and makes it easy to collaborate with others.
+
+## Getting started with Git and GitHub
+
+1. Create an account on GitHub
+  * You set your username, email and password here
+
+2. install `git` on your computer
+  * Windows: <https://gitforwindows.org/>
+  * MacOS: need Xcode tools. so shell/terminal: `xcode-select --install`
+  * Linux:
+      * debian-based: `sudo apt install git`
+      * Fedora, RedHat: `dnf install git`
+
+3. You might need to restart you computer
+
+For more details got to <https://git-scm.com/downloads>
+
+## Git, Github & IDE
+
+**Before** git only through the terminal `r emoji::emoji("cry")`
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+**Now** git can be used via multiple user-friendly interfaces
+
+RStudio + `usethis` `r emoji::emoji("package")` + `gitcreds` `r emoji::emoji("package")` ==
+`r emoji::emoji("heart")` `Git` & `GitHub` `r emoji::emoji("star_struck")`
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+But When using VS Code
+
+![](https://media.giphy.com/media/UuebWyG4pts3rboawU/giphy-downsized.gif){fig-align="center"}
+
+
+# Configure git & GitHub
+
+**to be done only once**
+
+## Configure git
+
+**To check your configuration**
+
+```{r, eval = FALSE, echo = TRUE}
+usethis::git_sitrep()
+```
+
+**Set your configuration**
+
+Use your github username and and the email you used to sign-up on GitHub
+
+```{r, eval=FALSE, echo = TRUE}
+usethis::use_git_config(
+   user.name = "JulienGAMartin",
+   user.email = "julien.martin@uottawa.ca")
+```
+
+## Configure GitHub authentication
+
+### Get GITHUB Personal Authorisation Token
+
+```{r, eval = FALSE, echo = TRUE}
+usethis::create_github_token()
+```
+ Need scopes *repo, users, workflows* at least
+
+![](assets/img_l3/browse_github.png){fig-align="center"}
+
+## Configure GitHub authentication
+
+[Store your git token with credentials]{.emph}
+
+```{r, eval = FALSE, echo = TRUE}
+gitcreds::gitcreds_set()
+```
+
+Provide your github PAT token in the window
+
+![](assets/img_l3/credentials.png){fig-align="center"}
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+Restart RStudio and R
+
+**Git and github access should be configured now**
+
+## First (or new) project with Rstudio
+
+**Might be problematic the first time you do it**
+
+1. create R project
+
+2. initialise it for git
+```{r, eval = FALSE, echo = TRUE}
+usethis::use_git()
+```
+3. Accept the commit and restart R
+
+4. In R, to create github repo and link it
+```{r, eval = FALSE, echo = TRUE}
+usethis::use_github()
+usethis::git_vaccinate()
+```
+
+5. Check on github that the repos is there
+
+**et voila**
+
+## New project and NOT Rstudio
+
+### Option 1
+
+1. create new empty folder for your project(no space, no accent)
+
+2. add at least one file in it (suggest README.md)
+
+3. using terminal/shell
+```{bash, eval = FALSE, echo = TRUE}
+git init
+git add .
+git commit -a -m "first commit"
+```
+
+4. In R, to create github repo and link it
+```{r, eval = FALSE, echo = TRUE}
+usethis::use_github()
+usethis::git_vaccinate()
+```
+
+5. Check on github that the repos is there
+
+**et voila**
+
+## New project using GitHub and NOT Rstudio
+
+### Option 2
+
+1. Create new repository on `github`
+
+2. Set R working directory where you want to save your project
+
+3. To clone (and link) github repo to your computer
+```{r, eval = FALSE, echo = TRUE}
+usethis::create_from_github(
+  "https://github.com/your_github/your_repo.git",
+  destdir=".")
+```
+
+4. Check that your folder has been created where you want it
+
+
+**et voila**
+
+## Integrated graphical user interface
+
+![](assets/img_l3/git_tab.png){fig-align="center"}
+
+## Git terms
+
+* **repository** your project folder
+
+* **commit** a snapshot of your repo
+
+* **push** send commits to a remote
+
+* **pull** get commits from a remote
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+* **clone** get the repository from the remote for the first time
+
+* **branch** a movable label that points to a commit
+
+* **merge** combining two branches
+
+* **remote** a computer or server with the repository on it
+
+## Git RStudio workflow
+
+:::: {.columns}
+
+::: {.column}
+[1.view file status]{.large}
+![](assets/img_l3/git_view.png){fig-align="center"}
+
+[2.stage files]{.large}
+![](assets/img_l3/git_add.png){fig-align="center"}
+:::
+
+::: {.column}
+[3.commit changes]{.large}
+![](assets/img_l3/git_commit.png){fig-align="center"}
+:::
+
+::::
+
+## Share on GitHub
+
+#### 1. Create repo
+
+```{r, eval=FALSE}
+usethis::use_github(protocol = "https")
+```
+
+![](assets/img_l3/my_new_repo.png){fig-align="center"}
+
+## Share on GitHub
+
+#### 2. Push further changes
+
+![](assets/img_l3/push_github.png){fig-align="center"}
+
+
+## Anatomy of a GitHub repo
+
+- **`README`**. Explain what your project is, and how to use it.
+  - `usethis::use_readme_md()`
+  - `usethis::use_readme_rmd()`
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+- **`LICENSE`**. Without a licence, the contents of the repository are technically closed.
+  - Examples licence [CC-by](https://creativecommons.org/licenses/by/4.0/): `usethis::use_ccby_license(name = "Julien Martin")`
+  - `?licenses`: details of functions available to generate licenses
+  - [https://choosealicense.com/](https://choosealicense.com/) help on choosing a licence.
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+- **`CONTRIBUTING.md`** - guidelines for contributors.
+  - `usethis::use_tidy_contributing()` provides a realtively strict but instructive template
+
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+- **`CODE_OF_CONDUCT.md`** set the tone for discourse between contributors.
+  - `use_code_of_conduct()`
+
+
+## GitHub issues
+
+### use GitHub issues to plan, record and discuss tasks.
+
+![](assets/img_l3/github_issues.png){fig-align="center"}
+
+## Why using a remote like GitHub ?
+
+* A backup of your repository (**Dropbox** is **NOT** a backup)
+
+* Work with others (not covered)
+
+* Increase your visibility
+
+* Increase interactions with users
+
+* Easy distribution of R packages (without CRAN submissions)
+
+
+::: {.emph .center}
+one more time just in case
+**Dropbox** is **NOT** a backup
+:::
+
+## Branching and merging
+
+#### This the true Power of git
+
+![](assets/img_l3/git_cool_branch.png){fig-align="center"}
+
+## Branching and merging
+
+:::: {.columns}
+
+::: {.column}
+#### Branching in Rstudio
+![](assets/img_l3/branching.png){fig-align="center"}
+:::
+
+::: {.column}
+#### Pull request in Github
+
+When you want to merge branches:
+
+* create a pull request on Github
+
+* check for incompatibilities
+
+* then merge
+
+:::
+
+::::
+
+## Resources
+
+#### Check out [Happy Git and GitHub for the useR](https://happygitwithr.com/) for more joy with `git`
+
+\
+
+#### The British Ecological Society has [A Guide to Reproducible Code in Ecology and Evolution](https://colauttilab.github.io/Readings/BES-Reproducible-Code.pdf)
+
+
+# Virtuous research cycle
+
+![](assets/img_l3/researchcycle.jpg){fig-align="center"}
