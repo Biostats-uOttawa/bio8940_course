@@ -16,6 +16,7 @@ format:
 #    logo: assets/MAD_logo_small_rb.png
     footer: BIO 8940 - Lecture 8
     show-notes: false
+    output-ext: slides.html
   html:
     self-contained: true
     number-sections: true
@@ -24,6 +25,7 @@ format:
     number-depth: 2
     comments:
       hypothesis: true
+    output-ext: notes.html
 editor:
   render-on-save: true
 ---

@@ -19,6 +19,7 @@ format:
     mermaid-format: svg
     mermaid:
       theme: forest
+    output-ext: slides.html
   html:
     self-contained: true
     number-sections: true
@@ -30,6 +31,7 @@ format:
     mermaid-format: svg
     mermaid:
       theme: forest
+    output-ext: notes.html
 editor:
   render-on-save: true
 ---
