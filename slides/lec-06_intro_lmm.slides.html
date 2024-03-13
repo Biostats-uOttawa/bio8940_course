@@ -8,10 +8,10 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.549">
+  <meta name="generator" content="quarto-1.4.550">
 
   <meta name="author" content="Julien Martin">
-  <meta name="dcterms.date" content="2024-02-25">
+  <meta name="dcterms.date" content="2024-03-13">
   <title>BIO8940 course - Introduction to linear mixed models?</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -418,7 +418,7 @@ Julien Martin
     </div>
 </div>
 
-  <p class="date">2024-02-25</p>
+  <p class="date">2024-03-13</p>
 </section>
 <section>
 <section id="when-you-are-lacking-independence" class="title-slide slide level1 center">
@@ -709,12 +709,12 @@ a_j \sim N(0, {\sigma^2_{a_j}})
 <section id="fixed-part" class="slide level2">
 <h2>Fixed part</h2>
 
-<img data-src="lec-06_intro_lmm_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"><p><span class="math display">\[y_{ij} = \underbrace{\color{red}{a + b_1{NAP_{ij}}} + b_2{Exposure_j}}_\text{fixed} + \underbrace{a_j + \epsilon_{ij}}_\text{random}\]</span></p>
+<img data-src="lec-06_intro_lmm_files/figure-html/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"><p><span class="math display">\[y_{ij} = \underbrace{\color{red}{a + b_1{NAP_{ij}}} + b_2{Exposure_j}}_\text{fixed} + \underbrace{a_j + \epsilon_{ij}}_\text{random}\]</span></p>
 </section>
 <section id="random-part" class="slide level2">
 <h2>Random part</h2>
 
-<img data-src="lec-06_intro_lmm_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"><p><span class="math display">\[
+<img data-src="lec-06_intro_lmm_files/figure-html/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"><p><span class="math display">\[
 Richness_{ij} = \underbrace{\color{red}{a + b_1{NAP_{ij}}} + b_2{Exposure_j}}_\text{fixed} + \color{purple}{\underbrace{a_j + \epsilon_{ij}}_\text{random}}
 \]</span></p>
 </section>
@@ -769,7 +769,7 @@ a_j \sim N(0, 0.34)
 <li>Estimates for each groups are constrained (shrunk) too avoid extreme values.</li>
 </ul>
 
-<img data-src="lec-06_intro_lmm_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"></section></section>
+<img data-src="lec-06_intro_lmm_files/figure-html/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"></section></section>
 <section>
 <section id="variance-components" class="title-slide slide level1 center">
 <h1>Variance components</h1>
@@ -946,7 +946,7 @@ a_j \\
 <section id="random-regression-1" class="slide level2">
 <h2>Random regression</h2>
 
-<img data-src="lec-06_intro_lmm_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"><p><span class="math display">\[
+<img data-src="lec-06_intro_lmm_files/figure-html/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"><p><span class="math display">\[
 Richness_{ij} = \underbrace{a + b_1{NAP_{ij}} + b_2{Exposure_j}}_\text{fixed} + \underbrace{\color{#DD3333}{a_j + b_{1j}NAP_{ij}} + \epsilon_{ij}}_\text{random}
 \]</span></p>
 </section></section>
@@ -1203,44 +1203,6 @@ Richness_{ij} = \underbrace{a + b_1{NAP_{ij}} + b_2{Exposure_j}}_\text{fixed} + 
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

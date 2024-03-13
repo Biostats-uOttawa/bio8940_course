@@ -23,6 +23,7 @@ format:
   html:
     self-contained: true
     number-sections: true
+    code-link: true
     format-links: false
     css: assets/css/notes.css
     number-depth: 2
