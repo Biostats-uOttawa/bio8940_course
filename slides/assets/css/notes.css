@@ -5,3 +5,19 @@
   border-radius: 10px;
   background: #f5f5f5 5px center/3em no-repeat;
 }
+
+.red {
+  color: rgb(222, 47, 47);
+}
+
+.blue {
+  color: rgb(65, 47, 222);
+}
+
+.purple {
+  color: rgb(202, 47, 222);
+}
+
+.orange {
+  color: rgb(222, 112, 47);
+}

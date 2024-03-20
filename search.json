@@ -7,18 +7,39 @@
     "text": "EnglishFrançais\n\n\n\nDescription\nStatistics are a key component of rigorous science and as such there is a need to both understand advanced statistics and properly document the analysis to improve scientific communication transparency and quality. The course aims to:\n\nProvide an understanding of advanced statistical models (including generalized linear mixed models)\nDevelop good coding practices (using R and Rmarkdown)\nImprove data and code management (data manipulation and github)\nPresent the principles of open science (using OSF, Open Science Framework).\n\n\n\nContents\n\nStatistics (flexible to be define based on attendance interests)\n\nMixed models including generalized linear mixed models and multivariate models\nOptions:\n\nIntroduction to Bayesian stats\nPath analysis\nSpatial analysis\nMultivariate analysis\n…\n\n\nOpen and reproducible science\n\nR: Rmarkdown, tidyverse and workflowr\ngit: github and other alternatives\nOpen Science Framework with OSF\n\n\n\n\nClasses\n\nDuration: 1 class of 3h each week\nStyle: mix of lecture, discussion and practical\nHow: In-person .\nWhen: Tuedays from 1430 to 1720\nWhere:\n\nRoom: CRX-C326 \nCourse info and slides: https://biostats-uottawa.github.io/bio8940_course/\nLab manual: https://biostats-uottawa.github.io/bio8940_manual/\n\n\n\n\nAssessment\nBased on interactions in classes and on a data analysis project using R and documented with with Rmarkdown, workflowr and github.\n\n50% in class assessment:\n\n15 min presentation in small groups on a paper and questions (10% content, 10% delivery, 10% answers questions)\ndiscussion in class (10% questions prep, 10% discussions)\n\n50% written statistical report using analysis more complex than linear models written using Rmarkdown, published on github in 2 different formats\n\n\nPresentation\n\nContent – 10%\n\nIntroduction: Background of the general ‘big picture’ and specific problem, study system, and specific hypotheses or predictions.\nMethods: Brief outline of data collection and explanation of statistical methods used to address the hypotheses/predictions outlined in the introduction, including key assumptions.\nResults: Visualizations clearly summarizing your results, using parallel structure to methods\nDiscussion: Summary of major results, alternative explanations for the observed results, conclusions/implications, future directions\n\n\n\nStyle – 10%\n\nOrganization\nClarity\nDelivery: Timing, pace, tone, articulation \n\n\n\nAnswers and understanding – 10%\n\n\n\nWritten report\n\nContent – 70%\n\nIntroduction: (10 marks) Background of the general ‘big picture’ and specific problem, study system, and specific hypotheses or predictions.\nMethods: (20 marks) Brief outline of data collection and explanation of statistical methods used to address the hypotheses/predictions outlined in the introduction, including key assumptions.\nResults: (25 marks) Visualizations clearly summarizing your results, using parallel structure to methods\nDiscussion: (15 marks) Summary of major results, alternative explanations for the observed results, conclusions/implications, future directions\n\n\n\nStyle – 30%\n\nClarity and reproducibility of code (10 marks)\nOrganization (5 marks)\nClarity of text (10 marks)\nTypos and grammar (5 marks)  \n\n\n\n\n\nSchedule\nThis is a tentative schedule.\n\n\n\n\n\n\n\nWeek\nSubject\n\n\n\n\n1\nIntro and discussion on Stats and science\n\n\n2\nRmarkdown and importance of reproducibility\n\n\n3\nRecap on linear models\n\n\n4\nGeneralized linear models\n\n\n5\nLinear mixed models (including random slopes)\n\n\n6\nGeneralized linear mixed models (and intro to gamms)\n\n\n7\nReading week\n\n\n8\nIntro to Bayesian stats\n\n\n9\nComplex mixed models (spatial, temporal autocorrelation, non-independence random effects)\n\n\n10\nPCA and ordinance analysis\n\n\n11\nMultivariate mixed models\n\n\n12\nPath analysis and causality\n\n\n13\nWrap-up\n\n\n\n\n\nNote on bilingualism\nPlease note that the class is bilingual. This means that any questions during the class can be asked or answered in either french or english and the prof will translate the answers if needs be. The majority of the course content (slides, lab manual) are provided in english only, but explanation can be provided in either languages.\n\n\n\n\nDescription et objectifs\nLes analyses statistiques sont fondamentales à un processus scientifique rigoureux. Par conséquent, il est primordiale de comprendre les statistiques et de reporter correctement les analyses pour améliorer la transparence et la qualité de la science. Les objectifs du cours sont:\n\nAméliorer la compréhension des modèles statistique avancés (incluant les modèles mixtes généralisés)\nDévelopper de bonnes habitudes pour coder (utilisation de R et Rmarkdown)\nAméliorer la gestion des données et du code statistique (manipulation de données et github)\nPrésenter les principes de science ouverte (se basant sur OSF, Open Science Framework)\n\n\n\nContenu\n\nStatistiques (contenu flexible à définir en fonction de l’intérêt des participants)\n\nModèles linéaires généralisés\nModèles linéaires mixtes (généralisés et multivariés)\nsujets flexibles:\n\nIntroduction aux stats Bayesienne\nAnalyse de piste\nanalyse spatiale\nanalyse multivariée\nanalyse en composante principale\nGAM et GAMMs\n…\n\n\nScience ouverte répétable\n\nR: Rmarkdown, tidyverse, et workflowr\ngit: github et autre alternative\nOpen Science framework avec OSF\n\n\n\n\nCours\n\nDurée: 1 cours de 3h par semaine\nStyle: mélange de cours, discussion et labo\nComment: Session Zoom interactive avec tous les participants\nQuand: Mardis 1430 à 1720\nOù:\n\nSalle: CRX-C326 \nCourse info and slides: https://biostats-uottawa.github.io/bio8940_course/\nLab manual: https://biostats-uottawa.github.io/bio8940_manual/\n\n\n\n\nÉvaluation\nL’évaluation sera basée sur la participation et sur la réalisation d’un projet qui analysera des données en utilisant R et documentera l’analyse avec Rmarkdown, workflowr et github.\n\n50% évaluation en classe:\n\n15 min présentation en petit groupes sur un article choisi par les étudiants\ndiscussion en classe (10% questions, 10% discussions)\n\n50% travail de session présentant une analyse statistique vu en cours (ou plus complexes), rédigé avec Rmardown et publiées sur github\n\n\nPrésentation\n\nContenu – 10%\n\nIntroduction: Contexte général, hypothèses et prédictions spécifiques à l’étude.\nMéthodes: Brève description de la collecte des données. Explication des analyses statistiques à la lumière des hypothèses et ou prédictions\nResults: Représentation des clair des résultats\nDiscussion: Explications des résultats, limite de l’étude? critique des analyses par rapport aux données et aux hypothèses\n\n\n\nStyle – 10%\n\nOrganisation\nClarté\nStyle: Temps, vitesse, rhytme, ton de la voix, interactions avec audience \n\n\n\nRéponse et compréhension – 10%\n\n\n\nTravail de session\n\nContent – 60%\n\nIntroduction: (10 marks) Contexte général, hypothèses et prédictions spécifiques à l’étude.\nMethods: (20 marks) Brève description de la collecte des données. Explication des analyses statistiques à la lumière des hypothèses et ou prédictions\nResults: (20 marks) Représentation des clair (incluants graphiques) des résultats\nDiscussion: (10 marks) Explications des résultats, limite de l’étude? critique des analyses par rapport aux données et aux hypothèses\n\n\n\nStyle – 40%\n\nClarté et reproducibilité du code (20 marks)\nOrganisation (5 marks)\nClarté du texte (10 marks)\nOrthographe et grammaire (5 marks)  \n\n\n\n\n\nCalendrier\n\n\n\n\n\n\n\nSemaine\nSubject\n\n\n\n\n1\nIntro and discussion on Stats and science\n\n\n2\nRmarkdown and importance of reproducibility\n\n\n3\nIntro to Github\n\n\n4\nGeneralized linear models\n\n\n5\nLinear mixed models (including random slopes)\n\n\n6\nGeneralized linear mixed models (and intro to gamms)\n\n\n7\nReading week\n\n\n8\nIntro to Bayesian stats\n\n\n9\nComplex mixed models (spatial, temporal autocorrelation, non-independence random effects)\n\n\n10\nPCA and ordinance analysis\n\n\n11\nMultivariate mixed models\n\n\n12\nPath analysis and causality\n\n\n13\nWrap-up\n\n\n\n\n\nNote sur le bilinguisme\nLe cours est un cours bilingue. Cela signifie que l’ensemble des interactions orales peuvent avoir lieu en français ou en anglais, le prof pouvant fournir les traductions nécessaires pour que l’ensemble des étudiants comprennent la matière. Le contenu du cours (diapo et manuel de laboratoire) seront présenté de manière unilingue en anglais avec possibilité de fournir des explanations en français si besoin."
   },
   {
+    "objectID": "slides/lec-07_intro_bayes.slides.html#overview",
+    "href": "slides/lec-07_intro_bayes.slides.html#overview",
+    "title": "Introduction Bayesian statistics",
+    "section": "Overview …",
+    "text": "Overview …\n\nFor many years – until recently – Bayesian ideas in statistics were widely dismissed, often without much thought\nAdvocates of Bayes had to fight hard to be heard, leading to an ‘us against the world’ mentality – & predictable backlash\nToday, debates tend be less acrimonious, and more tolerant"
+  },
+  {
     "objectID": "slides/lec-07_intro_bayes.slides.html#formal",
     "href": "slides/lec-07_intro_bayes.slides.html#formal",
     "title": "Introduction Bayesian statistics",
     "section": "Formal",
-    "text": "Formal\nBayes’ theorem is the results in a conditional probability of two events: \\[\nP[A|B] = \\frac{P[A\\ \\&\\ B]}{P[B]} = P[B|A]\\frac{P[A]}{P[B]}\n\\]\nThe conditional probability of A given B is the conditional probality ob B given A scaled by the relative probability of A compared to B."
+    "text": "Formal\nBayes’ theorem is the results in a conditional probability of two events:\n\\[\nP[A|B] = \\frac{P[A\\ \\&\\ B]}{P[B]} = \\frac{P[B|A]  P[A]}{P[B]}\n\\]\n\nThe conditional probability of A given B is the conditional probability ob B given A scaled by the relative probability of A compared to B.\n\\[\n\\underbrace{P[A|B]}_\\text{posterior probability} = \\frac{\\overbrace{P[B|A]}^\\text{likelihood}  \\overbrace{P[A]}^\\text{prior probability}}{\\underbrace{P[B]}_\\text{marginal probability}}\n\\]"
   },
   {
-    "objectID": "slides/lec-07_intro_bayes.slides.html#bayesian-inference",
-    "href": "slides/lec-07_intro_bayes.slides.html#bayesian-inference",
+    "objectID": "slides/lec-07_intro_bayes.slides.html#reframed-for-hypothesis",
+    "href": "slides/lec-07_intro_bayes.slides.html#reframed-for-hypothesis",
     "title": "Introduction Bayesian statistics",
-    "section": "Bayesian inference",
-    "text": "Bayesian inference\n\n\n\nReality\nReject H0\nAccept H0\nTotal\n\n\n\n\nH0 is true\na\nb\na + b\n\n\nH0 is false\nc\nd\nc + d\n\n\nTotal\na+c\nb+d\nN\n\n\n\na type I error\nd type II error (1-power)\nFalse positive \\(P[H_0\\ true | Reject\\ H_0] = \\frac{a}{b+c}\\)\n\n\nFalse negative: \\(P[H_0\\ true | Reject\\ H_0] = \\frac{a}{b+c}\\)"
+    "section": "Reframed for hypothesis",
+    "text": "Reframed for hypothesis\nBayes’ theorem can be seen as the conditonal probability of a hypothesis given the data: \\[\nP[H_0 | \\text{data}] = \\frac{\\overbrace{P[\\text{data}|H_0]}^\\text{likelihood}  \\overbrace{P[H_0]}^\\text{prior}}{P[data]}\n\\]\n\nOr it can be seen as \\[\n\\underbrace{P[H_0 | \\text{data}]}_{\\text{what we want to know}} = \\frac{\\overbrace{P[\\text{data}|H_0]}^\\text{what frequentist do}  \\overbrace{P[H_0]}^\\text{what we have a hard time understanding}}{\\underbrace{P[data]}_\\text{what we happily ignore}}\n\\]"
+  },
+  {
+    "objectID": "slides/lec-07_intro_bayes.slides.html#error-type-and-false-positivenegative",
+    "href": "slides/lec-07_intro_bayes.slides.html#error-type-and-false-positivenegative",
+    "title": "Introduction Bayesian statistics",
+    "section": "Error type and false positive/negative",
+    "text": "Error type and false positive/negative\nHere we are counting number of observations in each case\n\n\n\nReality\nReject H0\nAccept H0\nTotal\n\n\n\n\nH0 is true\na (Type I error)\nb\na + b\n\n\nH0 is false\nc\nd (type II error)\nc + d\n\n\nTotal\na+c\nb+d\nN (number of obs)\n\n\n\n\nFalse positive \\(P[H_0 \\text{ true} | \\text{Reject }H_0] = \\frac{a}{a+c}\\)\n\n\nFalse negative: \\(P[H_0\\ false | Accept\\ H_0] = \\frac{d}{b+d}\\)"
+  },
+  {
+    "objectID": "slides/lec-07_intro_bayes.slides.html#error-type-and-false-positivenegative-1",
+    "href": "slides/lec-07_intro_bayes.slides.html#error-type-and-false-positivenegative-1",
+    "title": "Introduction Bayesian statistics",
+    "section": "Error type and false positive/negative",
+    "text": "Error type and false positive/negative\nSame thing but with probabilities instead of number of observations\n\n\n\n\n\n\n\n\n\nReality\nReject H0 \\([\\not H_0]\\)\nAccept H0 \\([H_0]\\)\nTotal\n\n\n\n\nH0 true [H0+]\n\\(P[H_0^+| \\not H_0] P[H_0^+]\\)\n\\(P[H_0^+| H_0] P[H_0^+]\\)\n\\(P[H_0^+]\\)\n\n\nH0 false [H0-]\n\\(P[H_0^-| \\not H_0] P[H_0^-]\\)\n\\(P[H_0^-| H_0] P[H_0^-]\\)\n\\(P[H_0^-]\\)\n\n\nTotal\n\\(P[\\not H_0]\\)\n\\(P[H_0]\\)\n1\n\n\n\n\nFalse positive \\(P[H_0 \\text{ true} | \\text{Reject }H_0]\\) \\[\n\\begin{align}\nP[H_0^+ | \\not H_0] &=\\frac{P[\\not H_0 | H_0^+ ]  P[H_0^+ ]}{P[\\not H_0]} \\\\\n&= \\frac{P[\\not H_0 | H_0^+ ]  P[H_0^+]}\n  {P[\\not H_0 | H_0^+]  P[H_0^+ ] + P[ \\not H_0 | H_0^- ]  P[H_0^-]}\n\\end{align}\n\\]"
   },
   {
     "objectID": "slides/lec-07_intro_bayes.slides.html#applied-to-covid",
@@ -32,35 +53,35 @@
     "href": "slides/lec-07_intro_bayes.slides.html#applied-to-covid-1",
     "title": "Introduction Bayesian statistics",
     "section": "Applied to Covid",
-    "text": "Applied to Covid\nWhy does it matter? If 1% of a population have covid, for a screening test with 80% sensitivity (1- Type II) and 95% specificity (1-Type I).\nAssuming N test = 100\n\n\n\nReality\nTest +ve\nTest -ve\nTotal\n\n\n\n\nHealthy\n\n\n99\n\n\nHas COVID\n\n\n1\n\n\nTotal\n\n\n100\n\n\n\nAdding the prior"
+    "text": "Applied to Covid\nWhy does it matter? If 1% of a population have covid, for a screening test with 80% sensitivity (1- Type II) and 95% specificity (1-Type I).\nAssuming N test = 100\n\n\n\nReality\nTest +ve\nTest -ve\nTotal\n\n\n\n\nHealthy\n\n\n99\n\n\nHas COVID\n\n\n1\n\n\nTotal\n\n\n100\n\n\n\n\nAdding the prior"
   },
   {
     "objectID": "slides/lec-07_intro_bayes.slides.html#applied-to-covid-2",
     "href": "slides/lec-07_intro_bayes.slides.html#applied-to-covid-2",
     "title": "Introduction Bayesian statistics",
     "section": "Applied to Covid",
-    "text": "Applied to Covid\nWhy does it matter? If 1% of a population have covid, for a screening test with 80% sensitivity (1- Type II) and 95% specificity (1-Type I).\nAssuming N test = 100\n\n\n\nReality\nTest +ve\nTest -ve\nTotal\n\n\n\n\nHealthy\n\n\n99\n\n\nHas COVID\n0.8\n0.2\n1\n\n\nTotal\n\n\n100\n\n\n\nAdding the Type II error"
+    "text": "Applied to Covid\nWhy does it matter? If 1% of a population have covid, for a screening test with 80% sensitivity (1- Type II) and 95% specificity (1-Type I).\nAssuming N test = 100\n\n\n\nReality\nTest +ve\nTest -ve\nTotal\n\n\n\n\nHealthy\n\n\n99\n\n\nHas COVID\n0.8\n0.2\n1\n\n\nTotal\n\n\n100\n\n\n\n\nAdding the prior\nAdding the Type II error"
   },
   {
     "objectID": "slides/lec-07_intro_bayes.slides.html#applied-to-covid-3",
     "href": "slides/lec-07_intro_bayes.slides.html#applied-to-covid-3",
     "title": "Introduction Bayesian statistics",
     "section": "Applied to Covid",
-    "text": "Applied to Covid\nWhy does it matter? If 1% of a population have covid, for a screening test with 80% sensitivity (1- Type II) and 95% specificity (1-Type I).\nAssuming N test = 100\n\n\n\nReality\nTest +ve\nTest -ve\nTotal\n\n\n\n\nHealthy\n4.95\n94.05\n99\n\n\nHas COVID\n0.8\n0.2\n1\n\n\nTotal\n\n\n100\n\n\n\nAdding the Type I error"
+    "text": "Applied to Covid\nWhy does it matter? If 1% of a population have covid, for a screening test with 80% sensitivity (1- Type II) and 95% specificity (1-Type I).\nAssuming N test = 100\n\n\n\nReality\nTest +ve\nTest -ve\nTotal\n\n\n\n\nHealthy\n4.95\n94.05\n99\n\n\nHas COVID\n0.8\n0.2\n1\n\n\nTotal\n\n\n100\n\n\n\n\nAdding the prior\nAdding the Type II error\nAdding the Type I error"
   },
   {
     "objectID": "slides/lec-07_intro_bayes.slides.html#applied-to-covid-4",
     "href": "slides/lec-07_intro_bayes.slides.html#applied-to-covid-4",
     "title": "Introduction Bayesian statistics",
     "section": "Applied to Covid",
-    "text": "Applied to Covid\nWhy does it matter? If 1% of a population have covid, for a screening test with 80% sensitivity (1- Type II) and 95% specificity (1-Type I).\nAssuming N test = 100\n\n\n\nReality\nTest +ve\nTest -ve\nTotal\n\n\n\n\nHealthy\n4.95\n94.05\n99\n\n\nHas COVID\n0.8\n0.2\n1\n\n\nTotal\n5.75\n94.25\n100\n\n\n\nAdding colum sums"
+    "text": "Applied to Covid\nWhy does it matter? If 1% of a population have covid, for a screening test with 80% sensitivity (1- Type II) and 95% specificity (1-Type I).\nAssuming N test = 100\n\n\n\nReality\nTest +ve\nTest -ve\nTotal\n\n\n\n\nHealthy\n4.95\n94.05\n99\n\n\nHas COVID\n0.8\n0.2\n1\n\n\nTotal\n5.75\n94.25\n100\n\n\n\n\nAdding the prior\nAdding the Type II error\nAdding the Type I error\nAdding colum sums"
   },
   {
     "objectID": "slides/lec-07_intro_bayes.slides.html#applied-to-covid-5",
     "href": "slides/lec-07_intro_bayes.slides.html#applied-to-covid-5",
     "title": "Introduction Bayesian statistics",
     "section": "Applied to Covid",
-    "text": "Applied to Covid\nWhy does it matter? If 1% of a population have covid, for a screening test with 80% sensitivity and 95% specificity.\n\n\n\n\n\nReality\nTest +ve\nTest -ve\nTotal\n\n\n\n\nHealthy\n4.95\n94.05\n99\n\n\nHas COVID\n0.8\n0.2\n1\n\n\nTotal\n5.75\n94.25\n100\n\n\n\n\n\nSensitivity: P[test + | Covid ] = 80\nSpecificity: P[test + | Healthy ] = 95\nTrue positive: P[ Covid | test + ] = 0.139\nTrue negative: P[ Healthy | test - ] = 0.998\nFalse positive: P[ Healthy | test + ] = 0.861\nFalse negative: P[ Covid | test - ] = 0.002\n\n\n\nTalk about changing prior implications"
+    "text": "Applied to Covid\nWhy does it matter? If 1% of a population have covid, for a screening test with 80% sensitivity (1- Type II) and 95% specificity (1-Type I).\n\n\n\n\n\nReality\nTest +ve\nTest -ve\nTotal\n\n\n\n\nHealthy\n4.95\n94.05\n99\n\n\nHas COVID\n0.8\n0.2\n1\n\n\nTotal\n5.75\n94.25\n100\n\n\n\n\n\nTrue positive: P[ Covid | test + ] = 0.139\nTrue negative: P[ Healthy | test - ] = 0.998\nFalse positive: P[ Healthy | test + ] = 0.861\nFalse negative: P[ Covid | test - ] = 0.002\n\n\n\nTalk about changing prior implications"
   },
   {
     "objectID": "slides/lec-07_intro_bayes.slides.html#what-if-covid-changes",
@@ -102,7 +123,7 @@
     "href": "slides/lec-07_intro_bayes.slides.html#frequentist-testing",
     "title": "Introduction Bayesian statistics",
     "section": "Frequentist testing",
-    "text": "Frequentist testing\n\nimagine running your experiment again and again.\nor make an argument like this:\n\nOn day 1 you collect data and construct a [valid] 95% confidence interval for a parameter \\(\\theta_1\\).\nOn day 2 you collect new data and construct a 95% confidence interval for an unrelated parameter \\(\\theta_2\\).\nOn day 3 … [the same]. and so on constructing confidence intervals\n… 95% of your intervals will trap the true parameter value\n\n\n\n\n… neither version says anything about whether your data is in the 95% or the 5%\n… both versions require you to think about many other datasets, not just the one you have to analyze\n\n\n\nHow does Bayesian inference differ? Let’s take aim…"
+    "text": "Frequentist testing\n\nimagine running your experiment again and again, so\n\nOn day 1 you collect data and construct a [valid] 95% confidence interval for a parameter \\(\\theta_1\\).\nOn day 2 you collect new data and construct a 95% confidence interval for an unrelated parameter \\(\\theta_2\\).\nOn day 3 … [the same]. and so on constructing confidence intervals each time\n\n… 95% of your intervals will trap the true parameter value\n\n\n\n… it does not says anything about whether your data is in the 95% or the 5%\n… it requires you to think about many other datasets, not just the one you have to analyze\n\n\n\nHow does Bayesian inference differ? Let’s take aim…"
   },
   {
     "objectID": "slides/lec-07_intro_bayes.slides.html#here-it-is-in-practice",
@@ -158,7 +179,7 @@
     "href": "slides/lec-07_intro_bayes.slides.html#where-do-priors-come-from-1",
     "title": "Introduction Bayesian statistics",
     "section": "Where do priors come from",
-    "text": "Where do priors come from\nIdeas to help experts ‘translate’ to the language of probability\n\n\n\nUse stickers or a survey in the hallway\n\n\n\n\nUse 20×5% stickers (Johnson et al 2010, J Clin Epi) for prior on survival when taking warfarin\n\n\nNormalize marks (Latthe et al 2005, J Obs Gync) for prior on pain effect of LUNA vs placebo\n\n\n\n\nTypically these ‘coarse’ priors are smoothed. Providing the basic shape remains, exactly how much you smooth is unlikely to be critical in practice.\nElicitation is also very useful for non-Bayesian analyses – it’s similar to study design & analysis planning"
+    "text": "Where do priors come from\n\nUse stickers or a survey in the hallway\n\n\n\n\nUse stickers (Johnson et al 2010, J Clin Epi) for survival when taking warfarin\n\n\nNormalize marks (Latthe et al 2005, J Obs Gync) for pain effect of LUNA vs placebo\n\n\n\n\nIdeas to help experts ‘translate’ to the language of probability\nTypically these ‘coarse’ priors are smoothed. Providing the basic shape remains, exactly how much you smooth is unlikely to be critical in practice.\nElicitation is also very useful for non-Bayesian analyses – it’s similar to study design & analysis planning"
   },
   {
     "objectID": "slides/lec-07_intro_bayes.slides.html#where-do-priors-come-from-2",
@@ -221,56 +242,84 @@
     "href": "slides/lec-07_intro_bayes.notes.html",
     "title": "Introduction Bayesian statistics",
     "section": "",
-    "text": "For many years – until recently – Bayesian ideas in statistics were widely dismissed, often without much thought\nAdvocates of Bayes had to fight hard to be heard, leading to an ‘us against the world’ mentality – & predictable backlash\nToday, debates tend be less acrimonious, and more tolerant\n\nadd xkcd cartoon"
+    "text": "For many years – until recently – Bayesian ideas in statistics were widely dismissed, often without much thought\nAdvocates of Bayes had to fight hard to be heard, leading to an ‘us against the world’ mentality – & predictable backlash\nToday, debates tend be less acrimonious, and more tolerant"
+  },
+  {
+    "objectID": "slides/lec-07_intro_bayes.notes.html#overview",
+    "href": "slides/lec-07_intro_bayes.notes.html#overview",
+    "title": "Introduction Bayesian statistics",
+    "section": "",
+    "text": "For many years – until recently – Bayesian ideas in statistics were widely dismissed, often without much thought\nAdvocates of Bayes had to fight hard to be heard, leading to an ‘us against the world’ mentality – & predictable backlash\nToday, debates tend be less acrimonious, and more tolerant"
   },
   {
     "objectID": "slides/lec-07_intro_bayes.notes.html#formal",
     "href": "slides/lec-07_intro_bayes.notes.html#formal",
     "title": "Introduction Bayesian statistics",
-    "section": "\n2.1 Formal",
-    "text": "2.1 Formal\nBayes’ theorem is the results in a conditional probability of two events: \\[\nP[A|B] = \\frac{P[A\\ \\&\\ B]}{P[B]} = P[B|A]\\frac{P[A]}{P[B]}\n\\]\nThe conditional probability of A given B is the conditional probality ob B given A scaled by the relative probability of A compared to B."
+    "section": "\n1.1 Formal",
+    "text": "1.1 Formal\nBayes’ theorem is the results in a conditional probability of two events:\nThe conditional probability of A given B is the conditional probability ob B given A scaled by the relative probability of A compared to B.\n\\[\n\\underbrace{P[A|B]}_\\text{posterior probability} = \\frac{\\overbrace{P[B|A]}^\\text{likelihood}  \\overbrace{P[A]}^\\text{prior probability}}{\\underbrace{P[B]}_\\text{marginal probability}}\n\\]"
   },
   {
-    "objectID": "slides/lec-07_intro_bayes.notes.html#bayesian-inference",
-    "href": "slides/lec-07_intro_bayes.notes.html#bayesian-inference",
+    "objectID": "slides/lec-07_intro_bayes.notes.html#reframed-for-hypothesis",
+    "href": "slides/lec-07_intro_bayes.notes.html#reframed-for-hypothesis",
     "title": "Introduction Bayesian statistics",
-    "section": "\n2.2 Bayesian inference",
-    "text": "2.2 Bayesian inference\n\n\nReality\nReject H0\n\nAccept H0\n\nTotal\n\n\n\nH0 is true\na\nb\na + b\n\n\nH0 is false\nc\nd\nc + d\n\n\nTotal\na+c\nb+d\nN\n\n\n\na type I error\nd type II error (1-power)\nFalse positive \\(P[H_0\\ true | Reject\\ H_0] = \\frac{a}{b+c}\\)\n\nFalse negative: \\(P[H_0\\ true | Reject\\ H_0] = \\frac{a}{b+c}\\)"
+    "section": "\n1.2 Reframed for hypothesis",
+    "text": "1.2 Reframed for hypothesis\nBayes’ theorem can be seen as the conditonal probability of a hypothesis given the data: \\[\nP[H_0 | \\text{data}] = \\frac{\\overbrace{P[\\text{data}|H_0]}^\\text{likelihood}  \\overbrace{P[H_0]}^\\text{prior}}{P[data]}\n\\]\nOr it can be seen as \\[\n\\underbrace{P[H_0 | \\text{data}]}_{\\text{what we want to know}} = \\frac{\\overbrace{P[\\text{data}|H_0]}^\\text{what frequentist do}  \\overbrace{P[H_0]}^\\text{what we have a hard time understanding}}{\\underbrace{P[data]}_\\text{what we happily ignore}}\n\\]"
+  },
+  {
+    "objectID": "slides/lec-07_intro_bayes.notes.html#error-type-and-false-positivenegative",
+    "href": "slides/lec-07_intro_bayes.notes.html#error-type-and-false-positivenegative",
+    "title": "Introduction Bayesian statistics",
+    "section": "\n2.1 Error type and false positive/negative",
+    "text": "2.1 Error type and false positive/negative\nHere we are counting number of observations in each case\n\n\nReality\nReject H0\n\nAccept H0\n\nTotal\n\n\n\nH0 is true\na (Type I error)\nb\na + b\n\n\nH0 is false\nc\nd (type II error)\nc + d\n\n\nTotal\na+c\nb+d\nN (number of obs)\n\n\n\nFalse positive \\(P[H_0 \\text{ true} | \\text{Reject }H_0] = \\frac{a}{a+c}\\)\nFalse negative: \\(P[H_0\\ false | Accept\\ H_0] = \\frac{d}{b+d}\\)"
+  },
+  {
+    "objectID": "slides/lec-07_intro_bayes.notes.html#error-type-and-false-positivenegative-1",
+    "href": "slides/lec-07_intro_bayes.notes.html#error-type-and-false-positivenegative-1",
+    "title": "Introduction Bayesian statistics",
+    "section": "\n2.2 Error type and false positive/negative",
+    "text": "2.2 Error type and false positive/negative\nSame thing but with probabilities instead of number of observations\n\n\n\n\n\n\n\n\nReality\nReject H0\\([\\not H_0]\\)\n\nAccept H0\\([H_0]\\)\n\nTotal\n\n\n\nH0 true [H0+]\n\\(P[H_0^+| \\not H_0] P[H_0^+]\\)\n\\(P[H_0^+| H_0] P[H_0^+]\\)\n\\(P[H_0^+]\\)\n\n\nH0 false [H0-]\n\\(P[H_0^-| \\not H_0] P[H_0^-]\\)\n\\(P[H_0^-| H_0] P[H_0^-]\\)\n\\(P[H_0^-]\\)\n\n\nTotal\n\\(P[\\not H_0]\\)\n\\(P[H_0]\\)\n1\n\n\n\nFalse positive \\(P[H_0 \\text{ true} | \\text{Reject }H_0]\\) \\[\n\\begin{align}\nP[H_0^+ | \\not H_0] &=\\frac{P[\\not H_0 | H_0^+ ]  P[H_0^+ ]}{P[\\not H_0]} \\\\\n&= \\frac{P[\\not H_0 | H_0^+ ]  P[H_0^+]}\n  {P[\\not H_0 | H_0^+]  P[H_0^+ ] + P[ \\not H_0 | H_0^- ]  P[H_0^-]}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "slides/lec-07_intro_bayes.notes.html#applied-to-covid-4",
+    "href": "slides/lec-07_intro_bayes.notes.html#applied-to-covid-4",
+    "title": "Introduction Bayesian statistics",
+    "section": "\n2.3 Applied to Covid",
+    "text": "2.3 Applied to Covid\nWhy does it matter? If 1% of a population have covid, for a screening test with 80% sensitivity (1- Type II) and 95% specificity (1-Type I).\nAssuming N test = 100\n\n\nReality\nTest +ve\nTest -ve\nTotal\n\n\n\nHealthy\n4.95\n94.05\n99\n\n\nHas COVID\n0.8\n0.2\n1\n\n\nTotal\n5.75\n94.25\n100\n\n\n\n\nAdding the prior\nAdding the Type II error\nAdding the Type I error\nAdding colum sums"
   },
   {
     "objectID": "slides/lec-07_intro_bayes.notes.html#applied-to-covid-5",
     "href": "slides/lec-07_intro_bayes.notes.html#applied-to-covid-5",
     "title": "Introduction Bayesian statistics",
-    "section": "\n2.3 Applied to Covid",
-    "text": "2.3 Applied to Covid\nWhy does it matter? If 1% of a population have covid, for a screening test with 80% sensitivity and 95% specificity.\n\n\n\nReality\nTest +ve\nTest -ve\nTotal\n\n\n\nHealthy\n4.95\n94.05\n99\n\n\nHas COVID\n0.8\n0.2\n1\n\n\nTotal\n5.75\n94.25\n100\n\n\n\n\n\nSensitivity: P[test + | Covid ] = 80\n\nSpecificity: P[test + | Healthy ] = 95\nTrue positive: P[ Covid | test + ] = 0.139\n\nTrue negative: P[ Healthy | test - ] = 0.998\nFalse positive: P[ Healthy | test + ] = 0.861\nFalse negative: P[ Covid | test - ] = 0.002\n\n\n\nTalk about changing prior implications"
+    "section": "\n2.4 Applied to Covid",
+    "text": "2.4 Applied to Covid\nWhy does it matter? If 1% of a population have covid, for a screening test with 80% sensitivity (1- Type II) and 95% specificity (1-Type I).\n\n\n\nReality\nTest +ve\nTest -ve\nTotal\n\n\n\nHealthy\n4.95\n94.05\n99\n\n\nHas COVID\n0.8\n0.2\n1\n\n\nTotal\n5.75\n94.25\n100\n\n\n\n\n\nTrue positive: P[ Covid | test + ] = 0.139\n\nTrue negative: P[ Healthy | test - ] = 0.998\n\nFalse positive: P[ Healthy | test + ] = 0.861\nFalse negative: P[ Covid | test - ] = 0.002\n\n\n\nTalk about changing prior implications"
   },
   {
     "objectID": "slides/lec-07_intro_bayes.notes.html#what-if-covid-changes",
     "href": "slides/lec-07_intro_bayes.notes.html#what-if-covid-changes",
     "title": "Introduction Bayesian statistics",
-    "section": "\n2.4 What if COVID % changes?",
-    "text": "2.4 What if COVID % changes?\nWhy does it matter? If 20% of a population have covid instead of 1%?\n\n\n\nReality\nTest +ve\nTest -ve\nTotal\n\n\n\nHealthy\n4\n76\n80\n\n\nHas COVID\n16\n4\n20\n\n\nTotal\n20\n80\n100\n\n\n\n\nTrue positive: P[ Covid | test + ] = 0.8\nTrue negative: P[ Healthy | test - ] = 0.95\nFalse positive: P[ Healthy | test + ] = 0.2\nFalse negative: P[ Covid | test - ] = 0.05\n\n\nExplain impact of changing prior on test results reliability"
+    "section": "\n2.5 What if COVID % changes?",
+    "text": "2.5 What if COVID % changes?\nWhy does it matter? If 20% of a population have covid instead of 1%?\n\n\n\nReality\nTest +ve\nTest -ve\nTotal\n\n\n\nHealthy\n4\n76\n80\n\n\nHas COVID\n16\n4\n20\n\n\nTotal\n20\n80\n100\n\n\n\n\nTrue positive: P[ Covid | test + ] = 0.8\nTrue negative: P[ Healthy | test - ] = 0.95\nFalse positive: P[ Healthy | test + ] = 0.2\nFalse negative: P[ Covid | test - ] = 0.05\n\n\nExplain impact of changing prior on test results reliability"
   },
   {
     "objectID": "slides/lec-07_intro_bayes.notes.html#prosecutors-fallacy",
     "href": "slides/lec-07_intro_bayes.notes.html#prosecutors-fallacy",
     "title": "Introduction Bayesian statistics",
-    "section": "\n2.5 Prosecutor’s fallacy",
-    "text": "2.5 Prosecutor’s fallacy\nMixing up P[ A | B ] with P[ B | A ] is the Prosecutor’s Fallacy\n\nsmall P evidence given innocence \\(\\neq\\) small P of innocence given evidence\n\nTrue Story \n\n\nAfter the sudden death of two baby sons, Sally Clark was sentenced to life in prison in 1999\nExpert witness Prof Roy Meadow had interpreted the small probability of two cot deaths as a small probability of Clark’s innocence\nAfter a long campaign, including refutation of Meadow’s statistics (among other errors), Clark was cleared in 2003\nAfter being freed, she developed alcoholism and died in 2007"
+    "section": "\n2.6 Prosecutor’s fallacy",
+    "text": "2.6 Prosecutor’s fallacy\nMixing up P[ A | B ] with P[ B | A ] is the Prosecutor’s Fallacy\n\nsmall P evidence given innocence \\(\\neq\\) small P of innocence given evidence\n\nTrue Story \n\n\nAfter the sudden death of two baby sons, Sally Clark was sentenced to life in prison in 1999\nExpert witness Prof Roy Meadow had interpreted the small probability of two cot deaths as a small probability of Clark’s innocence\nAfter a long campaign, including refutation of Meadow’s statistics (among other errors), Clark was cleared in 2003\nAfter being freed, she developed alcoholism and died in 2007"
   },
   {
     "objectID": "slides/lec-07_intro_bayes.notes.html#meeting-mosquitoes",
     "href": "slides/lec-07_intro_bayes.notes.html#meeting-mosquitoes",
     "title": "Introduction Bayesian statistics",
-    "section": "\n2.6 Meeting mosquitoes",
-    "text": "2.6 Meeting mosquitoes"
+    "section": "\n2.7 Meeting mosquitoes",
+    "text": "2.7 Meeting mosquitoes"
   },
   {
     "objectID": "slides/lec-07_intro_bayes.notes.html#bayes-theorem-1",
     "href": "slides/lec-07_intro_bayes.notes.html#bayes-theorem-1",
     "title": "Introduction Bayesian statistics",
-    "section": "\n2.7 Bayes’ Theorem",
-    "text": "2.7 Bayes’ Theorem\nBayes’ Theorem is a rule about the ‘language’ of probabilities, that can be used in any analysis describing random variables, i.e. any data analysis.\nQ. So why all the fuss?\nA. Bayesian inference uses more than just Bayes’ Theorem\nBayesian inference uses the ‘language’ of probability to describe what is known about parameters.\n\n\n\n\n\n\nWarning\n\n\n\nFrequentist inference, e.g. using p-values & confidence intervals, does not quantify what is known about parameters. many people initially think it does; an important job for instructors of intro Stat/Biostat courses is convincing those people that they are wrong"
+    "section": "\n2.8 Bayes’ Theorem",
+    "text": "2.8 Bayes’ Theorem\nBayes’ Theorem is a rule about the ‘language’ of probabilities, that can be used in any analysis describing random variables, i.e. any data analysis.\nQ. So why all the fuss?\nA. Bayesian inference uses more than just Bayes’ Theorem\nBayesian inference uses the ‘language’ of probability to describe what is known about parameters.\n\n\n\n\n\n\nWarning\n\n\n\nFrequentist inference, e.g. using p-values & confidence intervals, does not quantify what is known about parameters. many people initially think it does; an important job for instructors of intro Stat/Biostat courses is convincing those people that they are wrong"
   },
   {
     "objectID": "slides/lec-07_intro_bayes.notes.html#of-what",
@@ -284,7 +333,7 @@
     "href": "slides/lec-07_intro_bayes.notes.html#frequentist-testing",
     "title": "Introduction Bayesian statistics",
     "section": "\n3.2 Frequentist testing",
-    "text": "3.2 Frequentist testing\n\nimagine running your experiment again and again.\nor make an argument like this:\n\nOn day 1 you collect data and construct a [valid] 95% confidence interval for a parameter \\(\\theta_1\\).\nOn day 2 you collect new data and construct a 95% confidence interval for an unrelated parameter \\(\\theta_2\\).\nOn day 3 … [the same]. and so on constructing confidence intervals\n… 95% of your intervals will trap the true parameter value\n\n\n\n\n… neither version says anything about whether your data is in the 95% or the 5%\n… both versions require you to think about many other datasets, not just the one you have to analyze\n\nHow does Bayesian inference differ? Let’s take aim…"
+    "text": "3.2 Frequentist testing\n\nimagine running your experiment again and again, so\n\nOn day 1 you collect data and construct a [valid] 95% confidence interval for a parameter \\(\\theta_1\\).\nOn day 2 you collect new data and construct a 95% confidence interval for an unrelated parameter \\(\\theta_2\\).\nOn day 3 … [the same]. and so on constructing confidence intervals each time\n\n\n… 95% of your intervals will trap the true parameter value\n\n\n… it does not says anything about whether your data is in the 95% or the 5%\n… it requires you to think about many other datasets, not just the one you have to analyze\n\nHow does Bayesian inference differ? Let’s take aim…"
   },
   {
     "objectID": "slides/lec-07_intro_bayes.notes.html#here-it-is-in-practice",
@@ -326,7 +375,7 @@
     "href": "slides/lec-07_intro_bayes.notes.html#where-do-priors-come-from-1",
     "title": "Introduction Bayesian statistics",
     "section": "\n4.5 Where do priors come from",
-    "text": "4.5 Where do priors come from\nIdeas to help experts ‘translate’ to the language of probability\n\n\nUse stickers or a survey in the hallway\n\n\n\n\nUse 20×5% stickers (Johnson et al 2010, J Clin Epi) for prior on survival when taking warfarin\n\n\nNormalize marks (Latthe et al 2005, J Obs Gync) for prior on pain effect of LUNA vs placebo\n\n\n\n\nTypically these ‘coarse’ priors are smoothed. Providing the basic shape remains, exactly how much you smooth is unlikely to be critical in practice.\nElicitation is also very useful for non-Bayesian analyses – it’s similar to study design & analysis planning"
+    "text": "4.5 Where do priors come from\n\nUse stickers or a survey in the hallway\n\n\n\n\nUse stickers (Johnson et al 2010, J Clin Epi) for survival when taking warfarin\n\n\nNormalize marks (Latthe et al 2005, J Obs Gync) for pain effect of LUNA vs placebo\n\n\n\n\nIdeas to help experts ‘translate’ to the language of probability\nTypically these ‘coarse’ priors are smoothed. Providing the basic shape remains, exactly how much you smooth is unlikely to be critical in practice.\nElicitation is also very useful for non-Bayesian analyses – it’s similar to study design & analysis planning"
   },
   {
     "objectID": "slides/lec-07_intro_bayes.notes.html#where-do-priors-come-from-2",
@@ -1180,7 +1229,7 @@
     "href": "lectures.html#schedule",
     "title": "Lectures",
     "section": "Schedule ",
-    "text": "Schedule \n\nLecture: Tuesdays 1430-1720 in CRX-C323\n\nThere are no lectures or tutorials during reading week.\n\n\n\n\n\n\n\n\n\nDate\nTopic\nSlides\nReading\nAssessment\n\n\n\n\n\n\n\nJan 9\nIntroduction\n \nSmaldino and McElreath (2016)\n\n\n\nJan 16\nIntroduction to Rmarkdown\n \nAlston and Rick (2021)\n\n\n\nJan 23\nIntroduction to Github\n \nIvimey-Cook et al. (2023)\n\n\n\nJan 30\nGeneralized linear models (and revision of linear models)\n \nZuur et al. (2010)\n\n\n\nFeb 6\nCausal structure and model building\n \nCinelli et al. (2022), Wysocki et al. (2022)\n\n\n\nFeb 13\nIntroduction to mixed-models\n \nHarrison et al. (2018)\n\n\n\nReading week\n\n\nFeb 27\nIntroduction to Bayesian analysis\n \nKruschke and Liddell (2018)\n\n\n\nMar 5\nGeneralised linear mixed models\n \nBolker et al. (2009)\n\n\n\nMar 12\n\n\n\n\n\n\nMar 19\n\n\n\n\n\n\nMar 26\n\n\n\n\n\n\nApr 2\n\n\n\nFinal report due **??**"
+    "text": "Schedule \n\nLecture: Tuesdays 1430-1720 in CRX-C323\n\nThere are no lectures or tutorials during reading week.\n\n\n\n\n\n\n\n\n\nDate\nTopic\nSlides\nReading\nAssessment\n\n\n\n\n\n\n\nJan 9\nIntroduction\n \nSmaldino and McElreath (2016)\n\n\n\nJan 16\nIntroduction to Rmarkdown\n \nAlston and Rick (2021)\n\n\n\nJan 23\nIntroduction to Github\n \nIvimey-Cook et al. (2023)\n\n\n\nJan 30\nGeneralized linear models (and revision of linear models)\n \nZuur et al. (2010)\n\n\n\nFeb 6\nCausal structure and model building\n \nCinelli et al. (2022), Wysocki et al. (2022)\n\n\n\nFeb 13\nIntroduction to mixed-models\n \nHarrison et al. (2018)\n\n\n\nReading week\n\n\nFeb 27\nIntroduction to Bayesian analysis\n \nKruschke and Liddell (2018)\n\n\n\nMar 5\nGeneralised linear mixed models\n \nBolker et al. (2009)\n\n\n\nMar 12\nDiscussion on data and plans for final projects\n\nWasserstein and Lazar (2016)\n\n\n\nMar 19\n\n\nVan de Pol and Wright (2009)\n\n\n\nMar 26\n\n\nSchielzeth and Forstmeier (2009)\n\n\n\nApr 2\n\n\nForstmeier et al. (2017)\nFinal report due **??**"
   },
   {
     "objectID": "lectures.html#about-slides-and-notes",

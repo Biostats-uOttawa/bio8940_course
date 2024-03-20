@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.550">
 
   <meta name="author" content="Julien Martin">
-  <meta name="dcterms.date" content="2024-03-13">
+  <meta name="dcterms.date" content="2024-03-20">
   <title>BIO8940 course - Introduction Bayesian statistics</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -353,18 +353,16 @@ Julien Martin
     </div>
 </div>
 
-  <p class="date">2024-03-13</p>
+  <p class="date">2024-03-20</p>
 </section>
-<section id="overview" class="title-slide slide level1 center">
-<h1>Overview …</h1>
+<section id="overview" class="slide level2">
+<h2>Overview …</h2>
 <ul>
 <li>For many years – until recently – Bayesian ideas in statistics were widely dismissed, often without much thought</li>
 <li>Advocates of Bayes had to fight hard to be heard, leading to an ‘us against the world’ mentality – &amp; predictable backlash</li>
 <li>Today, debates tend be less acrimonious, and more tolerant</li>
 </ul>
-<p>add xkcd cartoon</p>
 </section>
-
 <section>
 <section id="bayes-theorem" class="title-slide slide level1 center">
 <h1>Bayes’ Theorem</h1>
@@ -372,13 +370,36 @@ Julien Martin
 </section>
 <section id="formal" class="slide level2">
 <h2>Formal</h2>
-<p>Bayes’ theorem is the results in a conditional probability of two events: <span class="math display">\[
-P[A|B] = \frac{P[A\ \&amp;\ B]}{P[B]} = P[B|A]\frac{P[A]}{P[B]}
+<p>Bayes’ theorem is the results in a conditional probability of two events:</p>
+<p><span class="math display">\[
+P[A|B] = \frac{P[A\ \&amp;\ B]}{P[B]} = \frac{P[B|A]  P[A]}{P[B]}
 \]</span></p>
-<p>The conditional probability of A given B is the conditional probality ob B given A scaled by the relative probability of A compared to B.</p>
+<div class="fragment">
+<p>The conditional probability of A given B is the conditional probability ob B given A scaled by the relative probability of A compared to B.</p>
+<p><span class="math display">\[
+\underbrace{P[A|B]}_\text{posterior probability} = \frac{\overbrace{P[B|A]}^\text{likelihood}  \overbrace{P[A]}^\text{prior probability}}{\underbrace{P[B]}_\text{marginal probability}}
+\]</span></p>
+</div>
 </section>
-<section id="bayesian-inference" class="slide level2">
-<h2>Bayesian inference</h2>
+<section id="reframed-for-hypothesis" class="slide level2">
+<h2>Reframed for hypothesis</h2>
+<p>Bayes’ theorem can be seen as the conditonal probability of a hypothesis given the data: <span class="math display">\[
+P[H_0 | \text{data}] = \frac{\overbrace{P[\text{data}|H_0]}^\text{likelihood}  \overbrace{P[H_0]}^\text{prior}}{P[data]}
+\]</span></p>
+<div class="fragment">
+<p>Or it can be seen as <span class="math display">\[
+\underbrace{P[H_0 | \text{data}]}_{\text{what we want to know}} = \frac{\overbrace{P[\text{data}|H_0]}^\text{what frequentist do}  \overbrace{P[H_0]}^\text{what we have a hard time understanding}}{\underbrace{P[data]}_\text{what we happily ignore}}
+\]</span></p>
+</div>
+</section></section>
+<section>
+<section id="bayesian-inference" class="title-slide slide level1 center">
+<h1>Bayesian inference</h1>
+
+</section>
+<section id="error-type-and-false-positivenegative" class="slide level2">
+<h2>Error type and false positive/negative</h2>
+<p>Here we are counting number of observations in each case</p>
 <table>
 <thead>
 <tr class="header">
@@ -391,30 +412,79 @@ P[A|B] = \frac{P[A\ \&amp;\ B]}{P[B]} = P[B|A]\frac{P[A]}{P[B]}
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">H<sub>0</sub> is true</td>
-<td style="text-align: center;">a</td>
+<td style="text-align: center;">a (Type I error)</td>
 <td style="text-align: center;">b</td>
 <td style="text-align: center;">a + b</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">H<sub>0</sub> is false</td>
 <td style="text-align: center;">c</td>
-<td style="text-align: center;">d</td>
+<td style="text-align: center;">d (type II error)</td>
 <td style="text-align: center;">c + d</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Total</td>
 <td style="text-align: center;">a+c</td>
 <td style="text-align: center;">b+d</td>
-<td style="text-align: center;">N</td>
+<td style="text-align: center;">N (number of obs)</td>
 </tr>
 </tbody>
 </table>
-<p><span class="emph">a</span> type I error</p>
-<p><span class="emph">d</span> type II error (1-power)</p>
-<p><span class="emph">False positive</span> <span class="math inline">\(P[H_0\ true | Reject\ H_0] = \frac{a}{b+c}\)</span></p>
-<p><br>
-</p>
-<p><span class="emph">False negative</span>: <span class="math inline">\(P[H_0\ true | Reject\ H_0] = \frac{a}{b+c}\)</span></p>
+<div class="fragment">
+<p><span class="emph">False positive</span> <span class="math inline">\(P[H_0 \text{ true} | \text{Reject }H_0] = \frac{a}{a+c}\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="emph">False negative</span>: <span class="math inline">\(P[H_0\ false | Accept\ H_0] = \frac{d}{b+d}\)</span></p>
+</div>
+</section>
+<section id="error-type-and-false-positivenegative-1" class="slide level2">
+<h2>Error type and false positive/negative</h2>
+<p>Same thing but with probabilities instead of number of observations</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Reality</th>
+<th style="text-align: center;">Reject H<sub>0</sub> <span class="math inline">\([\not H_0]\)</span></th>
+<th style="text-align: center;">Accept H<sub>0</sub> <span class="math inline">\([H_0]\)</span></th>
+<th style="text-align: center;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">H<sub>0</sub> true [H<sub>0</sub><sup>+</sup>]</td>
+<td style="text-align: center;"><span class="math inline">\(P[H_0^+| \not H_0] P[H_0^+]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(P[H_0^+| H_0] P[H_0^+]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(P[H_0^+]\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">H<sub>0</sub> false [H<sub>0</sub><sup>-</sup>]</td>
+<td style="text-align: center;"><span class="math inline">\(P[H_0^-| \not H_0] P[H_0^-]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(P[H_0^-| H_0] P[H_0^-]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(P[H_0^-]\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Total</td>
+<td style="text-align: center;"><span class="math inline">\(P[\not H_0]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(P[H_0]\)</span></td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p><span class="emph">False positive</span> <span class="math inline">\(P[H_0 \text{ true} | \text{Reject }H_0]\)</span> <span class="math display">\[
+\begin{align}
+P[H_0^+ | \not H_0] &amp;=\frac{P[\not H_0 | H_0^+ ]  P[H_0^+ ]}{P[\not H_0]} \\
+&amp;= \frac{P[\not H_0 | H_0^+ ]  P[H_0^+]}
+  {P[\not H_0 | H_0^+]  P[H_0^+ ] + P[ \not H_0 | H_0^- ]  P[H_0^-]}
+\end{align}
+\]</span></p>
+</div>
 </section>
 <section id="applied-to-covid" class="slide level2">
 <h2>Applied to Covid</h2>
@@ -469,13 +539,13 @@ P[A|B] = \frac{P[A\ \&amp;\ B]}{P[B]} = P[B|A]\frac{P[A]}{P[B]}
 <td style="text-align: left;">Healthy</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>99</strong></td>
+<td style="text-align: center;"><span class="blue">99</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Has COVID</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: center;"><span class="blue">1</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Total</td>
@@ -485,7 +555,9 @@ P[A|B] = \frac{P[A\ \&amp;\ B]}{P[B]} = P[B|A]\frac{P[A]}{P[B]}
 </tr>
 </tbody>
 </table>
-<p>Adding the prior</p>
+<ol type="1">
+<li><span class="blue">Adding the prior</span></li>
+</ol>
 </section>
 <section id="applied-to-covid-2" class="slide level2">
 <h2>Applied to Covid</h2>
@@ -505,13 +577,13 @@ P[A|B] = \frac{P[A\ \&amp;\ B]}{P[B]} = P[B|A]\frac{P[A]}{P[B]}
 <td style="text-align: left;">Healthy</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">99</td>
+<td style="text-align: center;"><span class="blue">99</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Has COVID</td>
-<td style="text-align: center;"><strong>0.8</strong></td>
-<td style="text-align: center;"><strong>0.2</strong></td>
-<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="purple">0.8</span></td>
+<td style="text-align: center;"><span class="purple">0.2</span></td>
+<td style="text-align: center;"><span class="blue">1</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Total</td>
@@ -521,7 +593,10 @@ P[A|B] = \frac{P[A\ \&amp;\ B]}{P[B]} = P[B|A]\frac{P[A]}{P[B]}
 </tr>
 </tbody>
 </table>
-<p>Adding the Type II error</p>
+<ol type="1">
+<li><span class="blue">Adding the prior</span></li>
+<li><span class="purple">Adding the Type II error</span></li>
+</ol>
 </section>
 <section id="applied-to-covid-3" class="slide level2">
 <h2>Applied to Covid</h2>
@@ -539,15 +614,15 @@ P[A|B] = \frac{P[A\ \&amp;\ B]}{P[B]} = P[B|A]\frac{P[A]}{P[B]}
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Healthy</td>
-<td style="text-align: center;"><strong>4.95</strong></td>
-<td style="text-align: center;"><strong>94.05</strong></td>
-<td style="text-align: center;">99</td>
+<td style="text-align: center;"><span class="red">4.95</span></td>
+<td style="text-align: center;"><span class="red">94.05</span></td>
+<td style="text-align: center;"><span class="blue">99</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Has COVID</td>
-<td style="text-align: center;">0.8</td>
-<td style="text-align: center;">0.2</td>
-<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="purple">0.8</span></td>
+<td style="text-align: center;"><span class="purple">0.2</span></td>
+<td style="text-align: center;"><span class="blue">1</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Total</td>
@@ -557,7 +632,11 @@ P[A|B] = \frac{P[A\ \&amp;\ B]}{P[B]} = P[B|A]\frac{P[A]}{P[B]}
 </tr>
 </tbody>
 </table>
-<p>Adding the Type I error</p>
+<ol type="1">
+<li><span class="blue">Adding the prior</span></li>
+<li><span class="purple">Adding the Type II error</span></li>
+<li><span class="red">Adding the Type I error</span></li>
+</ol>
 </section>
 <section id="applied-to-covid-4" class="slide level2">
 <h2>Applied to Covid</h2>
@@ -575,29 +654,34 @@ P[A|B] = \frac{P[A\ \&amp;\ B]}{P[B]} = P[B|A]\frac{P[A]}{P[B]}
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Healthy</td>
-<td style="text-align: center;">4.95</td>
-<td style="text-align: center;">94.05</td>
-<td style="text-align: center;">99</td>
+<td style="text-align: center;"><span class="red">4.95</span></td>
+<td style="text-align: center;"><span class="red">94.05</span></td>
+<td style="text-align: center;"><span class="blue">99</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Has COVID</td>
-<td style="text-align: center;">0.8</td>
-<td style="text-align: center;">0.2</td>
-<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="purple">0.8</span></td>
+<td style="text-align: center;"><span class="purple">0.2</span></td>
+<td style="text-align: center;"><span class="blue">1</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Total</td>
-<td style="text-align: center;"><strong>5.75</strong></td>
-<td style="text-align: center;"><strong>94.25</strong></td>
+<td style="text-align: center;"><span class="orange">5.75</span></td>
+<td style="text-align: center;"><span class="orange">94.25</span></td>
 <td style="text-align: center;">100</td>
 </tr>
 </tbody>
 </table>
-<p>Adding colum sums</p>
+<ol type="1">
+<li><span class="blue">Adding the prior</span></li>
+<li><span class="purple">Adding the Type II error</span></li>
+<li><span class="red">Adding the Type I error</span></li>
+<li><span class="orange">Adding colum sums</span></li>
+</ol>
 </section>
 <section id="applied-to-covid-5" class="slide level2">
 <h2>Applied to Covid</h2>
-<p>Why does it matter? If 1% of a population have covid, for a screening test with 80% sensitivity&nbsp;and 95% specificity.</p>
+<p>Why does it matter? If 1% of a population have covid, for a screening test with 80% sensitivity (1- Type II) and 95% specificity (1-Type I).</p>
 <p><br>
 </p>
 <table>
@@ -632,10 +716,8 @@ P[A|B] = \frac{P[A\ \&amp;\ B]}{P[B]} = P[B|A]\frac{P[A]}{P[B]}
 </table>
 <div>
 <ul>
-<li class="fragment">Sensitivity: <strong>P[test + | Covid ] = 80</strong></li>
-<li class="fragment">Specificity: P[test + | Healthy ] = 95</li>
 <li class="fragment">True positive: <strong>P[ Covid | test + ] = 0.139</strong></li>
-<li class="fragment">True negative: P[ Healthy | test - ] = 0.998</li>
+<li class="fragment">True negative: <strong>P[ Healthy | test - ] = 0.998</strong></li>
 <li class="fragment">False positive: P[ Healthy | test + ] = 0.861</li>
 <li class="fragment">False negative: P[ Covid | test - ] = 0.002</li>
 </ul>
@@ -823,19 +905,18 @@ P[A|B] = \frac{P[A\ \&amp;\ B]}{P[B]} = P[B|A]\frac{P[A]}{P[B]}
 <section id="frequentist-testing" class="slide level2">
 <h2>Frequentist testing</h2>
 <ul>
-<li>imagine running your experiment again and again.</li>
-<li>or make an argument like this:
+<li>imagine running your experiment again and again, so
 <ul>
 <li>On day 1 you collect data and construct a [valid] 95% confidence interval for a parameter <span class="math inline">\(\theta_1\)</span>.</li>
 <li>On day 2 you collect new data and construct a 95% confidence interval for an unrelated parameter <span class="math inline">\(\theta_2\)</span>.</li>
-<li>On day 3 … [the same]. and so on constructing confidence intervals</li>
-<li>… 95% of your intervals will trap the true parameter value</li>
+<li>On day 3 … [the same]. and so on constructing confidence intervals each time</li>
 </ul></li>
+<li>… 95% of your intervals will trap the true parameter value</li>
 </ul>
 <div class="fragment">
 <ul>
-<li>… neither version says anything about whether your data is in the 95% or the 5%</li>
-<li>… both versions require you to think about many other datasets, not just the one you have to analyze</li>
+<li>… it does not says anything about whether your data is in the 95% or the 5%</li>
+<li>… it requires you to think about many other datasets, not just the one you have to analyze</li>
 </ul>
 </div>
 <div class="fragment">
@@ -927,19 +1008,19 @@ P_{post}(β|Y) &amp;∝ f(Y|β) × P_{prior}(β)\\
 <section id="updating-knowledge-1" class="slide level2">
 <h2>Updating knowledge</h2>
 
-<img data-src="lec-07_intro_bayes_files/figure-html/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"></section>
+<img data-src="lec-07_intro_bayes_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"></section>
 <section id="updating-knowledge-2" class="slide level2">
 <h2>Updating knowledge</h2>
 
-<img data-src="lec-07_intro_bayes_files/figure-html/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"></section>
+<img data-src="lec-07_intro_bayes_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"></section>
 <section id="updating-knowledge-3" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Updating knowledge</h2>
 
-<img data-src="lec-07_intro_bayes_files/figure-html/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"></section>
+<img data-src="lec-07_intro_bayes_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"></section>
 <section id="updating-knowledge-4" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Updating knowledge</h2>
 
-<img data-src="lec-07_intro_bayes_files/figure-html/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"><blockquote>
+<img data-src="lec-07_intro_bayes_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"><blockquote>
 <p>A Bayesian is one who, vaguely <strong>expecting a horse</strong>, and catching a <strong>glimpse of a donkey</strong>, strongly <strong>believes he has seen a mule</strong></p>
 </blockquote>
 </section>
@@ -954,23 +1035,21 @@ P_{post}(β|Y) &amp;∝ f(Y|β) × P_{prior}(β)\\
 </section>
 <section id="where-do-priors-come-from-1" class="slide level2">
 <h2>Where do priors come from</h2>
-<p>Ideas to help experts ‘translate’ to the language of probability</p>
-<p><br>
-</p>
 <div class="center">
 <p>Use stickers or a survey in the hallway</p>
 </div>
 <div class="columns">
 <div class="column">
 <p><img data-src="assets/img_l7/priors_1.png"></p>
-<p>Use 20×5% stickers (Johnson et al 2010, J Clin Epi) for prior on survival when taking warfarin</p>
+<p>Use stickers (Johnson et al 2010, J Clin Epi) for survival when taking warfarin</p>
 </div><div class="column">
 <p><img data-src="assets/img_l7/priors_2.png"></p>
-<p>Normalize marks (Latthe et al 2005, J Obs Gync) for prior on pain effect of LUNA vs placebo</p>
+<p>Normalize marks (Latthe et al 2005, J Obs Gync) for pain effect of LUNA vs placebo</p>
 </div>
 </div>
 <aside class="notes">
 <ul>
+<li>Ideas to help experts ‘translate’ to the language of probability</li>
 <li>Typically these ‘coarse’ priors are smoothed. Providing the basic shape remains, exactly how much you smooth is unlikely to be critical in practice.</li>
 <li>Elicitation is also very useful for non-Bayesian analyses – it’s similar to study design &amp; analysis planning</li>
 </ul>
@@ -1005,13 +1084,13 @@ P_{post}(β|Y) &amp;∝ f(Y|β) × P_{prior}(β)\\
 <h2>Very informative data</h2>
 <p>When the data provide a lot more information than the prior</p>
 
-<img data-src="lec-07_intro_bayes_files/figure-html/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"><p>Priors here are dominated by the likelihood, and they give very similar posteriors – i.e.&nbsp;everyone agrees. (Phew!)</p>
+<img data-src="lec-07_intro_bayes_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"><p>Priors here are dominated by the likelihood, and they give very similar posteriors – i.e.&nbsp;everyone agrees. (Phew!)</p>
 </section>
 <section id="flat-priors" class="slide level2">
 <h2>Flat priors</h2>
 <p>Using very flat priors to represent ignorance</p>
 
-<img data-src="lec-07_intro_bayes_files/figure-html/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"><p>Flat priors do <span class="emph">NOT</span> actually represent ignorance!</p>
+<img data-src="lec-07_intro_bayes_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"><p>Flat priors do <span class="emph">NOT</span> actually represent ignorance!</p>
 <aside class="notes">
 <p>Most of their support is for very extreme parameter values</p>
 <style type="text/css">
@@ -1029,7 +1108,7 @@ P_{post}(β|Y) &amp;∝ f(Y|β) × P_{prior}(β)\\
 <section id="bayesian-approx-frequentist" class="slide level2">
 <h2>Bayesian <span class="math inline">\(\approx\)</span> frequentist</h2>
 
-<img data-src="lec-07_intro_bayes_files/figure-html/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"><p>Likelihood gives the classic 95% confidence interval can be good approx of Bayesian 95% Highest Posterior Density interval</p>
+<img data-src="lec-07_intro_bayes_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"><p>Likelihood gives the classic 95% confidence interval can be good approx of Bayesian 95% Highest Posterior Density interval</p>
 </section>
 <section id="bayesian-approx-frequentist-1" class="slide level2">
 <h2>Bayesian <span class="math inline">\(\approx\)</span> frequentist</h2>
@@ -1043,7 +1122,7 @@ P_{post}(β|Y) &amp;∝ f(Y|β) × P_{prior}(β)\\
 <h2>Frequentist <span class="emoji" data-emoji="smiley">😃</span> &amp; Bayesian <span class="emoji" data-emoji="confused">😕</span></h2>
 <p>Prior strongly supporting small effects, and with data from an imprecise study</p>
 
-<img data-src="lec-07_intro_bayes_files/figure-html/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"><aside class="notes">
+<img data-src="lec-07_intro_bayes_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3600"><aside class="notes">
 <p>Frequentist ‘Textbook’ analysis says ‘reject’ (p &lt; 0.05, woohoo, Nature her we go)</p>
 <p>Bayesian Posterior is ‘shrunk’ toward zero. We’re sure true β is very small (&amp; hard to replicate) &amp; we’re unsure of its sign. Wait a second, about that front page</p>
 <style type="text/css">
@@ -1305,6 +1384,44 @@ P_{post}(β|Y) &amp;∝ f(Y|β) × P_{prior}(β)\\
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

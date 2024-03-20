@@ -1902,3 +1902,17 @@ div.reveal div.slides section.quarto-title-block .date {
 .center{
   text-align: center
 }
+
+
+.red{
+    color: rgb(222, 47, 47);
+}
+.blue {
+  color: rgb(65, 47, 222);
+}
+.purple {
+  color: rgb(202, 47, 222);
+}
+.orange {
+  color: rgb(222, 112, 47);
+}

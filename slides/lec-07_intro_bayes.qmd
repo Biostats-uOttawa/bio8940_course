@@ -31,7 +31,7 @@ editor:
   render-on-save: false
 ---
 
-# Overview ...
+## Overview ...
 
 ```{r}
 #| label: setup
@@ -62,42 +62,94 @@ were widely dismissed, often without much thought
 an ‘us against the world’ mentality – & predictable backlash
 * Today, debates tend be less acrimonious, and more tolerant
 
-add xkcd cartoon
-
 # Bayes' Theorem
 
 ## Formal
 
 Bayes' theorem is the results in a conditional probability of two events:
+
+::: {.content-visible when-format="revealjs"}
 $$
-P[A|B] = \frac{P[A\ \&\ B]}{P[B]} = P[B|A]\frac{P[A]}{P[B]}
+P[A|B] = \frac{P[A\ \&\ B]}{P[B]} = \frac{P[B|A]  P[A]}{P[B]}
 $$
 
-The conditional probability of A given B is the conditional probality ob B given A scaled by the relative probability of A compared to B.
+. . .
 
-## Bayesian inference
+:::
 
+
+The conditional probability of A given B is the conditional probability ob B given A scaled by the relative probability of A compared to B.
+
+$$
+\underbrace{P[A|B]}_\text{posterior probability} = \frac{\overbrace{P[B|A]}^\text{likelihood}  \overbrace{P[A]}^\text{prior probability}}{\underbrace{P[B]}_\text{marginal probability}}
+$$
+
+## Reframed for hypothesis
+
+Bayes' theorem can be seen as the conditonal probability of a hypothesis given the data:
+$$
+P[H_0 | \text{data}] = \frac{\overbrace{P[\text{data}|H_0]}^\text{likelihood}  \overbrace{P[H_0]}^\text{prior}}{P[data]}
+$$
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+Or it can be seen as
+$$
+\underbrace{P[H_0 | \text{data}]}_{\text{what we want to know}} = \frac{\overbrace{P[\text{data}|H_0]}^\text{what frequentist do}  \overbrace{P[H_0]}^\text{what we have a hard time understanding}}{\underbrace{P[data]}_\text{what we happily ignore}}
+$$
+
+# Bayesian inference
+
+## Error type and false positive/negative
+
+Here we are counting number of observations in each case
 
 |Reality       |Reject H~0~ |Accept H~0~ |Total |
-|:-------------|:----------:|:----------:|:----:|
-|H~0~ is true  |a           |b           |a + b |
-|H~0~ is false |c           |d           |c + d |
-|Total         |a+c         |b+d         |N     |
+|:-------------|:----------:|:----------:|:--------------:|
+|H~0~ is true |a (Type I error)           |b           | a + b |
+|H~0~ is false |c           |d (type II error)          | c + d |
+|Total         |a+c         |b+d         |N (number of obs)    |
 
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
 
-[a]{.emph} type I error 
+[False positive]{.emph} $P[H_0 \text{ true} | \text{Reject }H_0] = \frac{a}{a+c}$
 
-[d]{.emph} type II error (1-power)
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
 
-[False positive]{.emph} $P[H_0\ true | Reject\ H_0] = \frac{a}{b+c}$
+[False negative]{.emph}: $P[H_0\ false | Accept\ H_0] = \frac{d}{b+d}$
 
-\
+## Error type and false positive/negative
 
-[False negative]{.emph}: $P[H_0\ true | Reject\ H_0] = \frac{a}{b+c}$
+Same thing but with probabilities instead of number of observations
+
+|Reality       |Reject H~0~ $[\not H_0]$|Accept H~0~ $[H_0]$ |Total |
+|:----------------|:----------:|:----------:|:------------:|
+|H~0~ true [H~0~^+^] | $P[H_0^+| \not H_0] P[H_0^+]$ | $P[H_0^+| H_0] P[H_0^+]$ | $P[H_0^+]$ |
+|H~0~ false [H~0~^-^]| $P[H_0^-| \not H_0] P[H_0^-]$ | $P[H_0^-| H_0] P[H_0^-]$ | $P[H_0^-]$|
+|Total         | $P[\not H_0]$ | $P[H_0]$         | 1 |
+
+::: {.content-visible when-format="revealjs"}
+. . .
+:::
+
+[False positive]{.emph} $P[H_0 \text{ true} | \text{Reject }H_0]$
+$$
+\begin{align}
+P[H_0^+ | \not H_0] &=\frac{P[\not H_0 | H_0^+ ]  P[H_0^+ ]}{P[\not H_0]} \\ 
+&= \frac{P[\not H_0 | H_0^+ ]  P[H_0^+]}
+  {P[\not H_0 | H_0^+]  P[H_0^+ ] + P[ \not H_0 | H_0^- ]  P[H_0^-]} 
+\end{align}
+$$
+
 
 ::: {.content-visible when-format="revealjs"}
 ## Applied to Covid
-
 
 Why does it matter? If 1% of a population have covid, for a 
 screening test with 80% sensitivity (1- Type II) and 95% specificity (1-Type I).
@@ -134,11 +186,11 @@ Assuming N test = 100
 
 |Reality   |Test +ve |Test -ve |Total |
 |:---------|:-------:|:-------:|:----:|
-|Healthy   | | | **`r n * (1 - prior)`** |
-|Has COVID | | | **`r n * prior`** |
+|Healthy   | | | [`r n * (1 - prior)`]{.blue} |
+|Has COVID | | | [`r n * prior`]{.blue} |
 |Total     | | | `r n` |
 
-Adding the prior
+1. [Adding the prior]{.blue}
 
 
 ## Applied to Covid
@@ -151,27 +203,13 @@ Assuming N test = 100
 
 |Reality   |Test +ve |Test -ve |Total |
 |:---------|:-------:|:-------:|:----:|
-|Healthy   | | | `r n * (1 - prior)` |
-|Has COVID | **`r bc`** | **`r bd`**| `r n * prior` |
-|Total     | | | `r n` |
-
-Adding the Type II error
-
-## Applied to Covid
+|Healthy   |  |  | [`r n * (1 - prior)`]{.blue} |
+|Has COVID |   [`r bc`]{.purple}  |   [`r bd`]{.purple}   | [`r n * prior`]{.blue} |
+|Total     |  | | `r n` |
 
 
-Why does it matter? If 1% of a population have covid, for a 
-screening test with 80% sensitivity (1- Type II) and 95% specificity (1-Type I).
-
-Assuming N test = 100 
-
-|Reality   |Test +ve |Test -ve |Total |
-|:---------|:-------:|:-------:|:----:|
-|Healthy   | **`r ba`** | **`r bb`** | `r n * (1 - prior)` |
-|Has COVID |   `r bc`  |   `r bd`   | `r n * prior` |
-|Total     | | | `r n` |
-
-Adding the Type I error
+1. [Adding the prior]{.blue}
+2. [Adding the Type II error]{.purple}
 
 ## Applied to Covid
 
@@ -183,18 +221,43 @@ Assuming N test = 100
 
 |Reality   |Test +ve |Test -ve |Total |
 |:---------|:-------:|:-------:|:----:|
-|Healthy   | `r ba` | `r bb` | `r n * (1 - prior)` |
-|Has COVID |   `r bc`  |   `r bd`   | `r n * prior` |
-|Total     | **`r ba + bc`** | **`r bb + bd`** | `r n` |
+|Healthy   | [`r ba`]{.red} | [`r bb`]{.red} | [`r n * (1 - prior)`]{.blue} |
+|Has COVID |   [`r bc`]{.purple}  |   [`r bd`]{.purple}   | [`r n * prior`]{.blue} |
+|Total     |  |  | `r n`|
 
-Adding colum sums
+
+1. [Adding the prior]{.blue}
+2. [Adding the Type II error]{.purple}
+3. [Adding the Type I error]{.red}
+
 :::
+
+
+## Applied to Covid
+
+
+Why does it matter? If 1% of a population have covid, for a 
+screening test with 80% sensitivity (1- Type II) and 95% specificity (1-Type I).
+
+Assuming N test = 100 
+
+|Reality   |Test +ve |Test -ve |Total |
+|:---------|:-------:|:-------:|:----:|
+|Healthy   | [`r ba`]{.red} | [`r bb`]{.red} | [`r n * (1 - prior)`]{.blue} |
+|Has COVID |   [`r bc`]{.purple}  |   [`r bd`]{.purple}   | [`r n * prior`]{.blue} |
+|Total     | [`r ba + bc`]{.orange} | [`r bb + bd`]{.orange} | `r n` |
+
+1. [Adding the prior]{.blue}
+2. [Adding the Type II error]{.purple}
+3. [Adding the Type I error]{.red}
+4. [Adding colum sums]{.orange}
+
 
 ## Applied to Covid 
 
 
 Why does it matter? If 1% of a population have covid, for a 
-screening test with 80% sensitivity and 95% specificity.
+screening test with 80% sensitivity (1- Type II) and 95% specificity (1-Type I).
 
 \
 
@@ -206,10 +269,8 @@ screening test with 80% sensitivity and 95% specificity.
 
 ::: {.incremental}
 
-* Sensitivity: **P[test + | Covid ] = `r (1 - type_2) * 100`**
-* Specificity: P[test + | Healthy ] = `r (1 - type_1) * 100`
 * True positive: **P[ Covid | test + ] = `r round(bc/(ba+bc),3)`**
-* True negative: P[ Healthy | test - ] = `r round(bb/(bb+bd),3)`
+* True negative: **P[ Healthy | test - ] = `r round(bb/(bb+bd),3)`**
 * False positive: P[ Healthy | test + ] = `r round(ba/(ba+bc),3)`
 * False negative: P[ Covid | test - ] = `r round(bd/(bb+bd),3)`
 :::
@@ -364,20 +425,19 @@ Let’s do some more ‘target practice’, for frequentist testing
 
 ## Frequentist testing 
 
-* imagine running your experiment again and again.
-* or make an argument like this:
+* imagine running your experiment again and again, so
   * On day 1 you collect data and construct a [valid] 95% confidence interval for a parameter $\theta_1$. 
   * On day 2 you collect new data and construct a 95% confidence interval for an unrelated parameter $\theta_2$.
-  * On day 3 ... [the same]. and so on constructing confidence intervals
-  * ... 95% of your intervals will trap the true parameter value
+  * On day 3 ... [the same]. and so on constructing confidence intervals each time
+* ... 95% of your intervals will trap the true parameter value
 
 ::: {.content-visible when-format="revealjs"}
 . . .
 :::
 
-* ... neither version says anything about whether your data is
+* ... it does not says anything about whether your data is
 in the 95% or the 5%
-* ... both versions require you to think about many other datasets, not just the one you have to analyze
+* ... it requires you to think about many other datasets, not just the one you have to analyze
 
 ::: {.content-visible when-format="revealjs"}
 . . .
@@ -576,10 +636,6 @@ It’s not easy but here are some simple tips
 
 ## Where do priors come from
 
-Ideas to help experts ‘translate’ to the language of probability
-
-\
-
 ::: {.center}
 Use stickers or a survey in the hallway
 :::
@@ -590,9 +646,8 @@ Use stickers or a survey in the hallway
 
 ![](assets/img_l7/priors_1.png)
 
-Use 20×5% stickers (Johnson et
-al 2010, J Clin Epi) for prior on
-survival when taking warfarin
+Use stickers (Johnson et
+al 2010, J Clin Epi) for survival when taking warfarin
 
 :::
 
@@ -601,14 +656,14 @@ survival when taking warfarin
 ![](assets/img_l7/priors_2.png)
 
 Normalize marks (Latthe et al
-2005, J Obs Gync) for prior on
-pain effect of LUNA vs placebo
+2005, J Obs Gync) for pain effect of LUNA vs placebo
 
 :::
 
 ::::
 
 ::: {.notes}
+* Ideas to help experts ‘translate’ to the language of probability
 * Typically these ‘coarse’ priors are smoothed. Providing the
 basic shape remains, exactly how much you smooth is unlikely
 to be critical in practice.
