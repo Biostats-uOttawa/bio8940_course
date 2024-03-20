@@ -81,14 +81,14 @@ $$
 The conditional probability of A given B is the conditional probability ob B given A scaled by the relative probability of A compared to B.
 
 $$
-\underbrace{P[A|B]}_\text{posterior probability} = \frac{\overbrace{P[B|A]}^\text{likelihood}  \overbrace{P[A]}^\text{prior probability}}{\underbrace{P[B]}_\text{marginal probability}}
+\underbrace{P[A|B]}_\text{posterior probability} = \frac{\overbrace{P[B|A]}^\text{likelihood} \cdot \overbrace{P[A]}^\text{prior probability}}{\underbrace{P[B]}_\text{marginal probability}}
 $$
 
 ## Reframed for hypothesis
 
 Bayes' theorem can be seen as the conditonal probability of a hypothesis given the data:
 $$
-P[H_0 | \text{data}] = \frac{\overbrace{P[\text{data}|H_0]}^\text{likelihood}  \overbrace{P[H_0]}^\text{prior}}{P[data]}
+P[H_0 | \text{data}] = \frac{\overbrace{P[\text{data}|H_0]}^\text{likelihood} \cdot  \overbrace{P[H_0]}^\text{prior}}{P[data]}
 $$
 
 ::: {.content-visible when-format="revealjs"}
@@ -97,7 +97,7 @@ $$
 
 Or it can be seen as
 $$
-\underbrace{P[H_0 | \text{data}]}_{\text{what we want to know}} = \frac{\overbrace{P[\text{data}|H_0]}^\text{what frequentist do}  \overbrace{P[H_0]}^\text{what we have a hard time understanding}}{\underbrace{P[data]}_\text{what we happily ignore}}
+\underbrace{P[H_0 | \text{data}]}_{\text{what we want to know}} = \frac{\overbrace{P[\text{data}|H_0]}^\text{what frequentist do} \cdot \overbrace{P[H_0]}^\text{what we have a hard time understanding}}{\underbrace{P[data]}_\text{what we happily ignore}}
 $$
 
 # Bayesian inference

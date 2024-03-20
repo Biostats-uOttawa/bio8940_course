@@ -377,18 +377,18 @@ P[A|B] = \frac{P[A\ \&amp;\ B]}{P[B]} = \frac{P[B|A]  P[A]}{P[B]}
 <div class="fragment">
 <p>The conditional probability of A given B is the conditional probability ob B given A scaled by the relative probability of A compared to B.</p>
 <p><span class="math display">\[
-\underbrace{P[A|B]}_\text{posterior probability} = \frac{\overbrace{P[B|A]}^\text{likelihood}  \overbrace{P[A]}^\text{prior probability}}{\underbrace{P[B]}_\text{marginal probability}}
+\underbrace{P[A|B]}_\text{posterior probability} = \frac{\overbrace{P[B|A]}^\text{likelihood} \cdot \overbrace{P[A]}^\text{prior probability}}{\underbrace{P[B]}_\text{marginal probability}}
 \]</span></p>
 </div>
 </section>
 <section id="reframed-for-hypothesis" class="slide level2">
 <h2>Reframed for hypothesis</h2>
 <p>Bayes’ theorem can be seen as the conditonal probability of a hypothesis given the data: <span class="math display">\[
-P[H_0 | \text{data}] = \frac{\overbrace{P[\text{data}|H_0]}^\text{likelihood}  \overbrace{P[H_0]}^\text{prior}}{P[data]}
+P[H_0 | \text{data}] = \frac{\overbrace{P[\text{data}|H_0]}^\text{likelihood} \cdot  \overbrace{P[H_0]}^\text{prior}}{P[data]}
 \]</span></p>
 <div class="fragment">
 <p>Or it can be seen as <span class="math display">\[
-\underbrace{P[H_0 | \text{data}]}_{\text{what we want to know}} = \frac{\overbrace{P[\text{data}|H_0]}^\text{what frequentist do}  \overbrace{P[H_0]}^\text{what we have a hard time understanding}}{\underbrace{P[data]}_\text{what we happily ignore}}
+\underbrace{P[H_0 | \text{data}]}_{\text{what we want to know}} = \frac{\overbrace{P[\text{data}|H_0]}^\text{what frequentist do} \cdot \overbrace{P[H_0]}^\text{what we have a hard time understanding}}{\underbrace{P[data]}_\text{what we happily ignore}}
 \]</span></p>
 </div>
 </section></section>

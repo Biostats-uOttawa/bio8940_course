@@ -18,14 +18,14 @@
     "href": "slides/lec-07_intro_bayes.slides.html#formal",
     "title": "Introduction Bayesian statistics",
     "section": "Formal",
-    "text": "Formal\nBayes’ theorem is the results in a conditional probability of two events:\n\\[\nP[A|B] = \\frac{P[A\\ \\&\\ B]}{P[B]} = \\frac{P[B|A]  P[A]}{P[B]}\n\\]\n\nThe conditional probability of A given B is the conditional probability ob B given A scaled by the relative probability of A compared to B.\n\\[\n\\underbrace{P[A|B]}_\\text{posterior probability} = \\frac{\\overbrace{P[B|A]}^\\text{likelihood}  \\overbrace{P[A]}^\\text{prior probability}}{\\underbrace{P[B]}_\\text{marginal probability}}\n\\]"
+    "text": "Formal\nBayes’ theorem is the results in a conditional probability of two events:\n\\[\nP[A|B] = \\frac{P[A\\ \\&\\ B]}{P[B]} = \\frac{P[B|A]  P[A]}{P[B]}\n\\]\n\nThe conditional probability of A given B is the conditional probability ob B given A scaled by the relative probability of A compared to B.\n\\[\n\\underbrace{P[A|B]}_\\text{posterior probability} = \\frac{\\overbrace{P[B|A]}^\\text{likelihood} \\cdot \\overbrace{P[A]}^\\text{prior probability}}{\\underbrace{P[B]}_\\text{marginal probability}}\n\\]"
   },
   {
     "objectID": "slides/lec-07_intro_bayes.slides.html#reframed-for-hypothesis",
     "href": "slides/lec-07_intro_bayes.slides.html#reframed-for-hypothesis",
     "title": "Introduction Bayesian statistics",
     "section": "Reframed for hypothesis",
-    "text": "Reframed for hypothesis\nBayes’ theorem can be seen as the conditonal probability of a hypothesis given the data: \\[\nP[H_0 | \\text{data}] = \\frac{\\overbrace{P[\\text{data}|H_0]}^\\text{likelihood}  \\overbrace{P[H_0]}^\\text{prior}}{P[data]}\n\\]\n\nOr it can be seen as \\[\n\\underbrace{P[H_0 | \\text{data}]}_{\\text{what we want to know}} = \\frac{\\overbrace{P[\\text{data}|H_0]}^\\text{what frequentist do}  \\overbrace{P[H_0]}^\\text{what we have a hard time understanding}}{\\underbrace{P[data]}_\\text{what we happily ignore}}\n\\]"
+    "text": "Reframed for hypothesis\nBayes’ theorem can be seen as the conditonal probability of a hypothesis given the data: \\[\nP[H_0 | \\text{data}] = \\frac{\\overbrace{P[\\text{data}|H_0]}^\\text{likelihood} \\cdot  \\overbrace{P[H_0]}^\\text{prior}}{P[data]}\n\\]\n\nOr it can be seen as \\[\n\\underbrace{P[H_0 | \\text{data}]}_{\\text{what we want to know}} = \\frac{\\overbrace{P[\\text{data}|H_0]}^\\text{what frequentist do} \\cdot \\overbrace{P[H_0]}^\\text{what we have a hard time understanding}}{\\underbrace{P[data]}_\\text{what we happily ignore}}\n\\]"
   },
   {
     "objectID": "slides/lec-07_intro_bayes.slides.html#error-type-and-false-positivenegative",
@@ -256,14 +256,14 @@
     "href": "slides/lec-07_intro_bayes.notes.html#formal",
     "title": "Introduction Bayesian statistics",
     "section": "\n1.1 Formal",
-    "text": "1.1 Formal\nBayes’ theorem is the results in a conditional probability of two events:\nThe conditional probability of A given B is the conditional probability ob B given A scaled by the relative probability of A compared to B.\n\\[\n\\underbrace{P[A|B]}_\\text{posterior probability} = \\frac{\\overbrace{P[B|A]}^\\text{likelihood}  \\overbrace{P[A]}^\\text{prior probability}}{\\underbrace{P[B]}_\\text{marginal probability}}\n\\]"
+    "text": "1.1 Formal\nBayes’ theorem is the results in a conditional probability of two events:\nThe conditional probability of A given B is the conditional probability ob B given A scaled by the relative probability of A compared to B.\n\\[\n\\underbrace{P[A|B]}_\\text{posterior probability} = \\frac{\\overbrace{P[B|A]}^\\text{likelihood} \\cdot \\overbrace{P[A]}^\\text{prior probability}}{\\underbrace{P[B]}_\\text{marginal probability}}\n\\]"
   },
   {
     "objectID": "slides/lec-07_intro_bayes.notes.html#reframed-for-hypothesis",
     "href": "slides/lec-07_intro_bayes.notes.html#reframed-for-hypothesis",
     "title": "Introduction Bayesian statistics",
     "section": "\n1.2 Reframed for hypothesis",
-    "text": "1.2 Reframed for hypothesis\nBayes’ theorem can be seen as the conditonal probability of a hypothesis given the data: \\[\nP[H_0 | \\text{data}] = \\frac{\\overbrace{P[\\text{data}|H_0]}^\\text{likelihood}  \\overbrace{P[H_0]}^\\text{prior}}{P[data]}\n\\]\nOr it can be seen as \\[\n\\underbrace{P[H_0 | \\text{data}]}_{\\text{what we want to know}} = \\frac{\\overbrace{P[\\text{data}|H_0]}^\\text{what frequentist do}  \\overbrace{P[H_0]}^\\text{what we have a hard time understanding}}{\\underbrace{P[data]}_\\text{what we happily ignore}}\n\\]"
+    "text": "1.2 Reframed for hypothesis\nBayes’ theorem can be seen as the conditonal probability of a hypothesis given the data: \\[\nP[H_0 | \\text{data}] = \\frac{\\overbrace{P[\\text{data}|H_0]}^\\text{likelihood} \\cdot  \\overbrace{P[H_0]}^\\text{prior}}{P[data]}\n\\]\nOr it can be seen as \\[\n\\underbrace{P[H_0 | \\text{data}]}_{\\text{what we want to know}} = \\frac{\\overbrace{P[\\text{data}|H_0]}^\\text{what frequentist do} \\cdot \\overbrace{P[H_0]}^\\text{what we have a hard time understanding}}{\\underbrace{P[data]}_\\text{what we happily ignore}}\n\\]"
   },
   {
     "objectID": "slides/lec-07_intro_bayes.notes.html#error-type-and-false-positivenegative",
